@@ -19,16 +19,31 @@ const Header = () => {
                 </Link>
             </div>
 
-            {/* Hamburger Menu - moved outside navbar-brand */}
+            {/* Hamburger Menu */}
             <button
                 onClick={toggleMenu}
                 className="navbar-burger p-2 rounded-md lg:hidden"
                 aria-label="menu"
                 aria-expanded={isMenuActive ? 'true' : 'false'}
             >
-                <span aria-hidden="true" className="block  h-1 bg-black mb-1"></span>
-                <span aria-hidden="true" className="block w-6 h-1 bg-black mb-1"></span>
-                <span aria-hidden="true" className="block w-6 h-1 bg-black"></span>
+                <span 
+                    aria-hidden="true" 
+                    className={`block w-6 h-1 bg-black mb-1 transition-transform duration-300 ${
+                        isMenuActive ? 'transform rotate-45 translate-y-2' : ''
+                    }`}
+                ></span>
+                <span 
+                    aria-hidden="true" 
+                    className={`block w-6 h-1 bg-black mb-1 transition-opacity duration-300 ${
+                        isMenuActive ? 'opacity-0' : ''
+                    }`}
+                ></span>
+                <span 
+                    aria-hidden="true" 
+                    className={`block w-6 h-1 bg-black transition-transform duration-300 ${
+                        isMenuActive ? 'transform -rotate-45 -translate-y-2' : ''
+                    }`}
+                ></span>
             </button>
 
             {/* Navbar Menu */}
