@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     description:'Ratnesh Maurya\'s Portfolio',
     url:'https://ratn.tech',
     siteName:'Ratnesh Maurya',
-    images:['/favicon.ico'],
+    images:['/public/ratn.png'],
   },
   twitter:{
-    
+
     title:'Ratnesh Maurya',
     description:'Ratnesh Maurya\'s Portfolio',
-    images:['/favicon.ico'],
+    images:['/public/ratn.png'],
   },
 };
 
@@ -54,7 +54,7 @@ export default function RootLayout({
             <Header />
           </div>
         </div>
-        <main className="pt-[64px] px-4 sm:px-6 lg:px-8">
+        <main className="pt-auto px-4 sm:px-6 lg:px-8">
           {children}
         </main>
         <Footer />
