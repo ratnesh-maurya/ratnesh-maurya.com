@@ -1,3 +1,4 @@
+"use client"
 import fs from 'fs';
 import matter from 'gray-matter';
 import rehypeDocument from 'rehype-document'
