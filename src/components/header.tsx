@@ -11,10 +11,10 @@ const Header = () => {
     const toggleMenu = () => setIsMenuActive((prevState) => !prevState);
 
     return (
-        <nav className="navbar container is-fixed-top border-b border-gray-400 flex justify-between items-center  py-2 g">
-            {/* Logo/Name side */}
-            <div className="flex-shrink-0 font-merriweather">
-                <Link href="/" className="text-2xl text-black  px-4">
+        <nav className=" border-b border-gray-400 sticky top-0 backdrop-blur  flex justify-between items-center  py-2 z-10">
+            
+            <div className="flex-shrink-0 font-merriweather hover:underline">
+                <Link href="/" className="text-2xl  px-4">
                     Ratnesh Maurya
                 </Link>
             </div>
@@ -54,7 +54,7 @@ const Header = () => {
                     <Link
                         href="/blogs"
                         className={`navbar-item text-base  px-4 py-3 rounded-md transition-all duration-200 font-assistant  font-bold   
-                            hover:bg-gray-200 hover:underline ${pathname === '/home' ? 'bg-gray-200' : ''
+                            hover:bg-gray-200 hover:underline ${pathname === '/blogs' ? 'bg-gray-200' : ''
                             }`}
                     >
                         Blogs
@@ -62,7 +62,7 @@ const Header = () => {
                     <Link
                         href="/projects"
                         className={`navbar-item text-base px-4 font-bold  py-3 rounded-md transition-all duration-200 font-assistant    
-                            hover:bg-gray-200 hover:underline ${pathname === '/first' ? 'bg-gray-200' : ''
+                            hover:bg-gray-200 hover:underline ${pathname === '/projects' ? 'bg-gray-200' : ''
                             }`}
                     >
                         Projects
@@ -70,7 +70,7 @@ const Header = () => {
                     <Link
                         href="/github-summary"
                         className={`navbar-item text-base px-4 font-bold py-3 rounded-md transition-all duration-200 font-assistant
-                            hover:bg-gray-200 hover:underline ${pathname === '/papershelf' ? 'bg-gray-200' : ''
+                            hover:bg-gray-200 hover:underline ${pathname === '/github-summary' ? 'bg-gray-200' : ''
                             }`}
                     >
                         Github Summary

@@ -24,22 +24,73 @@ const merriweather = Merriweather({
 
 
 export const metadata: Metadata = {
-  title: "Ratnesh Maurya",
-  description: "Ratnesh Maurya's Portfolio",
-  openGraph:{
-    title:'Ratnesh Maurya',
-    description:'Ratnesh Maurya\'s Portfolio',
-    url:'https://ratn.tech',
-    siteName:'Ratnesh Maurya',
-    images:['/public/ratn.png'],
+  title: "Ratnesh Maurya - Software Engineer | Portfolio",
+  description: "Ratnesh Maurya's Portfolio showcasing his skills, projects, education, and experience in software engineering.",
+  openGraph: {
+    title: 'Ratnesh Maurya - Software Engineer',
+    description: 'Explore the portfolio of Ratnesh Maurya, a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.',
+    url: 'https://ratn.tech',
+    siteName: 'Ratnesh Maurya Portfolio',
+    images: [
+      {
+        url: 'https://ratn.tech/ratn.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ratnesh Maurya Portfolio Image',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
   },
-  twitter:{
-
-    title:'Ratnesh Maurya',
-    description:'Ratnesh Maurya\'s Portfolio',
-    images:['/public/ratn.png'],
+  twitter: {
+    title: 'Ratnesh Maurya - Software Engineer',
+    description: 'Explore the portfolio of Ratnesh Maurya, Software Engineer with experience in backend development, cloud solutions, and web technologies.',
+    images: [
+      {
+        url: 'https://ratn.tech/ratn.png',
+        width: 1200,
+        height: 630,
+        alt: 'Ratnesh Maurya Portfolio Image',
+      },
+    ],
+    card: 'summary_large_image',
+    creator: '@RatneshMaurya',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+    },
+  },
+  generator: 'Next.js',
+  applicationName: 'Ratnesh Portfolio',
+  keywords: [
+    'Ratnesh Maurya', 'Software Engineer', 'Portfolio', 'Golang Developer', 'AWS Certified', 'Kubernetes', 'Docker',
+    'Backend Development', 'Full-stack Developer', 'React.js', 'Next.js', 'RESTful API', 'Python', 'Leetcode',
+    'Competitive Coding', 'Cloud Solutions', 'DevOps', 'Project Management'
+  ],
+  authors: [{ name: 'Ratnesh Maurya', url: 'https://ratn.tech' }],
+  creator: 'Ratnesh Maurya',
+  publisher: 'Ratnesh Maurya',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://ratn.tech'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'de-DE': '/de-DE',
+    },
   },
 };
+
 
 export default function RootLayout({
   children,
@@ -47,17 +98,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`max-w-7xl mx-auto ${poppins.variable} ${assistant.variable} ${merriweather.variable}`}>
-        <div className="fixed top-0 left-0 right-0 z-50 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <html lang="en" >
+      <body className={`max-w-7xl mx-auto  ${poppins.variable} ${assistant.variable} ${merriweather.variable}`}>
+        
             <Header />
-          </div>
-        </div>
+     
         <main className="pt-auto px-4 sm:px-6 lg:px-8">
           {children}
         </main>
-        <Footer />
+        <Footer  />
+    
       </body>
     </html>
   );
