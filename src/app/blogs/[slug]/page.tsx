@@ -1,4 +1,4 @@
-"use client"
+
 import fs from 'fs';
 import matter from 'gray-matter';
 import rehypeDocument from 'rehype-document'
@@ -17,7 +17,7 @@ export default async function Page({
     params: Promise<{ slug: string }>
 }) {
     const slug = (await params).slug
-    const fileContent = fs.readFileSync(`blogContent/${slug}.md`, 'utf-8');
+    const fileContent = fs.readFileSync(`src/blogContent/${slug}.md`, 'utf-8');
     
     const { content, data } = matter(fileContent);
 
