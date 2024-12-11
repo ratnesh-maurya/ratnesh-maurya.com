@@ -147,7 +147,7 @@ export default function RootLayout({
         
             <Header />
      
-        <main className="pt-auto px-4 sm:px-6 lg:px-8">
+        <main className="pt-auto">
           {children}
         </main>
         <Footer  />
