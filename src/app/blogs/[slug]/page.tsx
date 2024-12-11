@@ -61,7 +61,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     // Return the page with the fetched content
     return (
-        <article className="mx-auto py-8 mb font-assistant">
+        <article className="mx-auto px-4 py-8 mb font-assistant">
             <div className="text-s text-gray-600 mb-6">
                 <Link href="/blogs" className="text-teal-600 hover:text-teal-800">
                     blogs
