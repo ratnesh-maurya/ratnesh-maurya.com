@@ -11,6 +11,19 @@ import { unified } from 'unified';
 import { transformerCopyButton } from '@rehype-pretty/transformers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+    const filePath = path.join(blogContentPath, `${params.slug}.md`);
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    const { data } = matter(fileContent);
+    
+    return {
+        title: `${data.title} - Ratnesh Maurya`,
+        description: data.description,
+    };
+}
+
 // Define the path for blog content
 const blogContentPath = path.join(process.cwd(), 'src', 'blogContent');
 

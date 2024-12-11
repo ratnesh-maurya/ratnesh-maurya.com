@@ -2,6 +2,12 @@ import Link from 'next/link'
 import React from 'react'
 import fs from 'fs';
 import matter from 'gray-matter';
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blogs - Ratnesh Maurya",
+  description: "Explore Ratnesh Maurya's blog posts on software engineering, technology, and personal development.",
+};
 
 
 const dirContent = fs.readdirSync("src/blogContent","utf-8");

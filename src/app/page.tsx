@@ -1,4 +1,10 @@
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ratnesh Maurya",
+  description: "Ratnesh Maurya's Portfolio showcasing his skills, projects, education, and experience in software engineering.",
+};
 
 export default function Home() {
   return (
