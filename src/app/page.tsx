@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: "Ratnesh Maurya",
@@ -71,7 +72,7 @@ export default function Home() {
         </section>
       </div>
 
-      <div className=" md:ml-8 ">
+      <div className=" md:ml-8 items-center justify-center ">
         <div className="relative flex w-80 flex-col rounded-xl mt-14 bg-white text-gray-700  border-2 border-gray-200">
           <div className="p-6">
             <h3 className="text-xl font-merriweather font-semibold mb-4"> Recent Projects</h3>
@@ -180,9 +181,11 @@ export default function Home() {
            target="_blank" 
            rel="noopener noreferrer"
            className="transition-transform hover:scale-105">
-            <img 
+            <Image 
               src="https://images.credly.com/size/220x220/images/6b924fae-3cd7-4233-b012-97413c62c85d/blob" 
               alt="AWS Certified Cloud Practitioner" 
+              width={220}
+              height={220}
               className="w-20 md:w-[220px]"
             />
         </a>
@@ -190,9 +193,11 @@ export default function Home() {
            target="_blank"
            rel="noopener noreferrer"
            className="transition-transform hover:scale-105">
-          <img 
+          <Image 
             src="https://images.credly.com/size/220x220/images/0e284c3f-5164-4b21-8660-0d84737941bc/image.png" 
             alt="AWS Solutions Architect Associate" 
+            width={220}
+            height={220}
             className="w-20 md:w-[220px]"
           />
         </a>
@@ -200,9 +205,11 @@ export default function Home() {
            target="_blank"
            rel="noopener noreferrer"
            className="transition-transform hover:scale-105">
-         <img 
+         <Image 
            src="https://images.credly.com/size/220x220/images/ee986187-6637-45e9-8184-8382dc117432/blob" 
            alt="AWS Developer Associate" 
+           width={220}
+           height={220}
            className="w-20 md:w-[220px]"
          />
         </a>

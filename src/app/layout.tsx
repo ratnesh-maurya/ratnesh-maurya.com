@@ -3,6 +3,8 @@ import { Poppins, Assistant, Merriweather} from 'next/font/google'; // Add this 
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 // Define your fonts
 const poppins = Poppins({
@@ -149,6 +151,8 @@ export default function RootLayout({
      
         <main className="pt-auto">
           {children}
+          <SpeedInsights />
+          <Analytics />
         </main>
         <Footer  />
     
