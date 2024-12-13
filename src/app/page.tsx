@@ -11,12 +11,12 @@ export default function Home() {
   return (
     <>
 
-    <div className="  flex flex-col md:flex-row justify-between   py-8 px-4 md:px-8">
+    <div className="  flex flex-col md:flex-row justify-between items-center py-8 px-4 md:px-8">
 
       <div className=" font-assistant max-w-2xl ">
         <section>
           <h1 className="title text-2xl md:text-4xl font-merriweather  mb-2">Hey, I am Ratnesh Maurya</h1>
-          <h3 className=" text-xl font-semibold  md:text-2xl font-merriweather text-bold mb-4 text-teal-600">Software Engineer <Link href="https://www.linkedin.com/company/initializ/" target="_blank" rel="noopener noreferrer" className="text-teal-700 hover:underline">@initializ</Link></h3>
+          <h3 className=" text-xl font-semibold  md:text-2xl font-merriweather text-bold mb-4 text-teal-600">Software Engineer <Link href="https://www.linkedin.com/company/initializ/" target="_blank" rel="noopener noreferrer" className="text-teal-600 hover:underline">@initializ</Link></h3>
           <div>
             <p>
               I am a software engineer and a recent 2024 graduate passionate about
@@ -29,7 +29,7 @@ export default function Home() {
               Currently, I work as a Software Development Engineer at   {' '}
               <Link href="https://www.linkedin.com/company/initializ/"
                 target="_blank" rel="noopener noreferrer"
-                className="text-teal-600 hover:underline">initializ</Link>,
+                className="text-blue-600 hover:underline font-semibold">initializ</Link>,
               where I have engineered a secure secret management platform,
               designed Kubernetes Controllers for optimized secret management,
               and streamlined CI/CD pipelines to enhance efficiency. Before this,
@@ -37,7 +37,7 @@ export default function Home() {
               <Link
                 href="https://www.linkedin.com/company/emsec/"
                 target="_blank" rel="noopener noreferrer"
-                className="text-teal-600
+                  className="text-blue-600   font-semibold
                    hover:underline">EMSEC Pvt. Ltd.</Link>, where
               I developed scalable RESTful APIs and built data
               scraping frameworks to optimize operations.
@@ -51,14 +51,14 @@ export default function Home() {
                 href="https://github.com/Ratnesh-Team/Rehabify"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-teal-600
+                className="text-blue-600 font-semibold
                  hover:underline">Rehabify</Link>,
               a platform aimed at improving addiction recovery services,
               and {' '} <Link
                 href="https://github.com/ratnesh-maurya/Unzip_N_Open"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-teal-600
+                className="text-blue-600 font-semibold
                  hover:underline">Unzip N Open</Link>,
               a CLI tool simplifying file management
               for developers. My technical expertise includes Golang,

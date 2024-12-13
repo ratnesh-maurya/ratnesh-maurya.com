@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import Script from "next/script";
 
 // Define your fonts
 const poppins = Poppins({
@@ -145,6 +146,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" >
+      <head>
+          <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-T13RLYDHMR"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-T13RLYDHMR');
+          `}
+        </Script>
+      </head>
       <body className={`max-w-7xl mx-auto  ${poppins.variable} ${assistant.variable} ${merriweather.variable}`}>
         
             <Header />
