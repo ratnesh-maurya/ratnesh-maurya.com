@@ -3,12 +3,14 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, Tag } from 'lucide-react'
+import Link from 'next/link'
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Image from 'next/image'
 import { projects } from '@/data/projects'
+
 
 export default function ProjectsPage() {
     const [selectedTags, setSelectedTags] = useState<string[]>([])
@@ -19,6 +21,7 @@ export default function ProjectsPage() {
         selectedTags.length === 0 || project.tags.some(tag => selectedTags.includes(tag))
     )
 
+
     const toggleTag = (tag: string) => {
         setSelectedTags(prev =>
             prev.includes(tag)
@@ -28,6 +31,7 @@ export default function ProjectsPage() {
     }
 
     return (
+
         <div className="container mx-auto py-12 px-4 font-assistant  ">
             <div className="space-y-8">
                 <div className="space-y-4">
@@ -69,15 +73,18 @@ export default function ProjectsPage() {
                                     <CardDescription>{project.description}</CardDescription>
                                 </CardHeader>
                                 <CardContent className="space-y-4 flex-grow">
-                                    <div className="aspect-video relative rounded-lg overflow-hidden bg-gradient-to-br from-teal-50 to-teal-100">
-                                        <Image
-                                            src={project.image}
-                                            alt={`${project.title} preview`}
-                                            layout="fill"
-                                            objectFit="cover"
-                                            className="transition-transform duration-300 hover:scale-105"
-                                        />
-                                    </div>
+                                    <Link href={project.links.live || project.links.github || '/'} passHref target='_blank'>
+                                            <div className="aspect-video relative rounded-lg overflow-hidden bg-gradient-to-br from-teal-50 to-teal-100">
+                                                <Image
+                                                    src={project.image}
+                                                    alt={`${project.title} preview`}
+                                                    layout="fill"
+                                                    objectFit="cover"
+                                                    className="transition-transform duration-300 hover:scale-105"
+                                                />
+                                            </div>
+                                        
+                                    </Link>
 
                                     <p className="text-sm">
                                         {project.longDescription}

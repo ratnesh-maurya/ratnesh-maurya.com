@@ -18,12 +18,12 @@ export const projects: Project[] = [
     description: "Addiction Recovery Platform",
     longDescription:
       "A comprehensive platform aimed at improving addiction recovery services with features for tracking progress and connecting with support groups.",
-    tags: ["TypeScript", "React", "Node.js", "PostgreSQL"],
+    tags: ["TypeScript", "React", "Node.js", "Tailwind-css" ,"Go"],
     links: {
-      github: "https://github.com/username/rehabify",
-      live: "https://rehabify.demo",
+      github: "https://github.com/Ratnesh-Team/Rehabify",
+      live: "https://rehabify.ratn.tech/",
     },
-    image: "/ratn.png",
+    image: "/rehabify.png",
   },
   {
     id: "unzip-n-open",
@@ -31,11 +31,11 @@ export const projects: Project[] = [
     description: "CLI File Management Tool",
     longDescription:
       "A command-line interface tool that simplifies file management for developers with intuitive commands and efficient operations.",
-    tags: ["Go", "CLI", "File System"],
+    tags: ["Go", "CLI"],
     links: {
-      github: "https://github.com/username/unzip-n-open",
+      github: "https://github.com/ratnesh-maurya/Unzip_N_Open",
     },
-    image: "/placeholder.svg",
+    image: "/cli.png",
   },
   {
     id: "secret-operator",
@@ -45,10 +45,21 @@ export const projects: Project[] = [
       "A Kubernetes operator for managing secrets and sensitive information with enhanced security protocols.",
     tags: ["Go", "Kubernetes", "Security"],
     links: {
-      github: "https://github.com/username/secret-operator",
-      live: "https://docs.secret-operator.dev",
+      github: "https://github.com/initializ/secrets-operator",
     },
-    image: "/placeholder.svg",
+    image: "/operator.png",
   },
-
+  {
+    id: "currency-converter",
+    title: "Currency Converter",
+    description: "Real-time Exchange Rates",
+    longDescription:
+      "A currency converter application that provides real-time exchange rates and supports multiple currencies for accurate conversions.",
+    tags: ["TypeScript", "React", "Tailwind-css"],
+    links: {
+      github: "https://github.com/ratnesh-maurya/currency-converter ",
+      live: "https://currency.ratn.tech/",
+    },
+    image: "/currency-converter.png",
+  },
 ];
