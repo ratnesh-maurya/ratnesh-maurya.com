@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             url: `https://ratn.tech/blogs/${params.slug}`,
             images: 
                 {
-                url: `https://ratn.tech/404_01-min.png`,
+                url: `${data.image}`,
                     width: 1200,
                     height: 630,
                     alt: `${data.title} - Ratnesh Maurya`,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: data.description,
             creator: '@ratnesh_maurya_',
             images: {
-                url: `https://ratn.tech/404_01-min.png`,
+                url: `${data.image}`,
                 width: 1200,
                 height: 630,
                 alt: `${data.title} - Ratnesh Maurya`,

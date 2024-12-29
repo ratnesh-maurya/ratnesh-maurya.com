@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     url: 'https://ratn.tech/blogs',
     images: [
       {
-        url: 'https://ratn.tech/404_01-min.jpg',
+        url: 'https://ratn.tech/blogs.png',
         width: 1200,
         height: 630,
         alt: 'Ratnesh Maurya Portfolio Image',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         creator: '@ratnesh_maurya_',
         images: [
         {
-            url: 'https://ratn.tech/404_01-min.jpg',
+            url: 'https://ratn.tech/blogs.png',
             width: 1200,
             height: 630,
             alt: 'Ratnesh Maurya Portfolio Image',
