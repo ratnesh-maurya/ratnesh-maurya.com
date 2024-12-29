@@ -27,6 +27,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: data.description,
             type: 'article',
             url: `https://ratn.tech/blogs/${params.slug}`,
+            images: 
+                {
+                url: `https://ratn.tech/404_01-min.png`,
+                    width: 1200,
+                    height: 630,
+                    alt: `${data.title} - Ratnesh Maurya`,
+                },
+            
         },
         twitter: {
             card: 'summary_large_image',
@@ -34,6 +42,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             title: `${data.title} - Ratnesh Maurya`,
             description: data.description,
             creator: '@ratnesh_maurya_',
+            images: {
+                url: `https://ratn.tech/404_01-min.png`,
+                width: 1200,
+                height: 630,
+                alt: `${data.title} - Ratnesh Maurya`,
+            },
             
         },
     };

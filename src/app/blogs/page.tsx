@@ -7,6 +7,35 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Blogs - Ratnesh Maurya",
   description: "Explore Ratnesh Maurya's blog posts on software engineering, technology, and personal development.",
+  openGraph: {
+    title: "Blogs - Ratnesh Maurya",
+    description: "Explore Ratnesh Maurya's blog posts on software engineering, technology, and personal development.",
+    type: 'website',
+    url: 'https://ratn.tech/blogs',
+    images: [
+      {
+        url: 'https://ratn.tech/404_01-min.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Ratnesh Maurya Portfolio Image',
+      },
+    ],
+  },
+    twitter: {
+        card: 'summary_large_image',
+        site: '@ratnesh_maurya_',
+        title: "Blogs - Ratnesh Maurya",
+        description: "Explore Ratnesh Maurya's blog posts on software engineering, technology, and personal development.",
+        creator: '@ratnesh_maurya_',
+        images: [
+        {
+            url: 'https://ratn.tech/404_01-min.jpg',
+            width: 1200,
+            height: 630,
+            alt: 'Ratnesh Maurya Portfolio Image',
+        },
+        ],
+    },
 };
 
 
