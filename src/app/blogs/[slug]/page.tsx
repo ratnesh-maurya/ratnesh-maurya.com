@@ -21,6 +21,21 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     return {
         title: `${data.title} - Ratnesh Maurya`,
         description: data.description,
+        keywords: data.keywords,
+        openGraph: {
+            title: `${data.title} - Ratnesh Maurya`,
+            description: data.description,
+            type: 'article',
+            url: `https://ratn.tech/blogs/${params.slug}`,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            site: '@ratnesh_maurya_',
+            title: `${data.title} - Ratnesh Maurya`,
+            description: data.description,
+            creator: '@ratnesh_maurya_',
+            
+        },
     };
 }
 
