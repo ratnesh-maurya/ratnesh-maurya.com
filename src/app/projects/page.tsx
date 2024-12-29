@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import Image from 'next/image'
 import { projects } from '@/data/projects'
-import type { Project } from '@/data/projects'
 
 export default function ProjectsPage() {
     const [selectedTags, setSelectedTags] = useState<string[]>([])
