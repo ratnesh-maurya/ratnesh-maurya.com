@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { GitFork, Star, FileCode, Users, Book, GitPullRequest, MapPin, Briefcase, LinkIcon, Activity, Flame, Trophy, Pin, Calendar, GitCommit, Eye } from 'lucide-react'
+import { GitFork, Star, FileCode, Users, Book, GitPullRequest, MapPin, Briefcase, LinkIcon, Activity, Calendar, GitCommit, Eye } from 'lucide-react'
 import { Skeleton } from "@/components/ui/skeleton"
 import Link from "next/link"
 import Image from "next/image"
@@ -59,7 +59,7 @@ interface GitHubData {
     type: string
     repo: string
     createdAt: string
-    payload: any
+    payload:unknown
   }[]
   // contributionStreak: number
   // totalContributions: number
@@ -68,14 +68,14 @@ interface GitHubData {
   //   avatarUrl: string
   //   contributions: number
   // }[]
-  pinnedRepos: {
-    name: string
-    description: string
-    stars: number
-    forks: number
-    language: string
-    url: string
-  }[]
+  // pinnedRepos: {
+  //   name: string
+  //   description: string
+  //   stars: number
+  //   forks: number
+  //   language: string
+  //   url: string
+  // }[]
   commitActivity: {
     week: string
     total: number
