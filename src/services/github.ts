@@ -47,18 +47,10 @@ interface Contribution {
 }
 
 interface CommitActivity {
-  week: number;
+  week: string;
   total: number;
   days: number[];
 }
-
-// interface PinnedRepo {
-//   repo: string;
-//   description: string;
-//   stars: number;
-//   forks: number;
-//   language: string;
-// }
 
 type LanguageStats = {
   name: string;
@@ -102,11 +94,11 @@ export async function fetchGitHubData() {
       }));
 
     const totalStars = reposData.reduce(
-      (acc, repo) => acc + repo.stargazers_count,
+      (acc, repo) => acc + (repo.stargazers_count || 0),
       0
     );
     const totalForks = reposData.reduce(
-      (acc, repo) => acc + repo.forks_count,
+      (acc, repo) => acc + (repo.forks_count || 0),
       0
     );
 
@@ -139,20 +131,18 @@ export async function fetchGitHubData() {
       contributionsData.contributions
     );
     const totalContributions = contributionsData.contributions.reduce(
-      (acc, day) => acc + day.count,
+      (acc, day) => acc + (day.count || 0),
       0
     );
 
-    // const pinnedRepos = await fetchPinnedRepos(GITHUB_USERNAME);
-
-    const commitActivity = commitActivityData.slice(-12).map((week) => ({
-      week: new Date(week.week * 1000).toLocaleDateString("en-US", {
-        month: "short",
-        day: "numeric",
-      }),
-      total: week.total,
-      days: week.days,
-    }));
+    let commitActivity: CommitActivity[] = [];
+    if (Array.isArray(commitActivityData)) {
+      commitActivity = commitActivityData.slice(-12).map((week) => ({
+        week: week.week,
+        total: week.total,
+        days: week.days,
+      }));
+    }
 
     return {
       user: {
@@ -214,23 +204,3 @@ function calculateContributionStreak(contributions: Contribution[]): number {
 
   return streak;
 }
-
-// async function fetchPinnedRepos(username: string): Promise<PinnedRepo[]> {
-//   try {
-//     const response = await fetch(
-//       `https://gh-pinned-repos.egoist.dev/?username=${username}`
-//     );
-//     const pinnedRepos: PinnedRepo[] = await response.json();
-//     return pinnedRepos.map((repo) => ({
-//       name: repo.repo,
-//       description: repo.description,
-//       stars: repo.stars,
-//       forks: repo.forks,
-//       language: repo.language,
-//       url: `https://github.com/${username}/${repo.repo}`,
-//     }));
-//   } catch (error) {
-//     console.error("Failed to fetch pinned repositories:", error);
-//     return [];
-//   }
-// }
