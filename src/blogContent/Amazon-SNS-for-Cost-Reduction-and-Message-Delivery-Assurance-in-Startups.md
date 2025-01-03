@@ -40,7 +40,7 @@ AWS SNS is a highly scalable and reliable service. It can handle millions of mes
 
 **Now the Question comes How?**
 
-[**Horizontal scaling**](https://wa.aws.amazon.com/wat.concept.horizontal-scaling.en.html): SNS uses a horizontally scalable architecture, which means that it can easily scale up or down to meet the demands of your application. SNS uses multiple servers to distribute the load, which helps to improve performance and reliability.
+[**Horizontal scaling**](https://wa.aws.amazon.com/wat.concept.horizontal-scaling.en.html) : SNS uses a horizontally scalable architecture, which means that it can easily scale up or down to meet the demands of your application. SNS uses multiple servers to distribute the load, which helps to improve performance and reliability.
 
 [**Global availability:**](https://aws.amazon.com/about-aws/global-infrastructure/regions_az/) SNS is available in multiple regions around the world, which means that you can deliver messages to your subscribers wherever they are located. SNS also replicates your messages across multiple availability zones within each region, which helps to improve reliability and availability.
 

@@ -1,3 +1,4 @@
+
 import Link from 'next/link'
 import React from 'react'
 import fs from 'fs';
@@ -40,12 +41,20 @@ export const metadata: Metadata = {
 
 
 const dirContent = fs.readdirSync("src/blogContent","utf-8");
-const posts = dirContent.map((fileName) => {
+var posts = dirContent.map((fileName) => {
     const fileContent = fs.readFileSync(`src/blogContent/${fileName}`, 'utf-8');
     const { data } = matter(fileContent);
     return data;
 }); 
 
+posts = posts.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+        return dateB.getTime() - dateA.getTime();
+    }
+    return 0;
+});
 
 function page() {
     return (
@@ -63,7 +72,7 @@ function page() {
                                     <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">{post.title}</h2>
                                     <p className="leading-relaxed">{post.description}</p>
                                     <Link href={`/blogs/${post.slug}`} className="text-teal-600 inline-flex items-center mt-4">
-                                        Learn More
+                                        Read More
                                         <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M5 12h14"></path>
                                             <path d="M12 5l7 7-7 7"></path>
