@@ -41,7 +41,7 @@ export const metadata: Metadata = {
 
 
 const dirContent = fs.readdirSync("src/blogContent","utf-8");
-var posts = dirContent.map((fileName) => {
+let posts = dirContent.map((fileName) => {
     const fileContent = fs.readFileSync(`src/blogContent/${fileName}`, 'utf-8');
     const { data } = matter(fileContent);
     return data;
