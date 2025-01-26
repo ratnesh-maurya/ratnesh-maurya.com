@@ -35,7 +35,7 @@ export default function ProjectsPage() {
         <div className="container mx-auto max-w-4xl py-12 px-4 font-sans  ">
             <div className="space-y-8">
                 <div className="space-y-4">
-                    <h1 className="text-4xl font-merriweather font-semibold text-teal-700 ">Projects</h1>
+                    <h1 className="text-4xl font-merriweather font-semibold dark:text-teal-100 text-teal-700 ">Projects</h1>
                     <p className=" max-w-[700px]">
                         A collection of my recent work in software development, cloud technologies, and system design.
                     </p>
@@ -65,7 +65,7 @@ export default function ProjectsPage() {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                         >
-                            <Card className="w-full h-full max-w-sm flex flex-col border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300">
+                            <Card className="w-full h-full max-w-sm flex flex-col dark:bg-transparent border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300">
                                 <CardHeader>
                                     <CardTitle className="text-xl font-semibold text-teal-600">
                                         {project.title}
@@ -107,7 +107,7 @@ export default function ProjectsPage() {
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white transition-colors duration-300"
+                                                className="border-teal-500 text-teal-600 hover:bg-teal-700 hover:text-white transition-colors duration-300"
                                                 asChild
                                             >
                                                 <a href={project.links.github} target="_blank" rel="noopener noreferrer">
@@ -120,7 +120,7 @@ export default function ProjectsPage() {
                                             <Button
                                                 variant="outline"
                                                 size="sm"
-                                                className="border-teal-500 text-teal-600 hover:bg-teal-500 hover:text-white transition-colors duration-300"
+                                                className="border-teal-500 text-teal-600 hover:bg-teal-700 hover:text-white transition-colors duration-300"
                                                 asChild
                                             >
                                                 <a href={project.links.live} target="_blank" rel="noopener noreferrer">

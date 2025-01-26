@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Poppins, Assistant, Merriweather,Inter} from 'next/font/google'; // Add this import
 import "./globals.css";
@@ -7,6 +8,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { GeistSans } from 'geist/font/sans'
 import Script from "next/script";
+import { ThemeProvider } from "@/components/theme-provider";
+
 
 // Define your fonts
 const poppins = Poppins({
@@ -170,7 +173,13 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={` mx-auto  font-sans ${poppins.variable} ${GeistSans.variable} ${assistant.variable} ${merriweather.variable} ${inter.variable}`}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <body className={` mx-auto  font-sans dark:bg-gradient-to-br from-teal-900 to-neutral-900 ${poppins.variable} ${GeistSans.variable} ${assistant.variable} ${merriweather.variable} ${inter.variable}`}>
         
             <Header />
      
@@ -182,6 +191,7 @@ export default function RootLayout({
         <Footer  />
     
       </body>
+      </ThemeProvider>
     </html>
   );
 }
