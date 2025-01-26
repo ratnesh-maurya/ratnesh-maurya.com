@@ -2,15 +2,14 @@ import Link from "next/link";
 import { Metadata } from "next";
 import Image from 'next/image';
 
+
 export const metadata: Metadata = {
   title: "Ratnesh Maurya",
   description: "Ratnesh Maurya's Portfolio showcasing his skills, projects, education, and experience in software engineering.",
 };
-
 export default function Home() {
   return (
     < div className=" max-w-5xl  mx-auto" >
-
     <div className=" flex flex-col md:flex-row justify-between items-center py-8 px-4 md:px-8">
       <div className=" font-sans max-w-2xl ">
         <section>

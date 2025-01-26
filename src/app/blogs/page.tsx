@@ -59,19 +59,19 @@ posts = posts.sort((a, b) => {
 function page() {
     return (
         <div className="max-w-4xl mx-auto">
-            <section className=" min-h-screen text-gray-600 body-font font-sans overflow-hidden  ">
+            <section className=" min-h-screen dark:text-gray-300 text-gray-600 body-font font-sans overflow-hidden  ">
                 <div className="container px-5 py-16 font-sans mx-auto">
                     <div className="-my-8 divide-y-2 divide-gray-100">
                         {posts.map((post) => (
                             <div key={post.slug} className="py-8 flex flex-wrap md:flex-nowrap">
                                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                                    <span className="font-semibold title-font text-gray-700">{post.category || 'CATEGORY'}</span>
-                                    <span className="mt-1 text-gray-500 text-sm">{post.date || '12 Jun 2019'}</span>
+                                    <span className="font-semibold title-font dark:text-gray-100 text-gray-700">{post.category || 'CATEGORY'}</span>
+                                    <span className="mt-1 text-gray-500 dark:text-gray-300 text-sm">{post.date || '12 Jun 2019'}</span>
                                 </div>
                                 <div className="md:flex-grow">
-                                    <h2 className="  text-xl text-gray-900  mb-2">{post.title}</h2>
+                                    <h2 className="  text-xl text-gray-900  dark:text-gray-100 mb-2">{post.title}</h2>
                                     <p className="leading-relaxed">{post.description}</p>
-                                    <Link href={`/blogs/${post.slug}`} className="text-teal-600 inline-flex items-center mt-4">
+                                    <Link href={`/blogs/${post.slug}`} className="text-teal-600 dark:text-teal-100 inline-flex items-center mt-4">
                                         Read More
                                         <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M5 12h14"></path>
