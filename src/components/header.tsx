@@ -26,7 +26,7 @@ export default function Header() {
     return (
         <>
             <div className="bg-red-500 text-center text-white">
-                <p>Resdesigning the whole Portfolio. Work in Progress....</p>
+                <p>Redesigning  the whole Portfolio. Work in Progress....</p>
             </div>
             {/* Desktop Header */}
             <header className=" sticky top-0 z-50 hidden md:block text-black  mt-2">
