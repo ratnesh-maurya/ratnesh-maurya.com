@@ -164,7 +164,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={`max-w-7xl mx-auto  ${poppins.variable} ${assistant.variable} ${merriweather.variable}`}>
+      <body className={` mx-auto  ${poppins.variable} ${assistant.variable} ${merriweather.variable}`}>
         
             <Header />
      

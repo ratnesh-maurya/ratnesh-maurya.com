@@ -9,10 +9,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <>
+    < div className=" max-w-5xl  mx-auto" >
 
-    <div className="  flex flex-col md:flex-row justify-between items-center py-8 px-4 md:px-8">
-
+    <div className=" flex flex-col md:flex-row justify-between items-center py-8 px-4 md:px-8">
       <div className=" font-assistant max-w-2xl ">
         <section>
           <h1 className="title text-2xl md:text-4xl font-merriweather  mb-2">Hey, I am Ratnesh Maurya</h1>
@@ -215,7 +214,7 @@ export default function Home() {
         </a>
       </div>
     </div>
-    </>
+    </div>
  
   );
 }

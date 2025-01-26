@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Footer = () => {
     return (
-        <section className="section container  bg-gray-100 flex flex-col items-center justify-center ">
+        <section className="section container flex flex-col items-center justify-center ">
             <div className="flex flex-col sm:flex-row items-center justify-center ">
                 <ul className=" flex flex-col sm:flex-row  mt-2 ">
                     <li className="m-4  p-1  rounded hover:text-teal-700  ">
