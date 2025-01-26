@@ -3,7 +3,6 @@
 import * as React from "react";
 import { useTheme } from "next-themes";
 import { Classic } from "@theme-toggles/react";
-import "@theme-toggles/react/css/classic.css";
 
 export function ModeToggle() {
     const { theme, setTheme } = useTheme();
@@ -22,6 +21,6 @@ export function ModeToggle() {
             aria-label="Toggle theme"
             idPrefix="theme-toggle"
             className="text-gray-700 dark:text-gray-300 text-3xl" // Increase the size using text-3xl
-            placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}        />
+            placeholder={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
     );
 }
