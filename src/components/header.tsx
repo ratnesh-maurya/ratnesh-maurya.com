@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Home, Presentation,  BookMarked, Images } from "lucide-react"
+import { Home, Presentation, BookMarked, Images } from "lucide-react"
 
 export default function Header() {
     const [currentTime, setCurrentTime] = useState("")
@@ -25,12 +25,12 @@ export default function Header() {
 
     return (
         <>
-            <div className="bg-red-500 text-center text-white">
+            <div className="bg-red-500  text-center text-white">
                 <p>Redesigning  the whole Portfolio. Work in Progress....</p>
             </div>
             {/* Desktop Header */}
-            <header className=" sticky top-0 z-50 hidden md:block text-black  mt-2">
-                
+            <header className=" sticky top-0 z-50 font-sans hidden md:block text-black  mt-2">
+
                 <div className=" ">
                     <div className=" mx-auto px-4 sm:px-6 ">
                         <div className="flex items-center justify-between h-16">

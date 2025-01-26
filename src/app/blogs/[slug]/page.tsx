@@ -90,7 +90,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     // Return the page with the fetched content
     return (
-        <article className=" max-w-4xl mx-auto px-4 py-8 mb font-assistant">
+        <article className=" max-w-4xl mx-auto px-4 py-8 mb font-sans">
             <div className="text-s text-gray-600 mb-6">
                 <Link href="/blogs" className="text-teal-600 hover:text-teal-800">
                     blogs
@@ -101,23 +101,23 @@ export default async function Page({ params }: { params: { slug: string } }) {
             <header className="mb-8">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold mb-4 font-merriweather text-teal-700">{data.title}</h1>
 
-                <div className="text-lg text-gray-700 mb-6 font-assistant border-l-4 border-gray-200 pl-4">
+                <div className="text-lg text-gray-700 mb-6 font-sans border-l-4 border-gray-200 pl-4">
                     &quot;{data.description}&quot;
                 </div>
                 <div className="flex items-center text-gray-600 mb-4">
                     <div className="mr-4">
-                        <span className="font-medium font-assistant">By: </span>
+                        <span className="font-medium font-sans">By: </span>
                         {data.author}
                     </div>
                     <div>
-                        <span className="font-medium font-assistant mb">Published: </span>
+                        <span className="font-medium font-sans mb">Published: </span>
                         {new Date(data.date).toLocaleDateString()}
                     </div>
                 </div>
             </header>
 
             <div
-                className="prose max-w-none font-assistant"
+                className="prose max-w-none font-sans"
                 dangerouslySetInnerHTML={{ __html: file }}
             />
         </article>
