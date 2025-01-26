@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Home, User, Briefcase, BookOpen, Image, Projector, Presentation, Bookmark, BookMarked, Images } from "lucide-react"
+import { Home, Presentation,  BookMarked, Images } from "lucide-react"
 
 export default function Header() {
     const [currentTime, setCurrentTime] = useState("")
