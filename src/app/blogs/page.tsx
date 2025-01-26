@@ -58,7 +58,7 @@ posts = posts.sort((a, b) => {
 
 function page() {
     return (
-        <div>
+        <div className="max-w-4xl mx-auto">
             <section className=" min-h-screen text-gray-600 body-font font-assistant overflow-hidden  ">
                 <div className="container px-5 py-16 font-assistant mx-auto">
                     <div className="-my-8 divide-y-2 divide-gray-100">
