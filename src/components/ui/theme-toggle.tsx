@@ -6,7 +6,7 @@ import { Classic } from "@theme-toggles/react";
 
 export function ModeToggle() {
     const { theme, setTheme } = useTheme();
-    const [isToggled, setToggle] = React.useState(theme === "dark");
+    const [isToggled, setToggle] = React.useState(theme === "light");
 
     const handleToggle = (toggled: React.SetStateAction<boolean>) => {
         setToggle(toggled);
