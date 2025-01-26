@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Assistant, Merriweather} from 'next/font/google'; // Add this import
+import { Poppins, Assistant, Merriweather,Inter} from 'next/font/google'; // Add this import
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
+import { GeistSans } from 'geist/font/sans'
 import Script from "next/script";
 
 // Define your fonts
@@ -22,6 +23,11 @@ const merriweather = Merriweather({
   subsets: ['latin'],
   weight: ['400', '700'],
   variable: '--font-merriweather',
+});
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-inter',
 });
 
 
@@ -164,7 +170,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={` mx-auto  ${poppins.variable} ${assistant.variable} ${merriweather.variable}`}>
+      <body className={` mx-auto  font-sans ${poppins.variable} ${GeistSans.variable} ${assistant.variable} ${merriweather.variable} ${inter.variable}`}>
         
             <Header />
      

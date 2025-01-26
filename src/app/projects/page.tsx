@@ -32,7 +32,7 @@ export default function ProjectsPage() {
 
     return (
 
-        <div className="container mx-auto max-w-4xl py-12 px-4 font-assistant  ">
+        <div className="container mx-auto max-w-4xl py-12 px-4 font-sans  ">
             <div className="space-y-8">
                 <div className="space-y-4">
                     <h1 className="text-4xl font-merriweather font-semibold text-teal-700 ">Projects</h1>
@@ -41,7 +41,7 @@ export default function ProjectsPage() {
                     </p>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 ">
                     {allTags.map(tag => (
                         <Badge
                             key={tag}

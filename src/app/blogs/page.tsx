@@ -59,8 +59,8 @@ posts = posts.sort((a, b) => {
 function page() {
     return (
         <div className="max-w-4xl mx-auto">
-            <section className=" min-h-screen text-gray-600 body-font font-assistant overflow-hidden  ">
-                <div className="container px-5 py-16 font-assistant mx-auto">
+            <section className=" min-h-screen text-gray-600 body-font font-sans overflow-hidden  ">
+                <div className="container px-5 py-16 font-sans mx-auto">
                     <div className="-my-8 divide-y-2 divide-gray-100">
                         {posts.map((post) => (
                             <div key={post.slug} className="py-8 flex flex-wrap md:flex-nowrap">
@@ -69,7 +69,7 @@ function page() {
                                     <span className="mt-1 text-gray-500 text-sm">{post.date || '12 Jun 2019'}</span>
                                 </div>
                                 <div className="md:flex-grow">
-                                    <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">{post.title}</h2>
+                                    <h2 className="  text-xl text-gray-900  mb-2">{post.title}</h2>
                                     <p className="leading-relaxed">{post.description}</p>
                                     <Link href={`/blogs/${post.slug}`} className="text-teal-600 inline-flex items-center mt-4">
                                         Read More
