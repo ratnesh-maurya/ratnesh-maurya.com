@@ -179,7 +179,7 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
       >
-        <body className={` mx-auto  font-sans dark:bg-gradient-to-br from-teal-900 to-neutral-900 ${poppins.variable} ${GeistSans.variable} ${assistant.variable} ${merriweather.variable} ${inter.variable}`}>
+        <body className={` mx-auto  font-sans dark:bg-gradient-to-t from-emerald-950 to-slate-900 ${poppins.variable} ${GeistSans.variable} ${assistant.variable} ${merriweather.variable} ${inter.variable}`}>
         
             <Header />
      

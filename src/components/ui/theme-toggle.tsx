@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import { Classic } from "@theme-toggles/react";
+import "@theme-toggles/react/css/Classic.css"
+import { Classic } from "@theme-toggles/react"
 
 export function ModeToggle() {
     const { theme, setTheme } = useTheme();
@@ -17,7 +18,7 @@ export function ModeToggle() {
         <Classic
             toggled={isToggled}
             toggle={handleToggle}
-            duration={1000}
+            duration={700}
             aria-label="Toggle theme"
             idPrefix="theme-toggle"
             className="text-gray-700 dark:text-gray-300 text-3xl" // Increase the size using text-3xl
