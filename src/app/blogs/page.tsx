@@ -59,7 +59,7 @@ posts = posts.sort((a, b) => {
 function page() {
     return (
         <div className="max-w-3xl mx-auto min-h-screen px-2 ">
-            <h1 className="text-3xl font-bold">Blogs</h1>
+            <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Blogs</h1>
             <section className="  dark:text-gray-300 text-gray-600 body-font font-sans overflow-hidden  ">
                 <div className="container px-5 py-16 font-sans mx-auto">
                     <div className="-my-8 divide-y-2 divide-gray-100">
@@ -72,7 +72,7 @@ function page() {
                                 <div className="md:flex-grow">
                                     <h2 className="  text-xl text-gray-900  dark:text-gray-100 mb-2">{post.title}</h2>
                                     <p className="leading-relaxed">{post.description}</p>
-                                    <Link href={`/blogs/${post.slug}`} className="text-teal-600 dark:text-teal-100 inline-flex items-center mt-4">
+                                    <Link href={`/blogs/${post.slug}`} className="text-teal-600 hover:text-teal-700 dark:hover:text-orange-600 dark:text-orange-500 inline-flex items-center mt-4">
                                         Read More
                                         <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                                             <path d="M5 12h14"></path>
