@@ -5,7 +5,7 @@ import { SiLeetcode } from "react-icons/si";
 export default function Footer() {
     return (
         <footer className="py-3 mt-20">
-            <div className="max-w-5xl mx-auto px-4 sm:px-6">
+            <div className="max-w-3xl mx-auto">
                 <div className="flex flex-col md:flex-row justify-between items-center">
                     <div className="mb-4 md:mb-0">
                         <p className="font-sans text-gray-800 dark:text-gray-50">© 2025 Ratnesh Maurya. All rights reserved.</p>

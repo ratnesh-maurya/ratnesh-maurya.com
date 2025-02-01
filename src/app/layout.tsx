@@ -175,7 +175,7 @@ export default function RootLayout({
       </head>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
+        defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
       >

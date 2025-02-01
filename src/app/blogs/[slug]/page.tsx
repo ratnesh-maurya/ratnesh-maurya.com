@@ -53,15 +53,15 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     };
 }
 
-// Define the path for blog content
+
 const blogContentPath = path.join(process.cwd(), 'src', 'blogContent');
 
-// The page component that handles slug-based routing
+
 export default async function Page({ params }: { params: { slug: string } }) {
     const { slug } = params;
     const filePath = path.join(blogContentPath, `${slug}.md`);
 
-    // Ensure the file exists, otherwise handle errors
+
     if (!fs.existsSync(filePath)) {
         return notFound();
     }
@@ -69,7 +69,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { content, data } = matter(fileContent);
 
-    // Process the content using unified (remark/rehype)
+
     const file = await unified()
         .use(remarkParse)
         .use(remarkRehype)
@@ -88,9 +88,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
         .process(content)
         .then((file) => file.toString());
 
-    // Return the page with the fetched content
+ 
     return (
-        <article className=" max-w-4xl mx-auto px-4 py-8 mb font-sans">
+        <article className=" max-w-3xl mx-auto px-2 mb font-sans">
             <div className="text-s text-gray-600 dark:text-gray-50 mb-6">
                 <Link href="/blogs" className="text-teal-600 dark:text-teal-400 dark:hover:text-teal-200 hover:text-teal-800">
                     blogs

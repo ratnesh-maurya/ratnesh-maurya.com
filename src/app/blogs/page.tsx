@@ -58,8 +58,9 @@ posts = posts.sort((a, b) => {
 
 function page() {
     return (
-        <div className="max-w-4xl mx-auto">
-            <section className=" min-h-screen dark:text-gray-300 text-gray-600 body-font font-sans overflow-hidden  ">
+        <div className="max-w-3xl mx-auto min-h-screen px-2 ">
+            <h1 className="text-3xl font-bold">Blogs</h1>
+            <section className="  dark:text-gray-300 text-gray-600 body-font font-sans overflow-hidden  ">
                 <div className="container px-5 py-16 font-sans mx-auto">
                     <div className="-my-8 divide-y-2 divide-gray-100">
                         {posts.map((post) => (

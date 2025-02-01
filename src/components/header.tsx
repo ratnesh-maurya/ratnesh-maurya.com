@@ -26,14 +26,10 @@ export default function Header() {
 
     return (
         <>
-            <div className="bg-red-500  text-center text-white">
-                <p>Redesigning  the whole Portfolio. Work in Progress....</p>
-            </div>
-            {/* Desktop Header */}
-            <header className=" sticky top-0 z-50 font-sans hidden md:block   mt-2">
 
+            <header className=" sticky top-0 z-50 font-sans hidden md:block ">
                 <div className=" ">
-                    <div className=" mx-auto px-4 sm:px-6 ">
+                    <div className=" mx-auto px-4 py-2 sm:px-6 ">
                         <div className="flex items-center justify-between h-16">
                             <div className=" text-sm">Asia/India</div>
 

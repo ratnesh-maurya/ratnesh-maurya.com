@@ -2,12 +2,12 @@
 
 import * as React from "react";
 import { useTheme } from "next-themes";
-import "@theme-toggles/react/css/Classic.css"
-import { Classic } from "@theme-toggles/react"
+import "@theme-toggles/react/css/InnerMoon.css"
+import {  InnerMoon } from "@theme-toggles/react"
 
 export function ModeToggle() {
     const { theme, setTheme } = useTheme();
-    const [isToggled, setToggle] = React.useState(theme === "light");
+    const [isToggled, setToggle] = React.useState(theme === "dark");
 
     const handleToggle = (toggled: React.SetStateAction<boolean>) => {
         setToggle(toggled);
@@ -15,7 +15,7 @@ export function ModeToggle() {
     };
 
     return (
-        <Classic
+        <InnerMoon
             toggled={isToggled}
             toggle={handleToggle}
             duration={700}
