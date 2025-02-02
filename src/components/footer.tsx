@@ -16,7 +16,7 @@ export default function Footer() {
                             href="https://twitter.com/ratnesh_maurya_"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className=" text-gray-800 dark:hover:text-teal-400 dark:text-gray-50 hover:text-teal-800 transition-colors"
+                            className=" text-gray-800 dark:hover:text-orange-500 dark:text-gray-50 hover:text-teal-800 transition-colors"
                         >
                             <Twitter size={20} />
                             <span className="sr-only">Twitter</span>
@@ -25,7 +25,7 @@ export default function Footer() {
                             href="https://www.instagram.com/ratnesh_maury/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-800 dark:hover:text-teal-400 dark:text-gray-50 hover:text-teal-800 transition-colors"
+                            className="text-gray-800 dark:hover:text-orange-500 dark:text-gray-50 hover:text-teal-800 transition-colors"
                         >
                             <InstagramIcon size={20} />
                             <span className="sr-only">Instagram</span>
@@ -34,7 +34,7 @@ export default function Footer() {
                             href="https://www.linkedin.com/in/ratnesh-maurya/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-800 dark:hover:text-teal-400 dark:text-gray-50 hover:text-teal-800 transition-colors"
+                            className="text-gray-800 dark:hover:text-orange-500 dark:text-gray-50 hover:text-teal-800 transition-colors"
                         >
                             <LinkedinIcon size={20} />
                             <span className="sr-only">GitHub</span>
@@ -43,7 +43,7 @@ export default function Footer() {
                             href="https://github.com/ratnesh-maurya"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-800 dark:hover:text-teal-400 dark:text-gray-50 hover:text-teal-800 transition-colors"
+                            className="text-gray-800 dark:hover:text-orange-500 dark:text-gray-50 hover:text-teal-800 transition-colors"
                         >
                             <Github size={20} />
                             <span className="sr-only">GitHub</span>
@@ -52,7 +52,7 @@ export default function Footer() {
                             href="https://leetcode.com/ratnesh_maurya/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-800 dark:hover:text-teal-400 dark:text-gray-50 hover:text-teal-800 transition-colors"
+                            className="text-gray-800 dark:hover:text-orange-500 dark:text-gray-50 hover:text-teal-800 transition-colors"
                         >
                             <SiLeetcode size={20} />
                             <span className="sr-only">LeetCode</span>

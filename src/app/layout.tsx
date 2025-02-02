@@ -1,6 +1,5 @@
 
 import type { Metadata } from "next";
-import { Poppins, Assistant, Merriweather,Inter} from 'next/font/google'; // Add this import
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
@@ -10,35 +9,10 @@ import { GeistSans } from 'geist/font/sans'
 import Script from "next/script";
 import { ThemeProvider } from "@/components/theme-provider";
 
-
-// Define your fonts
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-const assistant = Assistant({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-assistant',
-});
-const merriweather = Merriweather({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-merriweather',
-});
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-inter',
-});
-
-
-
 export const metadata: Metadata = {
   openGraph: {
     title: 'Ratnesh Maurya',
-    description: 'Explore the portfolio of Ratnesh Maurya, a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.',
+    description: 'Ratnesh Maurya, a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.',
     url: 'https://ratn.tech',
     siteName: 'Ratnesh Maurya Portfolio',
     images: [
@@ -54,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     title: 'Ratnesh Maurya - Software Engineer',
-    description: 'Explore the portfolio of Ratnesh Maurya, Software Engineer with experience in backend development, cloud solutions, and web technologies.',
+    description: 'Ratnesh Maurya, Software Engineer with experience in backend development, cloud solutions, and web technologies.',
     images: [
       {
         url: 'https://ratn.tech/ratn.png',
@@ -179,7 +153,7 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
       >
-        <body className={` mx-auto  font-sans dark:bg-gradient-to-t from-emerald-950 to-slate-900 ${poppins.variable} ${GeistSans.variable} ${assistant.variable} ${merriweather.variable} ${inter.variable}`}>
+        <body className={` mx-auto  font-sans dark:bg-gradient-to-t from-emerald-950 to-slate-900 ${GeistSans.variable}`}>
         
             <Header />
      
