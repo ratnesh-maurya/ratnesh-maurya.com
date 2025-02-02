@@ -6,6 +6,7 @@ date: " Nov 23, 2023"
 slug: Understanding-S3-and-S3-Policies
 category: AWS
 image: https://cdn-images-1.medium.com/max/1000/1*-ftN9aUJPJgDblp6TnHirA.png
+readTime: "5 min read"
 ---
 
 

@@ -1,26 +1,110 @@
-import Gallery from "./gallery"
+'use client';
+import React, { useState } from 'react';
+import Masonry from 'react-masonry-css';
+import Image from 'next/image';
 
-export default function Page() {
-    // Array of Instagram post URLs
-    const instagramPosts = [
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/465292269_439868335446583_6872323156729989235_n.heic?stp=dst-jpg_e35_p1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE4MDAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=107&_nc_ohc=tMDMsTY4970Q7kNvgHCJXf_&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzQ5MjE0NTc5NzgxMzA2NjY1MQ%3D%3D.3-ccb7-5&oh=00_AYDZh3vWWMRRyFYt364nwzQ5PaiUfsf9EKIeWE6KsR8DuA&oe=679C6380&_nc_sid=10d13b",
-        "https://instagram.fdel3-1.fna.fbcdn.net/v/t51.29350-15/462092580_906346354725482_6657991045100553751_n.heic?stp=dst-jpg_e35_s1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDEwODAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-1.fna.fbcdn.net&_nc_cat=102&_nc_ohc=scFbLFCPew0Q7kNvgFQXjDS&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=MzQ3MjE4NjI3NjU0NjIwNTUxNQ%3D%3D.3-ccb7-5&oh=00_AYBqUGQEQIBNZZ3jNrqyIUwLHNa7d0Ivnjh2W-s9F0gQYg&oe=679C7C4D&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-        "https://instagram.fdel3-2.fna.fbcdn.net/v/t51.29350-15/286398368_601766357654077_7367169484987019528_n.webp?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDgweDEzNTAuc2RyLmYyOTM1MC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fdel3-2.fna.fbcdn.net&_nc_cat=101&_nc_ohc=473cFnW6_a8Q7kNvgFcZNKf&_nc_gid=8a15b1d835e846908c221d845fb5d926&edm=APs17CUBAAAA&ccb=7-5&ig_cache_key=Mjg1NTI3ODYwNzIxMjk2ODAwNQ%3D%3D.3-ccb7-5&oh=00_AYC8MEyRPTlhfVEPDm1tyz_pH17vL5CKjdMSD-5rVZrafg&oe=679C779F&_nc_sid=10d13b",
-    ]
+const imageUrls = [
+  'https://res.cloudinary.com/daosik5yi/image/upload/v1738486969/portfolio%20images/nyk4jp220mfufi7h5vha.jpg',
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486968/portfolio%20images/b3a349xqmcsnz371lddv.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486969/portfolio%20images/acmrbhdxivrkyrfftw3p.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486969/portfolio%20images/htgfzeav9jcbhcpswz65.jpg",
+"https://res.cloudinary.com/daosik5yi/image/upload/v1738486969/portfolio%20images/g6aenvhfqoeklottlk4j.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486968/portfolio%20images/mw96bfu1uwk9lenyzizo.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738487806/portfolio%20images/lteu8kztlnhjarq6uqqp.jpg",
+"https://res.cloudinary.com/daosik5yi/image/upload/v1738487965/portfolio%20images/v74fvujof1lwfnunpknb.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486968/portfolio%20images/d1jluoa1aph8wdvyen9u.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486968/portfolio%20images/nvzvjb7gitbav7ybz6hc.jpg",
+"https://res.cloudinary.com/daosik5yi/image/upload/v1738486968/portfolio%20images/knjgjtoynlvu6lgrgrln.jpg",
+  "https://res.cloudinary.com/daosik5yi/image/upload/v1738486968/portfolio%20images/z4uucmyz82oyfllq7t9o.jpg",
+ 
 
-    return (
-        <div className="min-h-screen ">
-            <Gallery posts={instagramPosts} />
+
+
+
+];
+
+const breakpointColumnsObj = {
+  default: 3,
+  1100: 3,
+  700: 2,
+  500: 1,
+};
+
+function GalleryPage() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const handleImageClick = (url: string) => {
+    setSelectedImage(url);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto min-h-screen px-2">
+      <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Gallery 📸</h1>
+
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="flex gap-4 px-2 py-12"
+        columnClassName="flex flex-col gap-4"
+      >
+        {imageUrls.map((url, index) => (
+          <div
+            key={index}
+            className="relative w-full rounded-lg overflow-hidden group cursor-pointer"
+            onClick={() => handleImageClick(url)}
+          >
+            <Image
+              src={url}
+              alt={`Gallery item ${index + 1}`}
+              width={1200}
+              height={800}
+              layout="responsive"
+              objectFit="cover"
+              className="rounded-lg transition-transform duration-300 group-hover:scale-105"
+              onError={(e) => {
+                console.error(`Failed to load image: ${url}`);
+                e.currentTarget.src = '/fallback-image.png';
+              }}
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+              <span className="text-white opacity-0  transition-opacity duration-300 text-lg font-semibold">
+                
+              </span>
+            </div>
+          </div>
+        ))}
+      </Masonry>
+
+      {/* Pop-up Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
+          onClick={closeModal}
+        >
+          <div className="relative max-w-[90vw] max-h-[90vh]">
+            <Image
+              src={selectedImage}
+              alt="Selected image"
+              width={500}
+              height={600}
+              layout="intrinsic"
+              objectFit="contain"
+              className="rounded-lg"
+            />
+            <button
+              className="absolute top-2 right-2  text-black"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+          </div>
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
+export default GalleryPage;

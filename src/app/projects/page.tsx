@@ -1,143 +1,127 @@
-'use client'
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { ExternalLink, Github, Tag } from 'lucide-react'
-import Link from 'next/link'
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import Image from 'next/image'
-import { projects } from '@/data/projects'
-
-
-export default function ProjectsPage() {
-    const [selectedTags, setSelectedTags] = useState<string[]>([])
-
-    const allTags = Array.from(new Set(projects.flatMap(project => project.tags)))
-
-    const filteredProjects = projects.filter(project =>
-        selectedTags.length === 0 || project.tags.some(tag => selectedTags.includes(tag))
-    )
-
-
-    const toggleTag = (tag: string) => {
-        setSelectedTags(prev =>
-            prev.includes(tag)
-                ? prev.filter(t => t !== tag)
-                : [...prev, tag]
-        )
-    }
-
-    return (
-
-        <div className="container mx-auto max-w-4xl py-12 px-4 font-sans  ">
-            <div className="space-y-8">
-                <div className="space-y-4">
-                    <h1 className="text-4xl font-merriweather font-semibold dark:text-teal-100 text-teal-700 ">Projects</h1>
-                    <p className=" max-w-[700px]">
-                        A collection of my recent work in software development, cloud technologies, and system design.
-                    </p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 ">
-                    {allTags.map(tag => (
-                        <Badge
-                            key={tag}
-                            variant={selectedTags.includes(tag) ? "default" : "outline"}
-                            className={`cursor-pointer hover:bg-teal-100 ${selectedTags.includes(tag) ? 'bg-teal-500 hover:bg-teal-600 text-white' : 'text-teal-600 border-teal-500'
-                                }`}
-                            onClick={() => toggleTag(tag)}
-                        >
-                            <Tag className="w-3 h-3 mr-1" />
-                            {tag}
-                        </Badge>
-                    ))}
-                </div>
-
-                <div className="flex flex-wrap justify-center gap-6">
-                    {filteredProjects.map(project => (
-                        <motion.div
-                            key={project.id}
-                            layout
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                        >
-                            <Card className="w-full h-full max-w-sm flex flex-col dark:bg-transparent border-2 border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300">
-                                <CardHeader>
-                                    <CardTitle className="text-xl font-semibold text-teal-600">
-                                        {project.title}
-                                    </CardTitle>
-                                    <CardDescription>{project.description}</CardDescription>
-                                </CardHeader>
-                                <CardContent className="space-y-4 flex-grow">
-                                    <Link href={project.links.live || project.links.github || '/'} passHref target='_blank'>
-                                            <div className="aspect-video relative rounded-lg overflow-hidden bg-gradient-to-br from-teal-50 to-teal-100">
-                                                <Image
-                                                    src={project.image}
-                                                    alt={`${project.title} preview`}
-                                                    layout="fill"
-                                                    objectFit="cover"
-                                                    className="transition-transform duration-300 hover:scale-105"
-                                                />
-                                            </div>
-                                        
-                                    </Link>
-
-                                    <p className="text-sm">
-                                        {project.longDescription}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tags.map(tag => (
-                                            <Badge
-                                                key={tag}
-                                                variant="secondary"
-                                                className="bg-teal-50 text-teal-600 hover:bg-teal-100"
-                                            >
-                                                {tag}
-                                            </Badge>
-                                        ))}
-                                    </div>
-
-                                    <div className="flex gap-2 pt-2 mt-auto">
-                                        {project.links.github && (
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                className="border-teal-500 text-teal-600 hover:bg-teal-700 hover:text-white transition-colors duration-300"
-                                                asChild
-                                            >
-                                                <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                                                    <Github className="w-4 h-4 mr-2" />
-                                                    Code
-                                                </a>
-                                            </Button>
-                                        )}
-                                        {project.links.live && (
-                                            <Button
-                                                variant="outline"
-                                                size="sm"
-                                                className="border-teal-500 text-teal-600 hover:bg-teal-700 hover:text-white transition-colors duration-300"
-                                                asChild
-                                            >
-                                                <a href={project.links.live} target="_blank" rel="noopener noreferrer">
-                                                    <ExternalLink className="w-4 h-4 mr-2" />
-                                                    Demo
-                                                </a>
-                                            </Button>
-                                        )}
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    ))}
-                </div>
-
-            </div>
-        </div>
-    )
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  longDescription: string;
+  tags: string[];
+  links: {
+    github?: string;
+    live?: string;
+  };
+  image: string;
 }
 
+const projects: Project[] = [
+  {
+    id: 'rehabify',
+    title: 'Rehabify',
+    description: 'Addiction Recovery Platform',
+    longDescription:
+      'A comprehensive platform aimed at improving addiction recovery services with features for tracking progress and connecting with support groups.',
+    tags: ['TypeScript', 'React', 'Node.js', 'Tailwind-css', 'Go'],
+    links: {
+      github: 'https://github.com/Ratnesh-Team/Rehabify',
+      live: 'https://rehabify.ratn.tech/',
+    },
+    image: '/rehabify.png',
+  },
+  {
+    id: 'secret-operator',
+    title: 'Secret Operator',
+    description: 'Secure Key Management',
+    longDescription:
+      'A Kubernetes operator for managing secrets and sensitive information with enhanced security protocols.',
+    tags: ['Go', 'Kubernetes', 'Security'],
+    links: {
+      github: 'https://github.com/initializ/secrets-operator',
+    },
+    image: '/operator.png',
+  },
+  {
+    id: 'unzip-n-open',
+    title: 'Unzip N Open',
+    description: 'CLI File Management Tool',
+    longDescription:
+      'A command-line interface tool that simplifies file management for developers with intuitive commands and efficient operations.',
+    tags: ['Go', 'CLI'],
+    links: {
+      github: 'https://github.com/ratnesh-maurya/Unzip_N_Open',
+    },
+    image: '/cli.png',
+  },
+  {
+    id: 'currency-converter',
+    title: 'Currency Converter',
+    description: 'Real-time Exchange Rates',
+    longDescription:
+      'A currency converter application that provides real-time exchange rates and supports multiple currencies for accurate conversions.',
+    tags: ['TypeScript', 'React', 'Tailwind-css'],
+    links: {
+      github: 'https://github.com/ratnesh-maurya/currency-converter',
+      live: 'https://currency.ratn.tech/',
+    },
+    image: '/currency-converter.png',
+  },
+];
+
+function ProjectsPage() {
+  return (
+    <div className="max-w-3xl mx-auto font-sans px-2">
+      <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Projects 👨‍💻</h1>
+
+      <section className="py-12" id="projects">
+        <div className="max-w-3xl mx-auto px-2">
+          <div className="space-y-6">
+            {projects.map((project) => (
+              <div key={project.id} className="pb-6 border-b border-gray-300 dark:border-gray-700">
+                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+                <p>{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-2">{project.longDescription}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-gray-100 dark:bg-gray-700 text-sm px-2 py-1 rounded"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex items-center gap-4">
+                  {project.links.github && (
+                    <Link
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-teal-600 dark:text-orange-500 flex items-center gap-1 group"
+                    >
+                      GitHub
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  )}
+                  {project.links.live && (
+                    <Link
+                      href={project.links.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-teal-600 hover:text-teal-700 dark:text-orange-500 dark:hover:text-orange-600 flex items-center gap-1 group"
+                    >
+                      Live Demo
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default ProjectsPage;

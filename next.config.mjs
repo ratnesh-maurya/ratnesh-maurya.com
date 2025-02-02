@@ -16,13 +16,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "instagram.fdel3-2.fna.fbcdn.net",
-        port: "",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "instagram.fdel3-1.fna.fbcdn.net",
+        hostname: "res.cloudinary.com",
         port: "",
         pathname: "/**",
       },
