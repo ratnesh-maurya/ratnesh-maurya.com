@@ -153,7 +153,7 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
       >
-        <body className={` mx-auto  font-sans dark:bg-gradient-to-t from-emerald-950 to-slate-900 ${GeistSans.variable}`}>
+        <body className={` mx-auto  font-sans dark:bg-teal-950 ${GeistSans.variable}`}>
         
             <Header />
      
