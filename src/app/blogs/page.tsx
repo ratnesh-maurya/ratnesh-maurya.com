@@ -96,7 +96,7 @@ export default function BlogsPage() {
                                     <h3 className="text-xl font-semibold">
                                         {post.title}
                                     </h3>
-                                    <p className="text-muted-foreground">{post.excerpt}</p>
+                                    {/* <p className="text-muted-foreground">{post.excerpt}</p> */}
                                     <div className="flex items-center gap-2 text-teal-600 dark:text-orange-500 font-medium">
                                         Read more
                                         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
