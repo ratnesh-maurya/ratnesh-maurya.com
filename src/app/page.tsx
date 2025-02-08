@@ -48,7 +48,7 @@ const blogs = [
 
 export default function Home() {
   return (
-    < div className=" max-w-3xl  mx-auto min-h-screen px-2 font-sans " >
+    < div className=" max-w-3xl  mx-auto min-h-screen px-2 font-sans  shadow-2xl shadow-black p-4" >
     <div >
       <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Ratnesh Maurya</h1>
     </div>

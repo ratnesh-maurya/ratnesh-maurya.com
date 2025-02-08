@@ -90,9 +90,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
  
     return (
-        <article className=" max-w-3xl mx-auto px-4 mb font-sans    ">
+        <article className=" max-w-3xl mx-auto px-4 mb font-sans shadow-2xl shadow-black p-4    ">
             <div className="text-s text-gray-600 dark:text-gray-50 mb-6">
-                <Link href="/blogs" className="text-teal-600 dark:text-teal-400 dark:hover:text-teal-200 hover:text-teal-800">
+                <Link href="/blogs" className="text-teal-600 dark:text-orange-500 dark:hover:text-orange-600 hover:text-teal-800">
                     blogs
                 </Link>
                 <span className="mx-2">/</span>
