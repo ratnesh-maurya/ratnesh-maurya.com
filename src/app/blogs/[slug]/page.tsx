@@ -99,7 +99,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 <span>{slug}</span>
             </div>
             <header className="mb-8">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold mb-4 font-merriweather dark:text-orange-500 text-teal-700">{data.title}</h1>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold mb-4 font-merriweather dark:text-teal-500 text-teal-700">{data.title}</h1>
 
                 <div className="text-lg text-gray-700 dark:text-gray-500 mb-6 font-sans border-l-4 border-gray-200 pl-4">
                     &quot;{data.description}&quot;
@@ -117,11 +117,10 @@ export default async function Page({ params }: { params: { slug: string } }) {
             </header>
             <div
                 className="prose max-w-none font-sans dark:text-gray-300
-             dark:prose-headings:text-orange-500
+             dark:prose-headings:text-teal-500
              prose-headings:text-teal-700
              dark:prose-strong:text-white
              prose-strong:text-gray-700
-             dark:prose-a:text-orange-500
              prose-a:text-teal-700
              dark:prose-code:text-orange-600"
                 dangerouslySetInnerHTML={{ __html: file }}
