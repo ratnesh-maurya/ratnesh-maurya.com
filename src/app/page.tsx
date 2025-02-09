@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 
 
+
 export const metadata: Metadata = {
   title: "Ratnesh Maurya",
   description: "Ratnesh Maurya's Portfolio showcasing his skills, projects, education, and experience in software engineering.",
@@ -29,6 +30,11 @@ const experiences = [
 ]
 
 const blogs = [
+  { 
+    title:  "Optimizing Memory Layout in Go: A Deep Dive into Struct Design",
+    slug: "Optimizing-Memory-Layout-in-Go-A-Deep-Dive-into-Struct-Design",
+    date: "Jan 25, 2025",
+  },
   {
     title: "Easily Deploy Your Nanoc Website to S3 with GitHub Actions",
     slug: "Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions",
