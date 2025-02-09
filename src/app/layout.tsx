@@ -135,6 +135,7 @@ export default function RootLayout({
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-T13RLYDHMR"
         />
+        
         <Script
           id="google-analytics"
           strategy="afterInteractive"
@@ -144,6 +145,20 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-T13RLYDHMR');
+          `}
+        </Script>
+
+        <Script id="crisp-chat" strategy="afterInteractive">
+          {`
+            window.$crisp = [];
+            window.CRISP_WEBSITE_ID = "c30f5b1d-7b09-4708-8b51-fda5cfb19206";
+            (function() {
+              var d = document;
+              var s = d.createElement("script");
+              s.src = "https://client.crisp.chat/l.js";
+              s.async = 1;
+              d.getElementsByTagName("head")[0].appendChild(s);
+            })();
           `}
         </Script>
       </head>
