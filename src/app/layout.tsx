@@ -147,14 +147,17 @@ export default function RootLayout({
           `}
         </Script>
       </head>
+    
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
         enableSystem
         disableTransitionOnChange
       >
-        <body className={` mx-auto  font-sans dark:bg-gray-950 ${GeistSans.variable}`}>
-        
+        <body
+          className={`mx-auto font-sans dark:bg-gray-950 dark:bg-[url('/bg.gif')] bg-fixed bg-cover bg-center ${GeistSans.variable}`}
+        >
+          
             <Header />
      
         <main className="pt-auto">

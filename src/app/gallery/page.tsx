@@ -39,7 +39,7 @@ function GalleryPage() {
   const isVideo = (url: string) => url.endsWith('.mp4');
 
   return (
-    <div className="max-w-3xl mx-auto min-h-screen px-2  ">
+    <div className="max-w-3xl mx-auto min-h-screen px-2  shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl  rounded-xl">
       <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Gallery 📸</h1>
 
       <Masonry

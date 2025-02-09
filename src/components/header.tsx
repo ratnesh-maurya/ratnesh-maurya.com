@@ -34,7 +34,7 @@ export default function Header() {
                             <div className=" text-sm">Asia/India</div>
 
                             <nav className="flex items-center  gap-2">
-                                <div className="flex items-center bg-slate-800/15 backdrop-blur-md rounded-full border-2 border-emerald-700 px-4 py-2 gap-4">
+                                <div className="flex items-center bg-slate-800/15 backdrop-blur-md rounded-full border-2 border-emerald-500 px-4 py-2 gap-4">
                                     <Link href="/" className=" hover:text-emerald-800 dark:hover:text-teal-400 flex items-center gap-2 transition-colors">
                                         <Home size={18} />
                                         <span>Home</span>
