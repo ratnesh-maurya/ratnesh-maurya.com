@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const tech = {
-  "Programming Languages": "Golang, Typescript, Python, Elixir, C++",
+  "Programming Languages":  "Golang, Typescript, Python, Elixir, C++",
   Frameworks: "Go-Gin, NextJS, Tailwind, React, Flask, Phoenix",
   Database: "Postgres, MongoDB, Redis",
   "Platform/Cloud": " AWS, Kubernetes, Terraform, Docker",
@@ -30,8 +30,8 @@ const experiences = [
 ]
 
 const blogs = [
-  {
-    title: "Optimizing Memory Layout in Go: A Deep Dive into Struct Design",
+  { 
+    title:  "Optimizing Memory Layout in Go: A Deep Dive into Struct Design",
     slug: "Optimizing-Memory-Layout-in-Go-A-Deep-Dive-into-Struct-Design",
     date: "Jan 25, 2025",
   },
@@ -54,11 +54,11 @@ const blogs = [
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto  px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2">
+    <div className="max-w-3xl mx-auto  px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-1.5 ml-1.5 ">
 
-      <div >
-        <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Ratnesh Maurya</h1>
-      </div>
+    <div >
+      <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Ratnesh Maurya</h1>
+    </div>
       <div className="px-2">
 
         <section className="py-12">
@@ -93,22 +93,22 @@ export default function Home() {
           </p>
           <div className="flex items-center gap-4">
             <span className="text-muted-foreground">Find me on</span>
-            <a href="https://x.com/ratnesh_maurya_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className=" hover:text-orange-600 font-bold">
+            <a href="https://x.com/ratnesh_maurya_" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className= " hover:text-orange-600 font-bold">
               <Twitter className="h-5 w-5" />
             </a>
             <a href="https://www.linkedin.com/in/ratnesh-maurya"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-orange-600 font-bold">
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-orange-600 font-bold">
               <Linkedin className="h-5 w-5" />
             </a>
             <a href="https://github.com/ratnesh-maurya"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-orange-600 font-bold">
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-orange-600 font-bold">
               <Github className="h-5 w-5" />
             </a>
           </div>
@@ -154,9 +154,9 @@ export default function Home() {
             ))}
           </div>
         </section>
-
-      </div>
+       
     </div>
-
+    </div>
+ 
   );
 }
