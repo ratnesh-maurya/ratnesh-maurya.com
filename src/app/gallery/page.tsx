@@ -15,7 +15,7 @@ const mediaUrls = [
   '/gallery/1 (2).jpg',
 
   '/gallery/1 (3).jpg',
- 
+
   '/gallery/1 (4).jpg',
   '/gallery/1 (5).jpg',
   '/gallery/girl.jpg',
@@ -39,7 +39,7 @@ function GalleryPage() {
   const isVideo = (url: string) => url.endsWith('.mp4');
 
   return (
-    <div className="max-w-3xl mx-auto min-h-screen px-2  shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl  rounded-xl mr-1.5 ml-1.5 ">
+    <div className="max-w-3xl mx-auto min-h-screen px-2  shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl  rounded-xl mr-2 ml-2">
       <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Gallery 📸</h1>
 
       <Masonry
@@ -59,7 +59,7 @@ function GalleryPage() {
                     src={url}
                     className="rounded-lg w-full h-auto transition-transform duration-300 group-hover:scale-105"
                     controls
-                   
+
                   />
                 ) : (
                   <Image
