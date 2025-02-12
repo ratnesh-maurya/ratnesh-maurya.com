@@ -130,11 +130,15 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <head>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4886849425326339"
+          crossOrigin="anonymous"/>
         <meta name="google-adsense-account" content="ca-pub-4886849425326339" />
+        
           <Script
           strategy="afterInteractive"
           src="https://www.googletagmanager.com/gtag/js?id=G-T13RLYDHMR"
         />
+        
         
         <Script
           id="google-analytics"
@@ -161,6 +165,7 @@ export default function RootLayout({
             })();
           `}
         </Script>
+
       </head>
     
       <ThemeProvider
