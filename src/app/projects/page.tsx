@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 export interface Project {
   id: string;
@@ -67,6 +68,40 @@ const projects: Project[] = [
     image: '/currency-converter.png',
   },
 ];
+
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Projects - Ratnesh Maurya',
+    description: 'Projects developed by Ratnesh Maurya',
+    keywords: 'Projects, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript',
+    openGraph: {
+      title: 'Projects - Ratnesh Maurya',
+      description: 'Projects developed by Ratnesh Maurya',
+      type: 'website',
+      url: 'https://ratn.tech/projects',
+      images: {
+        url: 'https://ratn.tech/projects.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Projects - Ratnesh Maurya',
+      },
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@ratnesh_maurya_',
+      title: 'Projects - Ratnesh Maurya',
+      description: 'Projects developed by Ratnesh Maurya',
+      creator: '@ratnesh_maurya_',
+      images: {
+        url: 'https://ratn.tech/projects.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Projects - Ratnesh Maurya',
+      },
+    },
+  };
+}
 
 function ProjectsPage() {
   return (

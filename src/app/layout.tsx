@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: "Ratnesh Maurya Portfolio",
     images: [
       {
-        url: "https://ratn.tech/ratn.png",
+        url: "https://ratn.tech/ratn.jpg",
         width: 1200,
         height: 630,
         alt: "Ratnesh Maurya Portfolio Image",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description:
       "Ratnesh Maurya, Software Engineer with experience in backend development, cloud solutions, and web technologies.",
     creator: "@RatneshMaurya",
-    images: ["https://ratn.tech/ratn.png"],
+    images: ["https://ratn.tech/ratn.jpg"],
   },
   robots: {
     index: true,
