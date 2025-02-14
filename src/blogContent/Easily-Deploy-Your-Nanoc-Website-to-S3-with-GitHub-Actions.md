@@ -5,7 +5,8 @@ author: Ratnesh Maurya
 date: " Nov 23, 2024"
 slug: Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions
 category: AWS
-image: https://ratn.tech/blogs.png
+image: https://ratn.tech/blogs.jpg
+keywords: AWS, Nanoc, GitHub Actions, Deployment, S3, Automation, Web Development, Nanoc Website, AWS S3, GitHub Repository, IAM Credentials, GitHub Actions Workflow, Deployment Process, Automation, Web Development, GitHub Actions, Nanoc Website, AWS S3, GitHub Repository, IAM Credentials, GitHub Actions Workflow, Deployment Process
 readTime: "5 min read"
 ---
 

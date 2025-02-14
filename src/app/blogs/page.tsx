@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import BlogList from './BlogList';
+import { Metadata } from 'next';
 
 interface BlogPost {
     title: string;
@@ -32,11 +33,45 @@ const getBlogPosts = (): BlogPost[] => {
     return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
+export async function generateMetadata(): Promise<Metadata> {
+    return {
+        title: 'Blogs - Ratnesh Maurya',
+        description: 'Blogs written by Ratnesh Maurya',
+        keywords: 'Blogs, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript',
+        openGraph: {
+            title: 'Blogs - Ratnesh Maurya',
+            description: 'Blogs written by Ratnesh Maurya',
+            type: 'website',
+            url: 'https://ratn.tech/blogs',
+            images: {
+                url: 'https://ratn.tech/blogs.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Blogs - Ratnesh Maurya',
+            },
+        },
+        twitter: {
+            card: 'summary_large_image',
+            site: '@ratnesh_maurya_',
+            title: 'Blogs - Ratnesh Maurya',
+            description: 'Blogs written by Ratnesh Maurya',
+            creator: '@ratnesh_maurya_',
+            images: {
+                url: 'https://ratn.tech/blogs.jpg',
+                width: 1200,
+                height: 630,
+                alt: 'Blogs - Ratnesh Maurya',
+            },
+        },
+    };
+
+}
+
 export default function BlogsPage() {
     const posts = getBlogPosts(); // This runs server-side
 
     return (
-        <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-1 ml-1  sm:mx-auto">
+        <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
 
 
             <BlogList posts={posts} /> { }

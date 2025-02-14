@@ -6,6 +6,7 @@ date: " Jul 30, 2024"
 slug: Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO
 category: Software Architecture
 image: https://cdn-images-1.medium.com/max/1000/1*m26l8YxU0out-8t8AgRoyg.jpeg
+keywords: Software Architecture, Microservices, Ride App, OLA, UBER, RAPIDO, Microservices Architecture, Scalability, Fault Tolerance, Security, Deployment, Maintenance, Communication, Scalability, Fault Tolerance, Security, Deployment, Maintenance, Communication, 
 readTime: "3 min read"
 ---
 
