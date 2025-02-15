@@ -1,14 +1,9 @@
 
 import { Github, Linkedin, Twitter } from "lucide-react";
-import { Metadata } from "next";
 import Link from "next/link";
 
 
 
-export const metadata: Metadata = {
-  title: "Ratnesh Maurya",
-  description: "Ratnesh Maurya's Portfolio showcasing his skills, projects, education, and experience in software engineering.",
-};
 
 const tech = {
   "Programming Languages": "Golang, Typescript, Python, Elixir, C++",

@@ -5,6 +5,9 @@ import Masonry from 'react-masonry-css';
 import Image from 'next/image';
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 
+
+
+
 const mediaUrls = [
   '/gallery/1 (1).heic',
   '/gallery/1 (2).heic',
@@ -67,6 +70,33 @@ function GalleryPage() {
   }, []);
 
   return (
+    <>
+      <head>
+        <title>Gallery - Ratnesh Maurya</title>
+        <meta name="description" content="Explore the gallery of Ratnesh Maurya, including images and videos." />
+        <meta name="keywords" content="Gallery, Ratnesh Maurya, Images, Videos, Photography" />
+
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Gallery - Ratnesh Maurya" />
+        <meta property="og:description" content="Explore the gallery of Ratnesh Maurya, including images and videos." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ratn.tech/gallery" />
+        <meta property="og:image" content="https://ratn.tech/gallery.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Gallery - Ratnesh Maurya" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@ratnesh_maurya_" />
+        <meta name="twitter:title" content="Gallery - Ratnesh Maurya" />
+        <meta name="twitter:description" content="Explore the gallery of Ratnesh Maurya, including images and videos." />
+        <meta name="twitter:creator" content="@ratnesh_maurya_" />
+        <meta name="twitter:image" content="https://ratn.tech/gallery.jpg" />
+        <meta name="twitter:image:width" content="1200" />
+        <meta name="twitter:image:height" content="630" />
+        <meta name="twitter:image:alt" content="Gallery - Ratnesh Maurya" />
+      </head>
     <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
 
 
@@ -133,6 +163,7 @@ function GalleryPage() {
       {/* Invisible div to trigger auto-loading */}
       <div ref={observerRef} className="h-10"></div>
     </div>
+    </>
   );
 }
 

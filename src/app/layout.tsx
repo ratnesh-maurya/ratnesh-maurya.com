@@ -11,11 +11,11 @@ import ClientLayout from "./client-layout";
 export const metadata: Metadata = {
   title: "Ratnesh Maurya - Software Engineer",
   description:
-    "Ratnesh Maurya, a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
+    "Ratnesh Maurya is  a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
   openGraph: {
-    title: "Ratnesh Maurya",
+    title: "Ratnesh Maurya - Software Engineer",
     description:
-      "Ratnesh Maurya, a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
+      "Ratnesh Maurya is  Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
     url: "https://ratn.tech",
     siteName: "Ratnesh Maurya Portfolio",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ratnesh Maurya - Software Engineer",
     description:
-      "Ratnesh Maurya, Software Engineer with experience in backend development, cloud solutions, and web technologies.",
+      "Ratnesh Maurya is a Software Engineer with experience in backend development, cloud solutions, and web technologies.",
     creator: "@RatneshMaurya",
     images: ["https://ratn.tech/ratn.jpg"],
   },

@@ -73,11 +73,11 @@ const projects: Project[] = [
 export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Projects - Ratnesh Maurya',
-    description: 'Projects developed by Ratnesh Maurya',
+    description: 'Explore the projects developed by Ratnesh Maurya, including web applications, tools, and more.',
     keywords: 'Projects, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript',
     openGraph: {
       title: 'Projects - Ratnesh Maurya',
-      description: 'Projects developed by Ratnesh Maurya',
+      description: 'Explore the projects developed by Ratnesh Maurya, including web applications, tools, and more.',
       type: 'website',
       url: 'https://ratn.tech/projects',
       images: {
@@ -91,7 +91,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       site: '@ratnesh_maurya_',
       title: 'Projects - Ratnesh Maurya',
-      description: 'Projects developed by Ratnesh Maurya',
+      description: 'Explore the projects developed by Ratnesh Maurya, including web applications, tools, and more.',
       creator: '@ratnesh_maurya_',
       images: {
         url: 'https://ratn.tech/projects.jpg',

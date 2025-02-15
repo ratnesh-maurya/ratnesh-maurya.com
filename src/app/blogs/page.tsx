@@ -36,8 +36,8 @@ const getBlogPosts = (): BlogPost[] => {
 export async function generateMetadata(): Promise<Metadata> {
     return {
         title: 'Blogs - Ratnesh Maurya',
-        description: 'Blogs written by Ratnesh Maurya',
-        keywords: 'Blogs, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript',
+        description: 'Explore the blogs written by Ratnesh Maurya - Software Engineer .',
+        keywords: 'Blogs, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript, Technolgy Blogs, Software Engineering',
         openGraph: {
             title: 'Blogs - Ratnesh Maurya',
             description: 'Blogs written by Ratnesh Maurya',
