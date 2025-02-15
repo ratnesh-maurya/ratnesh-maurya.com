@@ -15,6 +15,13 @@ const mediaUrls = [
   '/gallery/1 (3).jpg',
   '/gallery/1 (4).jpg',
   '/gallery/1 (5).jpg',
+  '/gallery/car1.jpg',
+  '/gallery/car2.jpg',
+  '/gallery/car3.jpg',
+  '/gallery/car4.jpg',
+  '/gallery/car5.jpg',
+  '/gallery/car6.jpg',
+
   '/gallery/girl.jpg',
   '/gallery/1 (6).jpg',
   '/gallery/1 (8).jpg',
@@ -38,20 +45,7 @@ function GalleryPage() {
   const isVideo = (url: string) => url.endsWith('.mp4');
 
   // Set initial image count based on screen size
-  useEffect(() => {
-    const updateImageCount = () => {
-      if (window.innerWidth <= 768) {
-        setVisibleImages(3); // Start with 3 images on mobile
-      } else {
-        setVisibleImages(8); // Start with 8 images on larger screens
-      }
-    };
 
-    updateImageCount(); // Set on first render
-    window.addEventListener('resize', updateImageCount); // Update on resize
-
-    return () => window.removeEventListener('resize', updateImageCount);
-  }, []);
 
   // Intersection Observer to load more images automatically
   useEffect(() => {
