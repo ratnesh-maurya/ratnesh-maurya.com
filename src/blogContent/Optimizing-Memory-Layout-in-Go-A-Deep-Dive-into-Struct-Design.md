@@ -5,14 +5,13 @@ author: Ratnesh Maurya
 date: " Jan 25, 2025"
 slug: Optimizing-Memory-Layout-in-Go-A-Deep-Dive-into-Struct-Design
 category: golang
-image: https://miro.medium.com/v2/resize:fit:875/1*KL3gJh1rj9XDA1r0NRbbJw.png
+image: https://ratn.tech/blogs/Optimizing-Memory-Layout-in-Go-A-Deep-Dive-into-Struct-Design.jpg
 keywords: golang, Memory Layout, Struct Design, Go, GoLang, Go Programming, Go Memory Layout, Go Struct Design, GoLang Memory Layout, GoLang Struct Design, GoLang Programming, GoLang Structs, GoLang Memory Usage, GoLang Memory Optimization, GoLang Performance, GoLang Efficiency, GoLang Struct Field Ordering, GoLang Struct Field Alignment, GoLang Struct Field Padding, GoLang Struct Field Reordering, GoLang Struct Field Optimization, GoLang Struct Field Memory Usage, GoLang Struct Field Memory Layout, GoLang Struct Field Memory Optimization, GoLang Struct Field Memory Efficiency, GoLang Struct Field Memory Performance, GoLang Struct Field Memory Design, GoLang Struct Field Memory Impact, GoLang Struct Field Memory Benefits
 readTime: "3 min read"
 ---
 
-![](https://miro.medium.com/v2/resize:fit:875/1*KL3gJh1rj9XDA1r0NRbbJw.png)
+![](https://ratn.tech/blogs/Optimizing-Memory-Layout-in-Go-A-Deep-Dive-into-Struct-Design.jpg)
 
-golang
 
 Optimizing Memory Layout in Go: A Deep Dive into Struct Design
 ==============================================================
