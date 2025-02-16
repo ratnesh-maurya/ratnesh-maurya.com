@@ -5,7 +5,8 @@ author: Ratnesh Maurya
 date: " Jul 30, 2024"
 slug: Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO
 category: Software Architecture
-image: https://cdn-images-1.medium.com/max/1000/1*m26l8YxU0out-8t8AgRoyg.jpeg
+image: https://ratn.tech/blogs/Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO.jpg
+keywords: Software Architecture, Microservices, Ride App, OLA, UBER, RAPIDO, Microservices Architecture, Scalability, Fault Tolerance, Security, Deployment, Maintenance, Communication, Scalability, Fault Tolerance, Security, Deployment, Maintenance, Communication, 
 readTime: "3 min read"
 ---
 
@@ -13,7 +14,7 @@ readTime: "3 min read"
 
 
 
-![](https://cdn-images-1.medium.com/max/1000/1*m26l8YxU0out-8t8AgRoyg.jpeg)
+![](https://ratn.tech/blogs/Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO.jpg)
 
 The architecture follows a microservices approach, which facilitates easy deployment and maintenance. Below is the detailed breakdown of the architecture. ( *This is just my approach* )
 

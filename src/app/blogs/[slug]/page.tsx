@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     const filePath = path.join(blogContentPath, `${params.slug}.md`);
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { data } = matter(fileContent);
-    
+
     return {
         title: `${data.title} - Ratnesh Maurya`,
         description: data.description,
@@ -27,14 +27,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description: data.description,
             type: 'article',
             url: `https://ratn.tech/blogs/${params.slug}`,
-            images: 
-                {
+            images:
+            {
                 url: `${data.image}`,
-                    width: 1200,
-                    height: 630,
-                    alt: `${data.title} - Ratnesh Maurya`,
-                },
-            
+                width: 1200,
+                height: 630,
+                alt: `${data.title} - Ratnesh Maurya`,
+            },
+
         },
         twitter: {
             card: 'summary_large_image',
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
                 height: 630,
                 alt: `${data.title} - Ratnesh Maurya`,
             },
-            
+
         },
     };
 }
@@ -88,9 +88,11 @@ export default async function Page({ params }: { params: { slug: string } }) {
         .process(content)
         .then((file) => file.toString());
 
- 
+
     return (
-        <article className=" max-w-3xl mx-auto px-4 mb font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl    ">
+        <article className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
+
+
             <div className="text-s text-gray-600 dark:text-gray-50 mb-6">
                 <Link href="/blogs" className="text-teal-600 dark:text-orange-500 dark:hover:text-orange-600 hover:text-teal-800">
                     blogs

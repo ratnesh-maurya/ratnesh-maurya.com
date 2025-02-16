@@ -1,15 +1,12 @@
+
 import { Github, Linkedin, Twitter } from "lucide-react";
-import { Metadata } from "next";
 import Link from "next/link";
 
 
-export const metadata: Metadata = {
-  title: "Ratnesh Maurya",
-  description: "Ratnesh Maurya's Portfolio showcasing his skills, projects, education, and experience in software engineering.",
-};
+
 
 const tech = {
-  "Programming Languages":  "Golang, Typescript, Python, Elixir, C++",
+  "Programming Languages": "Golang, Typescript, Python, Elixir, C++",
   Frameworks: "Go-Gin, NextJS, Tailwind, React, Flask, Phoenix",
   Database: "Postgres, MongoDB, Redis",
   "Platform/Cloud": " AWS, Kubernetes, Terraform, Docker",
@@ -19,16 +16,23 @@ const experiences = [
     period: "08/2023 — Present",
     role: "Software Development Engineer",
     company: "@ initializ.ai ",
+    link: "https://www.linkedin.com/company/initializ/about/",
   },
   {
-    period: "03/2023 — 07/2024",
+    period: "03/2023 — 07/2023",
     role: "Software Developer Intern",
     company: "@ EMSEC Pvt. Ltd.",
+    link: "https://www.linkedin.com/company/emsec/about/",
   },
 
 ]
 
 const blogs = [
+  {
+    title: "Optimizing Memory Layout in Go: A Deep Dive into Struct Design",
+    slug: "Optimizing-Memory-Layout-in-Go-A-Deep-Dive-into-Struct-Design",
+    date: "Jan 25, 2025",
+  },
   {
     title: "Easily Deploy Your Nanoc Website to S3 with GitHub Actions",
     slug: "Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions",
@@ -38,21 +42,35 @@ const blogs = [
     title: "Architectural Design for a Ride App such as OLA, UBER, RAPIDO",
     slug: "Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO",
     date: "Jul 30, 2024",
+  }
+];
+
+const certificates = [
+  {
+    title: "AWS Certified Solutions Architect – Associate",
+    issuer: "Amazon Web Services",
+    link: "https://www.credly.com/badges/2d49d590-5c98-4e64-915b-e9ca3e50ec62",
   },
   {
-    title: "Amazon SNS for Cost Reduction and Message Delivery Assurance in Startups",
-    slug: "Amazon-SNS-for-Cost-Reduction-and-Message-Delivery-Assurance-in-Startups",
-    date: "Dec 10, 2023",
+    title: "Developing Secure Software",
+    issuer: "The Linux Foundation",
+    link: "https://www.credly.com/badges/af06b77a-d878-48be-85a1-ea37bb893aaf/linked_in_profile",
+  },
+  {
+    title: "GitHub Copilot",
+    issuer: "Github",
+    link: "https://www.credly.com/badges/0feb784b-3712-41ad-8666-8e3b01ed17f8/linked_in_profile",
   },
 ];
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto  px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl">
+    <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
 
-    <div >
-      <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Ratnesh Maurya</h1>
-    </div>
+
+      <div >
+        <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Ratnesh Maurya</h1>
+      </div>
       <div className="px-2">
 
         <section className="py-12">
@@ -87,22 +105,22 @@ export default function Home() {
           </p>
           <div className="flex items-center gap-4">
             <span className="text-muted-foreground">Find me on</span>
-            <a href="https://x.com/ratnesh_maurya_" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className= " hover:text-orange-600 font-bold">
+            <a href="https://x.com/ratnesh_maurya_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" hover:text-orange-600 font-bold">
               <Twitter className="h-5 w-5" />
             </a>
             <a href="https://www.linkedin.com/in/ratnesh-maurya"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-orange-600 font-bold">
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange-600 font-bold">
               <Linkedin className="h-5 w-5" />
             </a>
             <a href="https://github.com/ratnesh-maurya"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-orange-600 font-bold">
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange-600 font-bold">
               <Github className="h-5 w-5" />
             </a>
           </div>
@@ -116,12 +134,20 @@ export default function Home() {
                 <div className="w-40 flex-shrink-0 text-muted-foreground">{exp.period}</div>
                 <div className="flex flex-col md:flex-row items-start gap-2">
                   <div className="font">{exp.role}</div>
-                  <div className="text-muted-foreground">{exp.company}</div>
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground underline hover:text-orange-700"
+                  >
+                    {exp.company}
+                  </a>
                 </div>
               </div>
             ))}
           </div>
         </section>
+
 
         <section className="py-6">
           <h2 className="text-2xl font-bold mb-6">Technologies I have worked with</h2>
@@ -148,9 +174,28 @@ export default function Home() {
             ))}
           </div>
         </section>
-       
+
+        <section className="py-6">
+          <h2 className="text-2xl font-bold mb-6">Certifications</h2>
+          <div className="space-y-4">
+            {certificates.map((cert, index) => (
+              <div key={index} className="flex gap-4 items-center">
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:decoration-teal-600 hover:dark:decoration-orange-400"
+                >
+                  {cert.title}
+                </a>
+                <span className="text-muted-foreground">by {cert.issuer}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
     </div>
-    </div>
- 
+
   );
 }
