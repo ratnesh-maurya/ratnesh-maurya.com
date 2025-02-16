@@ -69,7 +69,7 @@ export default function Home() {
 
 
       <div >
-        <h1 className="text-4xl font-bold text-center sm:text-start text-teal-600 dark:text-gray-200   ">Ratnesh Maurya</h1>
+        <h1 className="text-3xl font-bold text-center sm:text-start text-teal-600 dark:text-gray-200   ">Ratnesh Maurya</h1>
       </div>
       <div className="px-2">
 

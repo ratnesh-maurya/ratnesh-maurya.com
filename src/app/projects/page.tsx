@@ -80,7 +80,7 @@ function ProjectsPage() {
         <div className="max-w-3xl mx-auto px-2">
           <div className="space-y-6">
             {projects.map((project) => (
-              <div key={project.id} className="pb-6 border-b border-gray-300 dark:border-gray-700">
+              <div key={project.id} className="pb-6 border-b border-gray-300 outline-teal-600 outline  outline-offset-0 outline-2 p-4 rounded-xl dark:border-gray-700">
                 <h3 className="text-2xl font-semibold mb-1">{project.title}</h3>
                 <p>{project.description}</p>
                 <p className="text-gray-600 dark:text-gray-300 mb-2">{project.longDescription}</p>

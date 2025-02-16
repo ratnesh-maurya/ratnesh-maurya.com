@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Calendar, Eye } from 'lucide-react';
+import { ArrowRight, CalendarDays, Eye } from 'lucide-react';
 
 interface BlogPost {
     title: string;
@@ -14,40 +14,70 @@ interface BlogPost {
 }
 
 export default function BlogList({ posts }: { posts: BlogPost[] }) {
-    const [searchQuery, setSearchQuery] = useState('');
+    const [blogViews, setBlogViews] = useState<Record<string, number>>({});
 
-    const filteredPosts = posts.filter(post =>
-        post.title.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    useEffect(() => {
+        const fetchViews = async () => {
+            const updatedViews: Record<string, number> = {};
+            await Promise.all(
+                posts.map(async (post) => {
+                    try {
+                        const res = await fetch(`https://api.ratn.tech/blogview/${post.slug}`);
+                        const data = await res.json();
+                        updatedViews[post.slug] = data.views || 0;
+                    } catch (error) {
+                        console.error(`Error fetching views for ${post.slug}:`, error);
+                        updatedViews[post.slug] = post.views ?? 0; // Fallback to default
+                    }
+                })
+            );
+            setBlogViews(updatedViews);
+        };
+
+        fetchViews();
+    }, [posts]);
+
+    const handleBlogClick = async (slug: string) => {
+        try {
+            await fetch(`https://api.ratn.tech/blogview/${slug}`, {
+                method: 'POST',
+            });
+
+            // Optimistically update views count
+            setBlogViews((prev) => ({
+                ...prev,
+                [slug]: (prev[slug] || 0) + 1,
+            }));
+        } catch (error) {
+            console.error('Error updating blog views:', error);
+        }
+    };
 
     return (
-        <div className="max-w-4xl mx-auto p-2  sm:p-6">
+        <div className="max-w-4xl mx-auto p-2 sm:p-6">
             {/* Header Section */}
             <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
                 <h1 className="text-4xl font-bold text-teal-600 dark:text-gray-200">Blogs ✍️</h1>
-                <input
-                    type="text"
-                    placeholder="Search blogs..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="mt-3 sm:mt-0 w-64 p-2 border rounded-lg focus:outline-none ring-1 ring-gray-300 focus:ring-teal-600 dark:focus:ring-orange-400 bg-transparent"
-                />
             </div>
 
             {/* Blog Section */}
             <section id="blogs">
-                {filteredPosts.length > 0 ? (
+                {posts.length > 0 ? (
                     <div className="space-y-8">
-                        {filteredPosts.map((post) => (
+                        {posts.map((post) => (
                             <article
                                 key={post.slug}
                                 className="p-5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg bg-white dark:bg-gray-900 transition hover:scale-[1.02]"
                             >
-                                <Link href={`/blogs/${post.slug}`} className="block space-y-4">
+                                <Link
+                                    href={`/blogs/${post.slug}`}
+                                    className="block space-y-4"
+                                    onClick={() => handleBlogClick(post.slug)}
+                                >
                                     {/* Blog Metadata */}
                                     <div className="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 gap-3">
                                         <div className="flex items-center gap-1">
-                                            <Calendar className="h-4 w-4 text-teal-500 dark:text-orange-400" />
+                                            <CalendarDays className="h-4 w-4 text-teal-500 dark:text-orange-400" />
                                             <span>{post.date}</span>
                                         </div>
                                         <span className="text-gray-400">•</span>
@@ -56,7 +86,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                                         {/* Views at 3/4 position */}
                                         <span className="ml-auto flex items-center gap-1">
                                             <Eye className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-                                            {post.views ?? 0}
+                                            {blogViews[post.slug] ?? 0}
                                         </span>
                                     </div>
 
