@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
-import { Metadata } from 'next';
 
 export interface Project {
   id: string;
@@ -69,60 +68,27 @@ const projects: Project[] = [
   },
 ];
 
-
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Projects - Ratnesh Maurya',
-    description: 'Explore the projects developed by Ratnesh Maurya, including web applications, tools, and more.',
-    keywords: 'Projects, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript',
-    openGraph: {
-      title: 'Projects - Ratnesh Maurya',
-      description: 'Explore the projects developed by Ratnesh Maurya, including web applications, tools, and more.',
-      type: 'website',
-      url: 'https://ratn.tech/projects',
-      images: {
-        url: 'https://ratn.tech/projects.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Projects - Ratnesh Maurya',
-      },
-    },
-    twitter: {
-      card: 'summary_large_image',
-      site: '@ratnesh_maurya_',
-      title: 'Projects - Ratnesh Maurya',
-      description: 'Explore the projects developed by Ratnesh Maurya, including web applications, tools, and more.',
-      creator: '@ratnesh_maurya_',
-      images: {
-        url: 'https://ratn.tech/projects.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Projects - Ratnesh Maurya',
-      },
-    },
-  };
-}
-
 function ProjectsPage() {
   return (
-    <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
+    <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black  backdrop-blur-xl rounded-xl mr-2 ml-2 p-2  sm:p-6   sm:mx-auto">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center sm:text-start ">
+          <h1 className="text-4xl font-bold text-teal-600 dark:text-gray-200 ">Projects 👨‍💻</h1>
+    </div>
 
-
-      <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Projects 👨‍💻</h1>
-
-      <section className="py-12" id="projects">
+      <section className="py-10" id="projects">
         <div className="max-w-3xl mx-auto px-2">
           <div className="space-y-6">
             {projects.map((project) => (
-              <div key={project.id} className="pb-6 border-b border-gray-300 dark:border-gray-700">
-                <h3 className="text-xl font-semibold mb-1">{project.title}</h3>
+              <div key={project.id} className="pb-6 border-b border-gray-300 outline-teal-600 outline  outline-offset-0 outline-2 p-4 rounded-xl dark:border-gray-700">
+                <h3 className="text-2xl font-semibold mb-1">{project.title}</h3>
                 <p>{project.description}</p>
                 <p className="text-gray-600 dark:text-gray-300 mb-2">{project.longDescription}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="bg-gray-100 dark:bg-gray-700 text-sm px-2 py-1 rounded"
+                      className="bg-teal-100 dark:bg-gray-800 text-sm px-3 py-1 rounded-md font-medium text-teal-800 dark:text-teal-400"
                     >
                       {tag}
                     </span>
@@ -157,6 +123,7 @@ function ProjectsPage() {
           </div>
         </div>
       </section>
+    </div>
     </div>
   );
 }

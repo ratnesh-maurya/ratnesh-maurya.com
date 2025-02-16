@@ -74,11 +74,12 @@ function GalleryPage() {
     <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
 
 
-      <h1 className="text-3xl font-bold text-teal-600 dark:text-gray-200">Gallery 📸</h1>
+      <h1 className=" text-center sm:text-start text-4xl font-bold text-teal-600 dark:text-gray-200 p-2  sm:p-6 mb-6">Gallery 📸</h1>
 
+      <div className="max-w-4xl mx-auto">
       <Masonry
         breakpointCols={breakpointColumnsObj}
-        className="flex gap-4 px-2 py-12"
+        className="flex gap-4 px-2 "
         columnClassName="flex flex-col gap-4"
       >
         {mediaUrls.slice(0, visibleImages).map((url, index) => (
@@ -136,6 +137,7 @@ function GalleryPage() {
 
       {/* Invisible div to trigger auto-loading */}
       <div ref={observerRef} className="h-10"></div>
+    </div>
     </div>
   );
 }

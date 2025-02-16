@@ -10,6 +10,7 @@ interface BlogPost {
     date: string;
     readTime: string;
     slug: string;
+    view?: number;
 }
 
 const getBlogPosts = (): BlogPost[] => {
@@ -27,11 +28,13 @@ const getBlogPosts = (): BlogPost[] => {
             date: data.date,
             readTime: data.readTime || '5 min read',
             slug: data.slug,
+            views: Math.floor(Math.random() * 500), // Simulated view count (Replace with actual logic)
         };
     });
 
     return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
+
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
