@@ -12,6 +12,7 @@ import { transformerCopyButton } from '@rehype-pretty/transformers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
+import ShareButtons from '@/components/ShareButtons';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const filePath = path.join(blogContentPath, `${params.slug}.md`);
@@ -84,6 +85,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
     return (
         <article className="max-w-3xl mx-auto px-4 py-8 font-sans shadow-lg dark:bg-gray-950/70 shadow-black backdrop-blur-xl rounded-xl sm:px-6 sm:py-12">
             {/* Breadcrumb and Navigation */}
+
             <div className="text-sm text-gray-600 dark:text-gray-300 mb-6">
                 <Link href="/blogs" className="text-teal-600 dark:text-orange-500 hover:text-teal-800 dark:hover:text-orange-600">
                     Blogs
@@ -102,15 +104,23 @@ export default async function Page({ params }: { params: { slug: string } }) {
                     &ldquo;{data.description}&rdquo;
                 </div>
 
-                <div className="flex items-center space-x-4 text-gray-600 dark:text-gray-300 text-sm mb-6">
-                    <div className="flex items-center gap-1">
-                        <span className="font-medium">By:</span> {data.author}
+                <div className="flex flex-col items-center sm:flex-row sm:items-center justify-between text-gray-600 dark:text-gray-300 text-sm mb-6 space-y-2 sm:space-y-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
+                        <div className="flex items-center gap-1">
+                            <span className="font-medium">By:</span> {data.author}
+                        </div>
+                        <span className="hidden sm:block">&#183;</span>
+                        <div className="flex items-center gap-1">
+                            <span className="font-medium">Published:</span> {new Date(data.date).toLocaleDateString()}
+                        </div>
                     </div>
-                    <span>&#183;</span>
-                    <div className="flex items-center gap-1">
-                        <span className="font-medium">Published:</span> {new Date(data.date).toLocaleDateString()}
+                    <div>
+                        <ShareButtons title={data.title} url={`https://ratn.tech/blogs/${slug}`} />
                     </div>
                 </div>
+
+
+
             </header>
 
             {/* Blog Content Section */}
