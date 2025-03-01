@@ -65,7 +65,7 @@ const certificates = [
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto  px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black  backdrop-blur-xl rounded-xl mr-2 ml-2 p-2  sm:p-6   sm:mx-auto">
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black  backdrop-blur-xl rounded-xl mr-2 ml-2 p-2  sm:p-6   sm:mx-auto">
 
 
       <div >
