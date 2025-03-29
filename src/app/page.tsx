@@ -96,7 +96,7 @@ export default function Home() {
       transition={{ duration: 0.8 }}
       className="min-h-screen  overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

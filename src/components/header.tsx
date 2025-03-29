@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState, useEffect } from "react"
@@ -26,77 +25,67 @@ export default function Header() {
 
     return (
         <>
+            <header className="sticky top-0 z-50 font-sans hidden md:block   border-gray-200/20 dark:border-gray-700/20">
+                <div className="max-w-7xl mx-auto">
+                    <div className="mx-auto px-4 py-3 sm:px-6">
+                        <div className="flex items-center justify-between">
+                            <div className="text-sm font-medium bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-transparent bg-clip-text">
+                                Asia/India
+                            </div>
 
-            <header className=" sticky top-0 z-50 font-sans hidden md:block ">
-                <div className=" ">
-                    <div className=" mx-auto px-4 py-2 sm:px-6 ">
-                        <div className="flex items-center justify-between h-16">
-                            <div className=" text-sm">Asia/India</div>
-
-                            <nav className="flex items-center  gap-2">
-                                <div className="flex items-center bg-slate-800/15 backdrop-blur-md rounded-full border-2 border-emerald-500 px-4 py-2 gap-4">
-                                    <Link href="/" className=" hover:text-emerald-800 dark:hover:text-teal-400 flex items-center gap-2 transition-colors">
+                            <nav className="flex items-center gap-2">
+                                <div className="flex items-center bg-white/70 dark:bg-gray-800/70 rounded-full border border-[rgb(var(--primary))/20] dark:border-[rgb(var(--primary))/20] px-6 py-2.5 gap-6">
+                                    <Link href="/" className="hover:text-[rgb(var(--primary))] flex items-center gap-2 transition-all duration-300">
                                         <Home size={18} />
-                                        <span>Home</span>
+                                        <span className="font-medium">Home</span>
                                     </Link>
-                                    <Link
-                                        href="/projects"
-                                        className=" hover:text-emerald-800 dark:hover:text-teal-400  flex items-center gap-2 transition-colors"
-                                    >
+                                    <Link href="/projects" className="hover:text-[rgb(var(--primary))] flex items-center gap-2 transition-all duration-300">
                                         <Presentation size={18} />
-                                        <span>Project</span>
+                                        <span className="font-medium">Projects</span>
                                     </Link>
-                                    <Link
-                                        href="/blogs"
-                                        className=" hover:text-emerald-800 dark:hover:text-teal-400  flex items-center gap-2 transition-colors"
-                                    >
+                                    <Link href="/blogs" className="hover:text-[rgb(var(--primary))] flex items-center gap-2 transition-all duration-300">
                                         <BookMarked size={18} />
-                                        <span>Blogs</span>
+                                        <span className="font-medium">Blogs</span>
                                     </Link>
-                                    <Link
-                                        href="/gallery"
-                                        className=" hover:text-emerald-800 dark:hover:text-teal-400  flex items-center gap-2 transition-colors"
-                                    >
+                                    <Link href="/gallery" className="hover:text-[rgb(var(--primary))] flex items-center gap-2 transition-all duration-300">
                                         <Images size={18} />
-                                        <span>Gallery</span>
+                                        <span className="font-medium">Gallery</span>
                                     </Link>
                                 </div>
-                                
                             </nav>
-                            <div className="flex items-center gap-4">
-                            <div className=" text-sm tabular-nums ">  {currentTime}  
-                            </div>
+
+                            <div className="flex items-center gap-6">
+                                <div className="text-sm font-medium tabular-nums bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))] text-transparent bg-clip-text">
+                                    {currentTime}
+                                </div>
                                 <ModeToggle />
                             </div>
-                            
                         </div>
                     </div>
                 </div>
             </header>
 
-            <div className="md:hidden text-right">
+            <div className="md:hidden fixed top-4 right-4 z-50">
                 <ModeToggle />
+            </div>
 
-    </div>
             {/* Mobile Header */}
             <header className="fixed w-full z-50 md:hidden px-4 bottom-8">
                 <nav className="flex items-center justify-center">
-                    <div className="flex items-center  bg-teal-400/15 backdrop-blur-md rounded-full border-2 border-teal-700 px-6 py-3 gap-8">
-                        <Link href="/" className=" hover:text-emerald-800  transition-colors">
-                            <Home size={20} />
+                    <div className="flex items-center bg-white/70 dark:bg-gray-800/70 rounded-full border border-[rgb(var(--primary))/20] dark:border-[rgb(var(--primary))/20] px-8 py-4 gap-10">
+                        <Link href="/" className="hover:text-[rgb(var(--primary))] transition-all duration-300">
+                            <Home size={22} />
                         </Link>
-                        <Link href="/projects" className=" hover:text-emerald-800  transition-colors">
-                            <Presentation size={20} />
+                        <Link href="/projects" className="hover:text-[rgb(var(--primary))] transition-all duration-300">
+                            <Presentation size={22} />
                         </Link>
-                        <Link href="/blogs" className=" hover:text-emerald-800  transition-colors">
-                            <BookMarked size={20} />
+                        <Link href="/blogs" className="hover:text-[rgb(var(--primary))] transition-all duration-300">
+                            <BookMarked size={22} />
                         </Link>
-                        <Link href="/gallery" className=" hover:text-emerald-800  transition-colors">
-                            <Images size={20} />
+                        <Link href="/gallery" className="hover:text-[rgb(var(--primary))] transition-all duration-300">
+                            <Images size={22} />
                         </Link>
-                      
                     </div>
-                    
                 </nav>
             </header>
         </>

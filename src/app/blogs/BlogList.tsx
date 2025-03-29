@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, CalendarDays, Eye } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface BlogPost {
     title: string;
@@ -27,7 +28,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                         updatedViews[post.slug] = data.views || 0;
                     } catch (error) {
                         console.error(`Error fetching views for ${post.slug}:`, error);
-                        updatedViews[post.slug] = post.views ?? 0; // Fallback to default
+                        updatedViews[post.slug] = post.views ?? 0;
                     }
                 })
             );
@@ -42,8 +43,6 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
             await fetch(`https://api.ratn.tech/blogview/${slug}`, {
                 method: 'POST',
             });
-
-            // Optimistically update views count
             setBlogViews((prev) => ({
                 ...prev,
                 [slug]: (prev[slug] || 0) + 1,
@@ -54,65 +53,84 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-2 sm:p-6">
-            {/* Header Section */}
-            <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
-                <h1 className="text-4xl font-bold text-teal-600 dark:text-gray-200">Blogs ✍️</h1>
-            </div>
+        <div className="min-h-screen overflow-hidden">
+            <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
+                <div className="relative">
+                    <div className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-16 shadow-2xl border border-gray-200/20 dark:border-gray-700/20 mb-16 sm:mb-24 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/20] via-[rgb(var(--secondary))/10] to-[rgb(var(--primary))/20] rounded-3xl"></div>
+                        <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--primary))/20] rounded-full blur-3xl"></div>
+                        <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--secondary))/20] rounded-full blur-3xl"></div>
 
-            {/* Blog Section */}
-            <section id="blogs">
-                {posts.length > 0 ? (
-                    <div className="space-y-8">
-                        {posts.map((post) => (
-                            <article
-                                key={post.slug}
-                                className="p-5 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg bg-white dark:bg-gray-900 transition hover:scale-[1.02]"
+                        <div className="relative">
+                            <motion.div
+                                initial={{ scale: 0.8, opacity: 0 }}
+                                animate={{ scale: 1, opacity: 1 }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                                className="relative inline-block mb-8"
                             >
-                                <Link
-                                    href={`/blogs/${post.slug}`}
-                                    className="block space-y-4"
-                                    onClick={() => handleBlogClick(post.slug)}
-                                >
-                                    {/* Blog Metadata */}
-                                    <div className="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 gap-3">
-                                        <div className="flex items-center gap-1">
-                                            <CalendarDays className="h-4 w-4 text-teal-500 dark:text-orange-400" />
-                                            <span>{post.date}</span>
-                                        </div>
-                                        <span className="text-gray-400">•</span>
-                                        <span>{post.readTime}</span>
+                                <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--primary))/30] via-[rgb(var(--secondary))/20] to-[rgb(var(--primary))/30] blur-3xl rounded-full"></div>
+                                <h1 className="relative text-5xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))]">
+                                    Latest Blogs
+                                </h1>
+                            </motion.div>
 
-                                        {/* Views at 3/4 position */}
-                                        <span className="ml-auto flex items-center gap-1">
-                                            <Eye className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-                                            {blogViews[post.slug] ?? 0}
-                                        </span>
-                                    </div>
+                            <div className="space-y-8">
+                                {posts.length > 0 ? (
+                                    posts.map((post, index) => (
+                                        <motion.article
+                                            key={post.slug}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                                            className="relative p-6 sm:p-8 rounded-2xl bg-white/60 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-gray-800/50 transition-all duration-300"
+                                        >
+                                            <Link
+                                                href={`/blogs/${post.slug}`}
+                                                onClick={() => handleBlogClick(post.slug)}
+                                                className="block space-y-4"
+                                            >
+                                                <div className="flex flex-wrap items-center text-sm gap-4">
+                                                    <div className="flex items-center gap-2 text-[rgb(var(--primary))]">
+                                                        <CalendarDays className="h-4 w-4" />
+                                                        <span>{post.date}</span>
+                                                    </div>
+                                                    <span className="text-gray-400">•</span>
+                                                    <span className="text-[rgb(var(--secondary))]">{post.readTime}</span>
+                                                    <div className="ml-auto flex items-center gap-2 text-[rgb(var(--primary))]">
+                                                        <Eye className="h-4 w-4" />
+                                                        <span>{blogViews[post.slug] ?? 0} views</span>
+                                                    </div>
+                                                </div>
 
-                                    {/* Blog Title */}
-                                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100">
-                                        {post.title}
-                                    </h3>
+                                                <h2 className="text-2xl sm:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))]">
+                                                    {post.title}
+                                                </h2>
 
-                                    {/* Excerpt */}
-                                    <p className="text-gray-600 text-sm dark:text-gray-400 line-clamp-2">
-                                        {post.excerpt}
-                                    </p>
+                                                <p className="text-gray-600 dark:text-gray-300 line-clamp-2">
+                                                    {post.excerpt}
+                                                </p>
 
-                                    {/* Read More Button */}
-                                    <div className="flex items-center gap-2 text-teal-600 dark:text-orange-500 font-medium mt-2">
-                                        Read more
-                                        <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                                    </div>
-                                </Link>
-                            </article>
-                        ))}
+                                                <div className="flex items-center gap-2 text-[rgb(var(--primary))] hover:text-[rgb(var(--secondary))] transition-colors group">
+                                                    <span className="font-medium">Read article</span>
+                                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                                </div>
+                                            </Link>
+                                        </motion.article>
+                                    ))
+                                ) : (
+                                    <motion.p
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        className="text-center text-lg text-gray-500 dark:text-gray-400"
+                                    >
+                                        No blogs found.
+                                    </motion.p>
+                                )}
+                            </div>
+                        </div>
                     </div>
-                ) : (
-                    <p className="text-center text-gray-500 text-lg">No blogs found.</p>
-                )}
-            </section>
+                </div>
+            </div>
         </div>
     );
 }

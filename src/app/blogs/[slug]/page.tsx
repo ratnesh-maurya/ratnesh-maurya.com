@@ -9,10 +9,9 @@ import remarkParse from 'remark-parse';
 import remarkRehype from 'remark-rehype';
 import { unified } from 'unified';
 import { transformerCopyButton } from '@rehype-pretty/transformers';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
-import ShareButtons from '@/components/ShareButtons';
+import BlogPost from '@/components/BlogPost';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const filePath = path.join(blogContentPath, `${params.slug}.md`);
@@ -83,57 +82,13 @@ export default async function Page({ params }: { params: { slug: string } }) {
         .then((file) => file.toString());
 
     return (
-        <article className="max-w-3xl mx-auto px-4 py-8 font-sans shadow-lg dark:bg-gray-950/70 shadow-black backdrop-blur-xl rounded-xl sm:px-6 sm:py-12">
-            {/* Breadcrumb and Navigation */}
-
-            <div className="text-sm text-gray-600 dark:text-gray-300 mb-6">
-                <Link href="/blogs" className="text-teal-600 dark:text-orange-500 hover:text-teal-800 dark:hover:text-orange-600">
-                    Blogs
-                </Link>
-                <span className="mx-2">/</span>
-                <span className="text-gray-500">{slug}</span>
-            </div>
-
-            {/* Header Section */}
-            <header className="mb-8">
-                <h1 className="text-3xl sm:text-4xl font-semibold text-teal-700 dark:text-teal-500 leading-tight mb-4 font-merriweather">
-                    {data.title}
-                </h1>
-
-                <div className="text-lg text-gray-600 dark:text-gray-400 mb-6 font-serif italic border-l-4 border-teal-500 pl-4">
-                    &ldquo;{data.description}&rdquo;
-                </div>
-
-                <div className="flex flex-col items-center sm:flex-row sm:items-center justify-between text-gray-600 dark:text-gray-300 text-sm mb-6 space-y-2 sm:space-y-0">
-                    <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                        <div className="flex items-center gap-1">
-                            <span className="font-medium">By:</span> {data.author}
-                        </div>
-                        <span className="hidden sm:block">&#183;</span>
-                        <div className="flex items-center gap-1">
-                            <span className="font-medium">Published:</span> {new Date(data.date).toLocaleDateString()}
-                        </div>
-                    </div>
-                    <div>
-                        <ShareButtons title={data.title} url={`https://ratn.tech/blogs/${slug}`} />
-                    </div>
-                </div>
-
-
-
-            </header>
-
-            {/* Blog Content Section */}
-            <div
-                className="prose max-w-none font-sans dark:text-gray-300
-                    dark:prose-headings:text-teal-500
-                    prose-headings:text-teal-700
-                    dark:prose-strong:text-white
-                    prose-strong:text-gray-700
-                    prose-a:text-teal-700
-                    dark:prose-code:text-orange-600"
-                dangerouslySetInnerHTML={{ __html: file }}
-            />
-        </article>
+        <BlogPost
+            title={data.title}
+            description={data.description}
+            author={data.author}
+            date={data.date}
+            slug={slug}
+            content={file}
+        />
     );
 }

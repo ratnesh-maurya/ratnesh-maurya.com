@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/components/theme-provider";
 import ClientLayout from "./client-layout";
+import AnimatedLayout from "@/components/AnimatedLayout";
 
 export const metadata: Metadata = {
   title: "Ratnesh Maurya - Software Engineer",
@@ -70,11 +71,12 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          
-          <main className="pt-auto ">
-          
-            {children}
-      
+
+          <main className="pt-auto">
+            <AnimatedLayout>
+              {children}
+            </AnimatedLayout>
+
             <SpeedInsights />
             <Analytics />
           </main>

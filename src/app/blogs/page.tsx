@@ -72,12 +72,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function BlogsPage() {
     const posts = getBlogPosts(); // This runs server-side
-
-    return (
-        <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black p-4 backdrop-blur-xl rounded-xl mr-2 ml-2  sm:mx-auto">
-
-
-            <BlogList posts={posts} /> { }
-        </div>
-    );
+    return <BlogList posts={posts} />;
 }
