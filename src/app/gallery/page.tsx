@@ -7,7 +7,7 @@ import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { FaDownload } from 'react-icons/fa';
 import { Share2 } from 'lucide-react'; // Single share icon
-import { motion } from 'framer-motion';
+
 
 const mediaUrls = [
   '/gallery/1 (1).heic',
