@@ -29,6 +29,7 @@ export default function Header() {
 
     return (
         <>
+
             <header className="sticky top-0 z-50 font-sans hidden md:block ">
                 <div className="mx-auto px-4 py-2 sm:px-6">
                     <div className="flex items-center justify-between h-16">
@@ -83,18 +84,22 @@ export default function Header() {
                                 {currentTime}
                             </div>
                             <ModeToggle />
+
                         </div>
                     </div>
                 </div>
             </header>
 
+
             <div className="md:hidden text-right px-4 py-2">
+
                 <ModeToggle />
             </div>
 
             {/* Mobile Header */}
             <header className="fixed w-full z-50 md:hidden px-4 bottom-8 z-40">
                 <nav className="flex items-center justify-center">
+
                     <div className="flex items-center  dark:bg-teal-400/10 backdrop-blur-md rounded-full border border-gray-300 dark:border-teal-400/30 px-6 py-3 gap-8 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/10">
                         <Link
                             href="/"
@@ -131,6 +136,7 @@ export default function Header() {
                                 }`}
                         >
                             <Images size={20} />
+
                         </Link>
                     </div>
                 </nav>

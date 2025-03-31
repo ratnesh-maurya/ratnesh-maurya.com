@@ -5,7 +5,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
     const yearsOfExperience = currentYear - 2020; // Assuming you started coding in 2020
 
-    return (
+
         <footer className="p-10 dark:bg-gray-950  bg-slate-50 ">
             <div className="max-w-4xl mx-auto px-4">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-4">
@@ -19,11 +19,14 @@ export default function Footer() {
                     </div>
 
                     <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+
                         <a
                             href="https://twitter.com/ratnesh_maurya_"
                             target="_blank"
                             rel="noopener noreferrer"
+
                             className="group relative p-2 rounded-full transition-all duration-200 hover:bg-emerald-500/10 dark:hover:bg-teal-400/10"
+
                         >
                             <Twitter className="w-5 h-5 text-muted-foreground group-hover:text-emerald-700 dark:group-hover:text-teal-300 transition-colors" />
                             <span className="sr-only">Twitter</span>
@@ -35,7 +38,9 @@ export default function Footer() {
                             href="https://www.instagram.com/ratnesh_maury/"
                             target="_blank"
                             rel="noopener noreferrer"
+
                             className="group relative p-2 rounded-full transition-all duration-200 hover:bg-emerald-500/10 dark:hover:bg-teal-400/10"
+
                         >
                             <InstagramIcon className="w-5 h-5 text-muted-foreground group-hover:text-emerald-700 dark:group-hover:text-teal-300 transition-colors" />
                             <span className="sr-only">Instagram</span>
@@ -47,6 +52,7 @@ export default function Footer() {
                             href="https://www.linkedin.com/in/ratnesh-maurya/"
                             target="_blank"
                             rel="noopener noreferrer"
+
                             className="group relative p-2 rounded-full transition-all duration-200 hover:bg-emerald-500/10 dark:hover:bg-teal-400/10"
                         >
                             <LinkedinIcon className="w-5 h-5 text-muted-foreground group-hover:text-emerald-700 dark:group-hover:text-teal-300 transition-colors" />
@@ -54,12 +60,15 @@ export default function Footer() {
                             <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 px-2 py-1 bg-white dark:bg-slate-800 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block">
                                 Where I pretend to be professional
                             </span>
+
                         </a>
                         <a
                             href="https://github.com/ratnesh-maurya"
                             target="_blank"
                             rel="noopener noreferrer"
+
                             className="group relative p-2 rounded-full transition-all duration-200 hover:bg-emerald-500/10 dark:hover:bg-teal-400/10"
+
                         >
                             <Github className="w-5 h-5 text-muted-foreground group-hover:text-emerald-700 dark:group-hover:text-teal-300 transition-colors" />
                             <span className="sr-only">GitHub</span>
@@ -71,7 +80,9 @@ export default function Footer() {
                             href="https://leetcode.com/ratnesh_maurya/"
                             target="_blank"
                             rel="noopener noreferrer"
+
                             className="group relative p-2 rounded-full transition-all duration-200 hover:bg-emerald-500/10 dark:hover:bg-teal-400/10"
+
                         >
                             <SiLeetcode className="w-5 h-5 text-muted-foreground group-hover:text-emerald-700 dark:group-hover:text-teal-300 transition-colors" />
                             <span className="sr-only">LeetCode</span>

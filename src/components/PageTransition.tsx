@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 
 interface PageTransitionProps {
     children: React.ReactNode;
 }
 
 export default function PageTransition({ children }: PageTransitionProps) {
+
     const [isAnimating, setIsAnimating] = useState(false);
     const [displayChildren, setDisplayChildren] = useState(children);
     const [prevPath, setPrevPath] = useState('');
@@ -69,5 +69,6 @@ export default function PageTransition({ children }: PageTransitionProps) {
                 }
             `}</style>
         </div>
+
     );
-}
+} 

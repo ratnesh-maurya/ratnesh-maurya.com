@@ -7,6 +7,7 @@ import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { FaDownload } from 'react-icons/fa';
 import { Share2 } from 'lucide-react'; // Single share icon
+import { motion } from 'framer-motion';
 
 const mediaUrls = [
   '/gallery/1 (1).heic',
@@ -104,6 +105,7 @@ function GalleryPage() {
   }, []);
 
   return (
+
     <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
       <h1 className="text-center sm:text-start text-4xl font-bold text-teal-500 dark:text-gray-200 mb-6">
         Gallery 📸

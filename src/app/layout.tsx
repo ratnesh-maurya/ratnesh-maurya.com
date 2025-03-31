@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/components/theme-provider";
 import ClientLayout from "./client-layout";
+
 import PageTransition from "@/components/PageTransition";
 import { Space_Grotesk } from "next/font/google";
 
@@ -79,10 +80,12 @@ export default function RootLayout({
         >
           <Header />
 
+
           <main className="pt-auto ">
             <PageTransition>
               {children}
             </PageTransition>
+
             <SpeedInsights />
             <Analytics />
           </main>
