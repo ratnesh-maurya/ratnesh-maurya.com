@@ -154,8 +154,8 @@ export default function Home() {
           <div className="space-y-4 text-gray-700 dark:text-gray-300">
             {Object.entries(tech).map(([category, items]) => (
               <div key={category} className="flex flex-col md:flex-row items-start gap-2">
-                <h3 className="font-semibold mb-1 underline ">{category}:</h3>
-                <p>{items}</p>
+                <h4 className="font-semibold mb-1 text- underline ">{category}:</h4>
+                <p >{items}</p>
               </div>
             ))}
           </div>
