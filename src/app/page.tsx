@@ -1,6 +1,7 @@
-"use client";
 
-import { Github, Linkedin, Twitter, Award, GraduationCap, Briefcase } from "lucide-react";
+import { Github, Linkedin, Twitter } from "lucide-react";
+
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -64,14 +65,12 @@ const certificates = [
   },
 ];
 
-const education = [
-  {
-    degree: "Bachelor of Technology in Computer Science",
-    school: "National Institute of Technology, Jamshedpur",
-    period: "2019 - 2023",
-    score: "CGPA: 8.5/10",
-  }
-];
+
+export default function Home() {
+  return (
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
+
+
 
 const projects = [
   {

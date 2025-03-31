@@ -105,133 +105,86 @@ function GalleryPage() {
   }, []);
 
   return (
-    <div className="min-h-screen overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
-        <div className="relative">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-16 shadow-2xl border border-gray-200/20 dark:border-gray-700/20 mb-16 sm:mb-24 overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/20] via-[rgb(var(--secondary))/10] to-[rgb(var(--primary))/20] rounded-3xl"></div>
-            <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--primary))/20] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--secondary))/20] rounded-full blur-3xl"></div>
 
-            <div className="relative">
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-4xl sm:text-5xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))] mb-12 text-center"
-              >
-                Gallery 📸
-              </motion.h1>
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
+      <h1 className="text-center sm:text-start text-4xl font-bold text-teal-500 dark:text-gray-200 mb-6">
+        Gallery 📸
+      </h1>
 
-              <Masonry
-                breakpointCols={breakpointColumnsObj}
-                className="flex gap-6"
-                columnClassName="flex flex-col gap-6"
-              >
-                {mediaUrls.slice(0, visibleImages).map((url, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 * index, duration: 0.5 }}
-                    className="relative w-full rounded-2xl overflow-hidden group cursor-pointer transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
-                  >
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <div onClick={() => setSelectedMedia(url)}>
-                          {isVideo(url) ? (
-                            <video
-                              src={url}
-                              className="rounded-2xl w-full h-auto"
-                              controls
-                            />
-                          ) : (
-                            <Image
-                              src={url}
-                              alt={`Gallery item ${index + 1}`}
-                              width={1200}
-                              height={800}
-                              layout="responsive"
-                              objectFit="cover"
-                              className="rounded-2xl"
-                              loading="lazy"
-                            />
-                          )}
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="flex gap-4"
+        columnClassName="flex flex-col gap-4"
+      >
+        {mediaUrls.slice(0, visibleImages).map((url, index) => (
+          <div key={index} className="relative w-full rounded-lg overflow-hidden group cursor-pointer">
+            <Dialog>
+              <DialogTrigger asChild>
+                <div
+                  onClick={() => setSelectedMedia(url)}
+                >
+                  {isVideo(url) ? (
+                    <video
+                      src={url}
+                      className="rounded-lg w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                      controls
+                    />
+                  ) : (
+                    <Image
+                      src={url}
+                      alt={`Gallery item ${index + 1}`}
+                      width={1200}
+                      height={800}
+                      layout="responsive"
+                      objectFit="cover"
+                      className="rounded-lg transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  )}
 
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            whileHover={{ opacity: 1 }}
-                            className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent transition-opacity duration-300"
-                          >
-                            <div className="absolute bottom-4 right-4 flex gap-3">
-                              <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                <Button
-                                  size="sm"
-                                  className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/20"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleDownload(url);
-                                  }}
-                                >
-                                  <FaDownload className="w-4 h-4" />
-                                </Button>
-                              </motion.div>
+                  <div className="absolute bottom-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity bg-black/50 p-2 rounded-lg">
+                    <Button
+                      size="sm"
+                      className="bg-gray-800 text-white hover:bg-gray-700"
+                      onClick={() => handleDownload(url)}
+                    >
+                      <FaDownload className="w-4 h-4" />
+                    </Button>
 
-                              <motion.div
-                                whileHover={{ scale: 1.1 }}
-                                whileTap={{ scale: 0.95 }}
-                              >
-                                <Button
-                                  size="sm"
-                                  className="bg-white/20 backdrop-blur-md hover:bg-white/30 text-white border border-white/20"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    handleShare(url);
-                                  }}
-                                >
-                                  <Share2 className="w-4 h-4" />
-                                </Button>
-                              </motion.div>
-                            </div>
-                          </motion.div>
-                        </div>
-                      </DialogTrigger>
+                    <Button
+                      size="sm"
+                      className="bg-gray-600 text-white hover:bg-gray-500"
+                      onClick={() => handleShare(url)}
+                    >
+                      <Share2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </DialogTrigger>
 
-                      {selectedMedia && (
-                        <DialogContent className="max-w-4xl w-[90vw] p-2 bg-white/80 dark:bg-black/80 backdrop-blur-xl">
-                          {isVideo(selectedMedia) ? (
-                            <video src={selectedMedia} className="rounded-xl w-full" controls autoPlay />
-                          ) : (
-                            <Image
-                              src={selectedMedia}
-                              alt="Selected media"
-                              width={1200}
-                              height={800}
-                              layout="responsive"
-                              objectFit="contain"
-                              className="rounded-xl"
-                            />
-                          )}
-                        </DialogContent>
-                      )}
-                    </Dialog>
-                  </motion.div>
-                ))}
-              </Masonry>
+              {selectedMedia && (
+                <DialogContent>
+                  {isVideo(selectedMedia) ? (
+                    <video src={selectedMedia} className="rounded-lg w-full" controls autoPlay />
+                  ) : (
+                    <Image
+                      src={selectedMedia}
+                      alt="Selected media"
+                      width={200}
+                      height={300}
+                      layout="responsive"
+                      objectFit="fill"
+                      className="rounded-lg p-4"
+                    />
+                  )}
+                </DialogContent>
+              )}
+            </Dialog>
+          </div>
+        ))}
+      </Masonry>
 
-              <div ref={observerRef} className="h-10"></div>
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <div ref={observerRef} className="h-10"></div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Script from "next/script";
 
 declare global {
@@ -11,17 +11,42 @@ declare global {
 
 // ✅ Move Crisp Chat to a separate function
 const CrispChat = () => {
+    const [isMobile, setIsMobile] = useState(false);
+
     useEffect(() => {
-        window.$crisp = [];
-        window.CRISP_WEBSITE_ID = "c30f5b1d-7b09-4708-8b51-fda5cfb19206";
-        (function () {
-            const d = document;
-            const s = d.createElement("script");
-            s.src = "https://client.crisp.chat/l.js";
-            s.async = true;
-            d.getElementsByTagName("head")[0].appendChild(s);
-        })();
-    }, []);
+        // Check if window is mobile
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Initial check
+        checkMobile();
+
+        // Add event listener for window resize
+        window.addEventListener('resize', checkMobile);
+
+        // Only initialize Crisp if not mobile
+        if (!isMobile) {
+            window.$crisp = [];
+            window.CRISP_WEBSITE_ID = "c30f5b1d-7b09-4708-8b51-fda5cfb19206";
+            (function () {
+                const d = document;
+                const s = d.createElement("script");
+                s.src = "https://client.crisp.chat/l.js";
+                s.async = true;
+                d.getElementsByTagName("head")[0].appendChild(s);
+            })();
+        }
+
+        // Cleanup
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+            // Remove Crisp if it exists
+            if (window.$crisp) {
+                window.$crisp = [];
+            }
+        };
+    }, [isMobile]);
 
     return null;
 };
@@ -51,7 +76,7 @@ export default function ClientLayout() {
         `}
             </Script>
 
-            {/* ✅ Crisp Chat */}
+            {/* ✅ Crisp Chat - Only on Desktop */}
             <CrispChat />
         </>
     );

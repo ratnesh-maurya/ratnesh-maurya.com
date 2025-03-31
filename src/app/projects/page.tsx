@@ -73,41 +73,12 @@ const projects: Project[] = [
 
 export default function ProjectsPage() {
   return (
-    <div className="min-h-screen overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
-        <div className="relative">
-          <div className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-16 shadow-2xl border border-gray-200/20 dark:border-gray-700/20 mb-16 sm:mb-24 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/20] via-[rgb(var(--secondary))/10] to-[rgb(var(--primary))/20] rounded-3xl"></div>
-            <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--primary))/20] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--secondary))/20] rounded-full blur-3xl"></div>
 
-            <div className="relative">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="relative inline-block mb-8"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--primary))/30] via-[rgb(var(--secondary))/20] to-[rgb(var(--primary))/30] blur-3xl rounded-full"></div>
-                <h1 className="relative text-5xl sm:text-6xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))]">
-                  Projects
-                </h1>
-              </motion.div>
-
-              <div className="space-y-8">
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="relative p-6 sm:p-8 rounded-2xl bg-white/60 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-gray-800/50 transition-all duration-300"
-                  >
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] to-[rgb(var(--secondary))]">
-                      {project.title}
-                    </h3>
-                    <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 mb-2">{project.description}</p>
-                    <p className="text-gray-600 dark:text-gray-300 mb-4">{project.longDescription}</p>
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center sm:text-start ">
+          <h1 className="text-4xl font-bold text-teal-600 dark:text-gray-200 ">Projects 👨‍💻</h1>
+    </div>
 
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tags.map((tag) => (
