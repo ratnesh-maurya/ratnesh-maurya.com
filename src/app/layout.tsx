@@ -89,7 +89,7 @@ export default function RootLayout({
             <SpeedInsights />
             <Analytics />
           </main>
-          <Footer />
+          <Footer />  
         </ThemeProvider>
 
         {/* ✅ Move Client Scripts to a Separate Component */}

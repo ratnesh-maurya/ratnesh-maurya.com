@@ -1,11 +1,8 @@
-
 import { Github, Linkedin, Twitter } from "lucide-react";
-
-
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import Image from "next/image";
+
+
+
 
 const tech = {
   "Programming Languages": "Golang, Typescript, Python, Elixir, C++",
@@ -65,258 +62,140 @@ const certificates = [
   },
 ];
 
-
 export default function Home() {
   return (
     <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
 
 
 
-const projects = [
-  {
-    title: "Key Management System",
-    description: "Built a secure key management system with client-side encryption and designed a Kubernetes Controller",
-    tech: "Golang, Kubernetes, Encryption",
-    link: "https://github.com/ratnesh-maurya"
-  },
-  {
-    title: "Digital Lending Platform",
-    description: "Enhanced platform by integrating services like NSDL, Aadhaar, and PAN verification",
-    tech: "Golang, Microservices, AWS",
-    link: "https://www.loannetwork.app/"
-  }
-];
-
-export default function Home() {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="min-h-screen  overflow-hidden"
-    >
-      <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative"
-        >
-          {/* Hero Section */}
-          <div className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-16 shadow-2xl border border-gray-200/20 dark:border-gray-700/20 mb-16 sm:mb-24 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/20] via-[rgb(var(--secondary))/10] to-[rgb(var(--primary))/20] rounded-3xl"></div>
-            <div className="absolute top-0 right-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--primary))/20] rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 sm:w-96 sm:h-96 bg-[rgb(var(--secondary))/20] rounded-full blur-3xl"></div>
-
-            <div className="relative grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 items-center">
-              <div className="text-left">
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                  className="relative inline-block"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--primary))/30] via-[rgb(var(--secondary))/20] to-[rgb(var(--primary))/30] blur-3xl rounded-full"></div>
-                  <h1 className="relative text-5xl sm:text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))]">
-                    Ratnesh Maurya
-                  </h1>
-                </motion.div>
-                <p className="text-xl sm:text-2xl text-gray-600 dark:text-gray-100 leading-relaxed mb-8 sm:mb-10 max-w-2xl">
-                  Software Development Engineer specializing in backend development and cloud-native technologies
-                </p>
-                <div className="flex justify-center sm:justify-start gap-4 sm:gap-6">
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="https://x.com/ratnesh_maurya_"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-[rgb(var(--primary))] to-[rgb(var(--primary))/80] shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <Twitter className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="https://www.linkedin.com/in/ratnesh-maurya"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-[rgb(var(--secondary))] to-[rgb(var(--secondary))/80] shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <Linkedin className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                  </motion.a>
-                  <motion.a
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    href="https://github.com/ratnesh-maurya"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 sm:p-4 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-900 shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    <Github className="h-6 w-6 sm:h-7 sm:w-7 text-white" />
-                  </motion.a>
-                </div>
-              </div>
-              <div className="relative mt-8 md:mt-0">
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  className="aspect-square rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[rgb(var(--primary))/20] via-[rgb(var(--secondary))/10] to-[rgb(var(--primary))/20] p-1"
-                >
-                  <div className="w-full h-full rounded-2xl sm:rounded-3xl bg-white/50 dark:bg-black/50 backdrop-blur-xl p-4 sm:p-6 flex items-center justify-center">
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4 w-full">
-                      {Object.entries(tech).map(([category, items], index) => (
-                        <motion.div
-                          key={index}
-                          whileHover={{ scale: 1.02 }}
-                          transition={{ duration: 0.2 }}
-                          className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white/60 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20"
-                        >
-                          <h3 className="font-semibold text-sm sm:text-base text-[rgb(var(--primary))] dark:text-[rgb(var(--primary))] mb-1.5 sm:mb-2">{category}</h3>
-                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-100 line-clamp-3">{items}</p>
-                        </motion.div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Content */}
-          <div className="space-y-16 sm:space-y-24">
-            {/* Experience Section */}
-            <motion.section
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-200/20 dark:border-gray-700/20"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/10] via-[rgb(var(--secondary))/5] to-[rgb(var(--primary))/10] rounded-3xl"></div>
-              <div className="relative">
-                <div className="flex items-center gap-4 mb-8 sm:mb-12">
-                  <Briefcase className="h-8 w-8 sm:h-10 sm:w-10 text-[rgb(var(--primary))]" />
-                  <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))]">
-                    Experience
-                  </h2>
-                </div>
-                <div className="space-y-6 sm:space-y-8">
-                  {experiences.map((exp, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
-                      className="flex flex-col sm:flex-row gap-4 sm:gap-6 p-6 sm:p-8 rounded-2xl bg-white/60 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-gray-800/50 transition-all duration-300"
-                    >
-                      <div className="w-full sm:w-48 flex-shrink-0 text-[rgb(var(--primary))] dark:text-[rgb(var(--primary))] font-medium text-base sm:text-lg">{exp.period}</div>
-                      <div className="flex-1">
-                        <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 mb-2 sm:mb-0">
-                          <div className="font-semibold text-xl sm:text-2xl text-gray-700 dark:text-gray-100">{exp.role}</div>
-                          <a
-                            href={exp.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-[rgb(var(--secondary))] dark:text-[rgb(var(--secondary))] hover:text-[rgb(var(--accent))] dark:hover:text-[rgb(var(--accent))] transition-colors text-lg sm:text-xl"
-                          >
-                            {exp.company}
-                          </a>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.section>
-
-            {/* Blogs Section */}
-            <motion.section
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-200/20 dark:border-gray-700/20"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/10] via-[rgb(var(--secondary))/5] to-[rgb(var(--primary))/10] rounded-3xl"></div>
-              <div className="relative">
-                <div className="flex items-center gap-4 mb-8 sm:mb-12">
-                  <Award className="h-8 w-8 sm:h-10 sm:w-10 text-[rgb(var(--primary))]" />
-                  <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))]">
-                    Recent Blogs
-                  </h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                  {blogs.map((blog, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
-                      className="p-6 sm:p-8 rounded-2xl bg-white/60 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-gray-800/50 transition-all duration-300"
-                    >
-                      <span className="text-sm sm:text-base text-[rgb(var(--primary))] dark:text-[rgb(var(--primary))] mb-2 sm:mb-3 block">{blog.date}</span>
-                      <Link href={`/blogs/${blog.slug}`} className="text-xl sm:text-2xl text-gray-700 dark:text-gray-100 hover:text-[rgb(var(--primary))] dark:hover:text-[rgb(var(--primary))] transition-colors">
-                        {blog.title}
-                      </Link>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.section>
-
-            {/* Certifications Section */}
-            <motion.section
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl p-8 sm:p-12 shadow-xl border border-gray-200/20 dark:border-gray-700/20"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[rgb(var(--primary))/10] via-[rgb(var(--secondary))/5] to-[rgb(var(--primary))/10] rounded-3xl"></div>
-              <div className="relative">
-                <div className="flex items-center gap-4 mb-8 sm:mb-12">
-                  <GraduationCap className="h-8 w-8 sm:h-10 sm:w-10 text-[rgb(var(--primary))]" />
-                  <h2 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[rgb(var(--primary))] via-[rgb(var(--secondary))] to-[rgb(var(--primary))]">
-                    Certifications
-                  </h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
-                  {certificates.map((cert, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.02 }}
-                      className="p-6 sm:p-8 rounded-2xl bg-white/60 dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-gray-800/50 transition-all duration-300"
-                    >
-                      <a
-                        href={cert.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                      >
-                        <div className="font-semibold text-xl sm:text-2xl mb-2 sm:mb-3 text-gray-700 dark:text-gray-100 hover:text-[rgb(var(--primary))] dark:hover:text-[rgb(var(--primary))] transition-colors">
-                          {cert.title}
-                        </div>
-                        <div className="text-[rgb(var(--secondary))] dark:text-[rgb(var(--secondary))] text-lg sm:text-xl">
-                          by {cert.issuer}
-                        </div>
-                      </a>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.section>
-          </div>
-        </motion.div>
+      <div >
+        <h1 className="text-3xl font-bold text-center sm:text-start text-teal-600 dark:text-gray-200   ">Ratnesh Maurya</h1>
       </div>
-    </motion.div>
+      <div className="px-2">
+
+        <section className="py-6">
+          <h2 className="text-3xl font-bold mb-6">Hey there! 👋</h2>
+          <p className="text-gray-700 dark:text-gray-300 mb-6">
+            I am a <span className="font-semibold">Software Development Engineer</span>, passionate about backend development and cloud-native technologies. Currently I am working at {" "}
+            <a
+              href="https://www.linkedin.com/company/initializ/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:text-orange-600 font-bold"
+            >
+              Initializ
+            </a>
+            , where  I collaborate with <a
+              href="https://www.loannetwork.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:text-orange-600 font-bold"
+            >
+              Loannetwork
+            </a> to enhance their digital lending platform by integrating services like NSDL, Aadhaar, and PAN verification. I also built a secure Key Management System with client-side encryption and designed a Kubernetes Controller. Previously, I interned at{" "}
+            <a
+              href="https://www.linkedin.com/company/emsec/about/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:text-orange-600 font-bold"
+            >
+              EMSEC Pvt. Ltd.
+            </a>
+            , developing scalable RESTful APIs and data scraping frameworks.
+          </p>
+          <div className="flex items-center gap-4">
+            <span className="text-muted-foreground">Find me on</span>
+            <a href="https://x.com/ratnesh_maurya_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className=" hover:text-orange-600 font-bold">
+              <Twitter className="h-5 w-5" />
+            </a>
+            <a href="https://www.linkedin.com/in/ratnesh-maurya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange-600 font-bold">
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a href="https://github.com/ratnesh-maurya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-orange-600 font-bold">
+              <Github className="h-5 w-5" />
+            </a>
+          </div>
+        </section>
+
+        <section className="py-6">
+          <h2 className="text-2xl font-bold mb-6">Experience</h2>
+          <div className="space-y-4">
+            {experiences.map((exp, index) => (
+              <div key={index} className="flex gap-4">
+                <div className="w-40 flex-shrink-0 text-muted-foreground">{exp.period}</div>
+                <div className="flex flex-col md:flex-row items-start gap-2">
+                  <div className="font">{exp.role}</div>
+                  <a
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-muted-foreground underline hover:text-orange-700"
+                  >
+                    {exp.company}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+
+        <section className="py-6">
+          <h2 className="text-2xl font-bold mb-6">Technologies I have worked with</h2>
+          <div className="space-y-4 text-gray-700 dark:text-gray-300">
+            {Object.entries(tech).map(([category, items]) => (
+              <div key={category} className="flex flex-col md:flex-row items-start gap-2">
+                <h3 className="font-semibold mb-1 underline ">{category}:</h3>
+                <p>{items}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-6">
+          <h2 className="text-2xl font-bold mb-6">Recent Blogs</h2>
+          <div className="space-y-4">
+            {blogs.map((blog, index) => (
+              <div key={index} className="flex flex-col md:flex-row items-start gap-2">
+                <span className="text-muted-foreground">{blog.date}</span>
+                <Link href={`/blogs/${blog.slug}`}>
+                  <p className="underline hover:decoration-teal-600 hover:dark:decoration-orange-400">{blog.title}</p>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-6">
+          <h2 className="text-2xl font-bold mb-6">Certifications</h2>
+          <div className="space-y-4">
+            {certificates.map((cert, index) => (
+              <div key={index} className="flex gap-4 items-center">
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:decoration-teal-600 hover:dark:decoration-orange-400"
+                >
+                  {cert.title}
+                </a>
+                <span className="text-muted-foreground">by {cert.issuer}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
+    </div>
+
   );
 }

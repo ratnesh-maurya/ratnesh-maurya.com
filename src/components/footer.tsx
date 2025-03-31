@@ -6,9 +6,11 @@ export default function Footer() {
     const yearsOfExperience = currentYear - 2020; // Assuming you started coding in 2020
 
 
-        <footer className="p-10 dark:bg-gray-950  bg-slate-50 ">
-            <div className="max-w-4xl mx-auto px-4">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+    return (
+        <>
+            <footer className="p-10 dark:bg-gray-950  bg-slate-50 ">
+                <div className="max-w-4xl mx-auto px-4">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div className="text-center md:text-left">
                         <p className="font-sans text-sm text-muted-foreground">
                             © {currentYear} Ratnesh Maurya. All rights reserved.
@@ -91,8 +93,9 @@ export default function Footer() {
                             </span>
                         </a>
                     </div>
-                </div>
+                </div>  
             </div>
         </footer>
+        </>
     );
 }
