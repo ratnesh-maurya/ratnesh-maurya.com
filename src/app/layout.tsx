@@ -8,6 +8,13 @@ import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/components/theme-provider";
 import ClientLayout from "./client-layout";
 import PageTransition from "@/components/PageTransition";
+import { Space_Grotesk } from "next/font/google";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Ratnesh Maurya - Software Engineer",
@@ -62,7 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`mx-auto font-sans bg-[url('/we.jpg')] dark:bg-gray-950 dark:bg-[url('/bg.gif')] bg-fixed bg-cover bg-center ${GeistSans.variable}`}
+        className={`mx-auto font-sans bg-[url('/wee.jpg')] dark:bg-gray-950 dark:bg-[url('/bg.gif')] bg-fixed bg-cover bg-center ${GeistSans.variable} ${spaceGrotesk.variable}`}
       >
         <ThemeProvider
           attribute="class"
@@ -71,10 +78,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Header />
-          
+
           <main className="pt-auto ">
             <PageTransition>
-            {children}
+              {children}
             </PageTransition>
             <SpeedInsights />
             <Analytics />

@@ -104,7 +104,7 @@ function GalleryPage() {
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 font-sans shadow-lg dark:bg-gray-900/80 shadow-black p-6 backdrop-blur-xl rounded-xl">
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
       <h1 className="text-center sm:text-start text-4xl font-bold text-teal-500 dark:text-gray-200 mb-6">
         Gallery 📸
       </h1>

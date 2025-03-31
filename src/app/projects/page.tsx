@@ -70,7 +70,7 @@ const projects: Project[] = [
 
 function ProjectsPage() {
   return (
-    <div className="max-w-3xl mx-auto px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black  backdrop-blur-xl rounded-xl mr-2 ml-2 p-2  sm:p-6   sm:mx-auto">
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
       <div className="max-w-4xl mx-auto">
         <div className="text-center sm:text-start ">
           <h1 className="text-4xl font-bold text-teal-600 dark:text-gray-200 ">Projects 👨‍💻</h1>

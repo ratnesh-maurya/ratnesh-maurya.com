@@ -1,4 +1,3 @@
-
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Link from "next/link";
 
@@ -39,7 +38,7 @@ const blogs = [
     date: "Nov 23, 2024",
   },
   {
-    title: "Architectural Design for a Ride App such as OLA, UBER, RAPIDO",
+    title: "Architectural Design for a Ride App such as OLA, UBER, RAPIDO",
     slug: "Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO",
     date: "Jul 30, 2024",
   }
@@ -65,7 +64,8 @@ const certificates = [
 
 export default function Home() {
   return (
-    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-2xl dark:bg-gray-950/70 shadow-black  backdrop-blur-xl rounded-xl mr-2 ml-2 p-2  sm:p-6   sm:mx-auto">
+    <div className="max-w-3xl mx-auto   px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
+
 
 
       <div >

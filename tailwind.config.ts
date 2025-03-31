@@ -56,7 +56,8 @@ const config: Config = {
         assistant: ["var(--font-assistant)"],
         merriweather: ["var(--font-merriweather)"],
         inter: ["var(--font-inter)"],
-		sans: ['var(--font-geist-sans)']
+        space: ["var(--font-geist-sans)"],
+        sans: ["var(--font-space-grotesk)"],
       },
       borderRadius: {
         lg: "var(--radius)",

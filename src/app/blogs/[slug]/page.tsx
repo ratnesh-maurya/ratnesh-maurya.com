@@ -83,7 +83,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
         .then((file) => file.toString());
 
     return (
-        <article className="max-w-3xl mx-auto px-4 py-8 font-sans shadow-lg dark:bg-gray-950/70 shadow-black backdrop-blur-xl rounded-xl sm:px-6 sm:py-12">
+        <article className="max-w-3xl mx-auto px-4 py-8 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
             {/* Breadcrumb and Navigation */}
 
             <div className="text-sm text-gray-600 dark:text-gray-300 mb-6">
