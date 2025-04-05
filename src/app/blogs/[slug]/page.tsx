@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import ReactMarkdown, { Components } from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 import { type ComponentPropsWithoutRef } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { type CSSProperties } from 'react';
 import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
@@ -109,7 +108,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
                             const isInline = !match;
                             return !isInline ? (
                                 <SyntaxHighlighter
-                                    style={oneDark as { [key: string]: CSSProperties }}
+                                    // @ts-expect-error -- oneDark theme is correctly typed internally
+                                    style={oneDark}
                                     language={match?.[1]}
                                     PreTag="div"
                                     {...props}
@@ -117,19 +117,42 @@ export default async function Page({ params }: { params: { slug: string } }) {
                                     {String(children).replace(/\n$/, '')}
                                 </SyntaxHighlighter>
                             ) : (
-                                <code className={className} {...props}>
+                                <code className="bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 px-1.5 py-0.5 rounded-md font-mono text-sm" {...props}>
                                     {children}
                                 </code>
                             );
                         },
                         // Customize heading styles
-                        h1: ({ node, ...props }) => <h1 className="text-teal-700 dark:text-teal-500" {...props} />,
-                        h2: ({ node, ...props }) => <h2 className="text-teal-700 dark:text-teal-500" {...props} />,
-                        h3: ({ node, ...props }) => <h3 className="text-teal-700 dark:text-teal-500" {...props} />,
+                        h1: ({ children, ...props }: ComponentPropsWithoutRef<'h1'>) => (
+                            <h1 className="text-teal-700 dark:text-teal-500" {...props}>{children}</h1>
+                        ),
+                        h2: ({ children, ...props }: ComponentPropsWithoutRef<'h2'>) => (
+                            <h2 className="text-teal-700 dark:text-teal-500" {...props}>{children}</h2>
+                        ),
+                        h3: ({ children, ...props }: ComponentPropsWithoutRef<'h3'>) => (
+                            <h3 className="text-teal-700 dark:text-teal-500" {...props}>{children}</h3>
+                        ),
+                        h4: ({ children, ...props }: ComponentPropsWithoutRef<'h4'>) => (
+                            <h4 className="text-teal-700 dark:text-teal-500" {...props}>{children}</h4>
+                        ),
+                        h5: ({ children, ...props }: ComponentPropsWithoutRef<'h5'>) => (
+                            <h5 className="text-teal-700 dark:text-teal-500" {...props}>{children}</h5>
+                        ),
+                        h6: ({ children, ...props }: ComponentPropsWithoutRef<'h6'>) => (
+                            <h6 className="text-teal-700 dark:text-teal-500" {...props}>{children}</h6>
+                        ),
                         // Customize link styles
-                        a: ({ node, ...props }) => <a className="text-teal-700 dark:text-teal-500 hover:text-teal-900 dark:hover:text-teal-400" {...props} />,
+                        a: ({ children, ...props }: ComponentPropsWithoutRef<'a'>) => (
+                            <a className="text-teal-700 dark:text-teal-400 hover:text-teal-900 dark:hover:text-orange-600" {...props}>{children}</a>
+                        ),
                         // Customize paragraph styles
-                        p: ({ node, ...props }) => <p className="text-gray-800 dark:text-gray-300" {...props} />,
+                        p: ({ children, ...props }: ComponentPropsWithoutRef<'p'>) => (
+                            <p className="text-gray-800 dark:text-gray-300" {...props}>{children}</p>
+                        ),
+                        // Add strong element styling
+                        strong: ({ children, ...props }: ComponentPropsWithoutRef<'strong'>) => (
+                            <strong className="text-black dark:text-white font-bold" {...props}>{children}</strong>
+                        ),
                     }}
                 >
                     {content}
