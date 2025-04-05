@@ -1,14 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import rehypeDocument from 'rehype-document';
-import rehypeFormat from 'rehype-format';
-import rehypePrettyCode from 'rehype-pretty-code';
-import rehypeStringify from 'rehype-stringify';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
-import { transformerCopyButton } from '@rehype-pretty/transformers';
+import ReactMarkdown, { Components } from 'react-markdown';
+import { type ComponentPropsWithoutRef } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { type CSSProperties } from 'react';
+import { oneDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
@@ -64,28 +62,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
     const fileContent = fs.readFileSync(filePath, 'utf-8');
     const { content, data } = matter(fileContent);
 
-    const file = await unified()
-        .use(remarkParse)
-        .use(remarkRehype)
-        .use(rehypeDocument, { title: '👋🌍' })
-        .use(rehypeFormat)
-        .use(rehypeStringify)
-        .use(rehypePrettyCode, {
-            theme: 'ayu-dark',
-            transformers: [
-                transformerCopyButton({
-                    visibility: 'always',
-                    feedbackDuration: 3_000,
-                }),
-            ],
-        })
-        .process(content)
-        .then((file) => file.toString());
-
     return (
-        <article className="max-w-3xl mx-auto px-4 py-8 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black  backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16  sm:p-6   sm:mx-auto">
+        <article className="max-w-3xl mx-auto px-4 py-8 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16 sm:p-6 sm:mx-auto">
             {/* Breadcrumb and Navigation */}
-
             <div className="text-sm text-gray-600 dark:text-gray-300 mb-6">
                 <Link href="/blogs" className="text-teal-600 dark:text-orange-500 hover:text-teal-800 dark:hover:text-orange-600">
                     Blogs
@@ -118,22 +97,44 @@ export default async function Page({ params }: { params: { slug: string } }) {
                         <ShareButtons title={data.title} url={`https://ratn.tech/blogs/${slug}`} />
                     </div>
                 </div>
-
-
-
             </header>
 
             {/* Blog Content Section */}
-            <div
-                className="prose max-w-none font-sans dark:text-gray-300
-                    dark:prose-headings:text-teal-500
-                    prose-headings:text-teal-700
-                    dark:prose-strong:text-white
-                    prose-strong:text-gray-700
-                    prose-a:text-teal-700
-                    dark:prose-code:text-orange-600"
-                dangerouslySetInnerHTML={{ __html: file }}
-            />
+            <div className="prose max-w-none font-sans dark:text-gray-300">
+                <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    components={{
+                        code: ({ className, children, ...props }: ComponentPropsWithoutRef<'code'>) => {
+                            const match = /language-(\w+)/.exec(className || '');
+                            const isInline = !match;
+                            return !isInline ? (
+                                <SyntaxHighlighter
+                                    style={oneDark as { [key: string]: CSSProperties }}
+                                    language={match?.[1]}
+                                    PreTag="div"
+                                    {...props}
+                                >
+                                    {String(children).replace(/\n$/, '')}
+                                </SyntaxHighlighter>
+                            ) : (
+                                <code className={className} {...props}>
+                                    {children}
+                                </code>
+                            );
+                        },
+                        // Customize heading styles
+                        h1: ({ node, ...props }) => <h1 className="text-teal-700 dark:text-teal-500" {...props} />,
+                        h2: ({ node, ...props }) => <h2 className="text-teal-700 dark:text-teal-500" {...props} />,
+                        h3: ({ node, ...props }) => <h3 className="text-teal-700 dark:text-teal-500" {...props} />,
+                        // Customize link styles
+                        a: ({ node, ...props }) => <a className="text-teal-700 dark:text-teal-500 hover:text-teal-900 dark:hover:text-teal-400" {...props} />,
+                        // Customize paragraph styles
+                        p: ({ node, ...props }) => <p className="text-gray-800 dark:text-gray-300" {...props} />,
+                    }}
+                >
+                    {content}
+                </ReactMarkdown>
+            </div>
         </article>
     );
 }
