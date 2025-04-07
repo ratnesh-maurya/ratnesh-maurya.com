@@ -53,19 +53,26 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
 
     return (
         <div className="min-h-screen">
-            {/* Decorative background elements */}
+            {/* Enhanced Decorative background elements */}
             <div className="fixed inset-0 -z-10 overflow-hidden">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>
                 <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000 dark:bg-teal-400 dark:opacity-5"></div>
                 <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000 dark:bg-teal-500 dark:opacity-5"></div>
                 <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-teal-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-3000 dark:bg-teal-400 dark:opacity-5"></div>
                 <div className="absolute bottom-1/3 right-1/2 w-64 h-64 bg-teal-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-5000 dark:bg-teal-300 dark:opacity-5"></div>
+
+                {/* Futuristic grid overlay */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
             </div>
 
             <div className="relative max-w-5xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-                {/* Header Section */}
+                {/* Enhanced Header Section */}
                 <div className="text-center mb-12 relative">
-                    <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-600 via-teal-500 to-teal-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-500 bg-clip-text text-transparent mb-4 drop-shadow-sm">
+                    <div className="absolute inset-0 -z-10">
+                        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 via-transparent to-teal-500/10 blur-3xl"></div>
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
+                    </div>
+                    <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-400 via-teal-300 to-teal-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow">
                         Blogs ✍️
                     </h1>
                     <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
@@ -73,7 +80,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                     </p>
                 </div>
 
-                {/* Blog Section */}
+                {/* Enhanced Blog Section */}
                 <section id="blogs" className="space-y-8">
                     {posts.length > 0 ? (
                         <div className="grid gap-8 sm:grid-cols-1">
@@ -85,47 +92,49 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                                         animation: `fadeIn 0.5s ease-out ${index * 0.1}s backwards`
                                     }}
                                 >
-                                    {/* Hover effect background */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    {/* Enhanced Hover effect background */}
+                                    <div className="absolute inset-0 bg-gradient-to-r from-teal-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
                                     <Link
                                         href={`/blogs/${post.slug}`}
                                         className="block p-6 sm:p-8 relative"
                                         onClick={() => handleBlogClick(post.slug)}
                                     >
-                                        {/* Blog Title */}
-                                        <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors">
+                                        {/* Blog Title with enhanced hover effect */}
+                                        <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-teal-600 dark:group-hover:text-teal-400 transition-colors relative">
                                             {post.title}
+                                            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-teal-400 to-teal-600 group-hover:w-full transition-all duration-500"></span>
                                         </h3>
 
-                                        {/* Blog Metadata */}
+                                        {/* Enhanced Blog Metadata */}
                                         <div className="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 gap-4 mb-4">
-                                            <div className="flex items-center gap-2 bg-teal-50/50 dark:bg-teal-900/20 px-3 py-1 rounded-full">
+                                            <div className="flex items-center gap-2 bg-teal-50/50 dark:bg-teal-900/20 px-3 py-1 rounded-full backdrop-blur-sm border border-teal-100/30 dark:border-teal-500/20">
                                                 <CalendarDays className="h-4 w-4 text-teal-500 dark:text-teal-400" />
                                                 <span>{post.date}</span>
                                             </div>
-                                            <div className="flex items-center gap-2 bg-teal-50/50 dark:bg-teal-900/20 px-3 py-1 rounded-full">
+                                            <div className="flex items-center gap-2 bg-teal-50/50 dark:bg-teal-900/20 px-3 py-1 rounded-full backdrop-blur-sm border border-teal-100/30 dark:border-teal-500/20">
                                                 <Eye className="h-4 w-4 text-teal-500 dark:text-teal-400" />
                                                 <span>{blogViews[post.slug] ?? 0} views</span>
                                             </div>
-                                            <span className="px-3 py-1 text-sm rounded-full bg-teal-100/50 dark:bg-teal-700/20 text-teal-600 dark:text-teal-300 font-medium border border-teal-200/50 dark:border-teal-500/20">
+                                            <span className="px-3 py-1 text-sm rounded-full bg-teal-100/50 dark:bg-teal-700/20 text-teal-600 dark:text-teal-300 font-medium border border-teal-200/50 dark:border-teal-500/20 backdrop-blur-sm">
                                                 {post.readTime}
                                             </span>
                                         </div>
 
-                                        {/* Excerpt */}
+                                        {/* Excerpt with enhanced styling */}
                                         <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-6 line-clamp-2">
                                             {post.excerpt}
                                         </p>
 
-                                        {/* Read More Button */}
-                                        <div className="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-medium group/button bg-teal-50/50 dark:bg-teal-900/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-teal-100/50 dark:hover:bg-teal-800/20">
+                                        {/* Enhanced Read More Button */}
+                                        <div className="inline-flex items-center gap-2 text-teal-600 dark:text-teal-400 font-medium group/button bg-teal-50/50 dark:bg-teal-900/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-teal-100/50 dark:hover:bg-teal-800/20 backdrop-blur-sm border border-teal-100/30 dark:border-teal-500/20">
                                             Read more
                                             <ArrowRight className="h-5 w-5 transition-transform group-hover/button:translate-x-1" />
                                         </div>
                                     </Link>
 
-                                    {/* Decorative gradient line */}
+                                    {/* Enhanced Decorative gradient line */}
                                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-400 dark:from-teal-500 dark:via-teal-400 dark:to-teal-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out opacity-80"></div>
                                 </article>
                             ))}

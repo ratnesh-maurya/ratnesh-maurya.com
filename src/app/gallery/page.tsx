@@ -115,7 +115,7 @@ function GalleryPage() {
         <div className="text-center relative">
           <div className="absolute inset-0 -z-10 bg-gradient-to-b from-teal-100/20 via-transparent to-transparent dark:from-teal-500/5 blur-2xl"></div>
           <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-600 via-teal-500 to-teal-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-500 bg-clip-text text-transparent mb-4 drop-shadow-sm">
-            Gallery 📸
+            Gallery 
           </h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
             Capturing moments from tech conferences, community events, and coding adventures.
