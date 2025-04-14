@@ -25,7 +25,7 @@ const projects: Project[] = [
     tags: ['TypeScript', 'React', 'Node.js', 'Tailwind-css', 'Go'],
     links: {
       github: 'https://github.com/Ratnesh-Team/Rehabify',
-      live: 'https://rehabify.ratn.tech/',
+      live: 'https://rehabify.ratnesh-maurya.com/',
     },
     image: '/rehabify.png',
   },
@@ -62,7 +62,7 @@ const projects: Project[] = [
     tags: ['TypeScript', 'React', 'Tailwind-css'],
     links: {
       github: 'https://github.com/ratnesh-maurya/currency-converter',
-      live: 'https://currency.ratn.tech/',
+      live: 'https://currency.ratnesh-maurya.com/',
     },
     image: '/currency-converter.png',
   },

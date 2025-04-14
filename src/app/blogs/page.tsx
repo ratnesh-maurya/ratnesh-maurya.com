@@ -47,9 +47,9 @@ export async function generateMetadata(): Promise<Metadata> {
             title: 'Blogs - Ratnesh Maurya',
             description: 'Blogs written by Ratnesh Maurya',
             type: 'website',
-            url: 'https://ratn.tech/blogs',
+            url: 'https://ratnesh-maurya.com/blogs',
             images: {
-                url: 'https://ratn.tech/blogs.jpg',
+                url: 'https://ratnesh-maurya.com/blogs.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Blogs - Ratnesh Maurya',
@@ -62,7 +62,7 @@ export async function generateMetadata(): Promise<Metadata> {
             description: 'Blogs written by Ratnesh Maurya',
             creator: '@ratnesh_maurya_',
             images: {
-                url: 'https://ratn.tech/blogs.jpg',
+                url: 'https://ratnesh-maurya.com/blogs.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Blogs - Ratnesh Maurya',

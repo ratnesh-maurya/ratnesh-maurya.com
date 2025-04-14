@@ -9,10 +9,10 @@ export const metadata: Metadata = {
         title: "Gallery - Ratnesh Maurya",
         description: "Explore the gallery of Ratnesh Maurya, including images and videos.",
         type: "website",
-        url: "https://ratn.tech/gallery",
+        url: "https://ratnesh-maurya.com/gallery",
         images: [
             {
-                url: "https://ratn.tech/gallery.jpg",
+                url: "https://ratnesh-maurya.com/gallery.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Gallery - Ratnesh Maurya",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
         creator: "@ratnesh_maurya_",
         images: [
             {
-                url: "https://ratn.tech/gallery.jpg",
+                url: "https://ratnesh-maurya.com/gallery.jpg",
                 width: 1200,
                 height: 630,
                 alt: "Gallery - Ratnesh Maurya",

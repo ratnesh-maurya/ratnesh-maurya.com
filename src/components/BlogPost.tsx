@@ -83,7 +83,7 @@ export default function BlogPost({ title, description, author, date, slug, conte
                                             <span>{new Date(date).toLocaleDateString()}</span>
                                         </div>
                                     </div>
-                                    <ShareButtons title={title} url={`https://ratn.tech/blogs/${slug}`} />
+                                    <ShareButtons title={title} url={`https://ratnesh-maurya.com/blogs/${slug}`} />
                                 </motion.div>
                             </header>
 

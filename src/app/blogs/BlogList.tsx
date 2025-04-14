@@ -22,7 +22,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
             await Promise.all(
                 posts.map(async (post) => {
                     try {
-                        const res = await fetch(`https://api.ratn.tech/blogview/${post.slug}`);
+                        const res = await fetch(`https://api.ratnesh-maurya.com/blogview/${post.slug}`);
                         const data = await res.json();
                         updatedViews[post.slug] = data.views || 0;
                     } catch (error) {
@@ -39,7 +39,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
 
     const handleBlogClick = async (slug: string) => {
         try {
-            await fetch(`https://api.ratn.tech/blogview/${slug}`, {
+            await fetch(`https://api.ratnesh-maurya.com/blogview/${slug}`, {
                 method: 'POST',
             });
             setBlogViews((prev) => ({

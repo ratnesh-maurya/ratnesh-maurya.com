@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             title: `${data.title} - Ratnesh Maurya`,
             description: data.description,
             type: 'article',
-            url: `https://ratn.tech/blogs/${params.slug}`,
+            url: `https://ratnesh-maurya.com/blogs/${params.slug}`,
             images: {
                 url: `${data.image}`,
                 width: 1200,
@@ -102,7 +102,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                             </div>
                         </div>
                         <div>
-                            <ShareButtons title={data.title} url={`https://ratn.tech/blogs/${slug}`} />
+                            <ShareButtons title={data.title} url={`https://ratnesh-maurya.com/blogs/${slug}`} />
                         </div>
                     </div>
                 </header>

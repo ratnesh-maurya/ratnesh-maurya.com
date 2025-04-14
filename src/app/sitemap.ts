@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const stats = fs.statSync(filePath);
 
     return {
-      url: `https://ratn.tech/blogs/${slug}`,
+      url: `https://ratnesh-maurya.com/blogs/${slug}`,
       lastModified: stats.mtime,
       changeFrequency: "weekly" as const,
       priority: 0.7,
@@ -24,25 +24,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Add static routes
   const routes = [
     {
-      url: "https://ratn.tech",
+      url: "https://ratnesh-maurya.com",
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 1,
     },
     {
-      url: "https://ratn.tech/blogs",
+      url: "https://ratnesh-maurya.com/blogs",
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
     {
-      url: "https://ratn.tech/projects",
+      url: "https://ratnesh-maurya.com/projects",
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.5,
     },
     {
-      url: "https://ratn.tech/gallery",
+      url: "https://ratnesh-maurya.com/gallery",
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.5,

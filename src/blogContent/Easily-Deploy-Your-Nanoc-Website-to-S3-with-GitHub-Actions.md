@@ -5,12 +5,12 @@ author: Ratnesh Maurya
 date: " Nov 23, 2024"
 slug: Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions
 category: AWS
-image: https://ratn.tech/blogs/Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions.jpg
+image: https://ratnesh-maurya.com/blogs/Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions.jpg
 keywords: AWS, Nanoc, GitHub Actions, Deployment, S3, Automation, Web Development, Nanoc Website, AWS S3, GitHub Repository, IAM Credentials, GitHub Actions Workflow, Deployment Process, Automation, Web Development, GitHub Actions, Nanoc Website, AWS S3, GitHub Repository, IAM Credentials, GitHub Actions Workflow, Deployment Process
 readTime: "5 min read"
 ---
 
-![](https://ratn.tech/blogs/Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions.jpg)
+![](https://ratnesh-maurya.com/blogs/Easily-Deploy-Your-Nanoc-Website-to-S3-with-GitHub-Actions.jpg)
 
 In the ever-evolving realm of web development, streamlining deployment processes has become crucial for maintaining efficiency and ensuring seamless website updates. GitHub Actions, a powerful tool for automating tasks within your GitHub repository, offers an excellent solution for deploying your Nanoc website to an AWS S3 bucket.
 
@@ -89,7 +89,7 @@ GitHub Actions simplifies the deployment process by automating the following tas
 }
 ```
 
-1.  Add Secrets to GitHub Repository:Navigate to the Settings tab in your GitHub repository.Access the Secrets section.Add two secrets:AWS_ACCESS_KEY_ID: Paste your AWS Access Key ID.   AWS_SECRET_ACCESS_KEY: Paste your AWS Secret Access Key.
+1.  Add Secrets to GitHub Repository:Navigate to the Settings tab in your GitHub repository.Access the Secrets section.Add two secrets:AWS_ACCESS_KEY_ID: Paste your AWS Access Key ID. AWS_SECRET_ACCESS_KEY: Paste your AWS Secret Access Key.
 2.  Deploy Using GitHub Actions: Push the latest changes to your GitHub repository's main branch.GitHub Actions will automatically trigger the deployment workflow.
 
 ```yaml

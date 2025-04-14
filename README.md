@@ -1,40 +1,40 @@
-# Ratn.tech – Personal Portfolio  
+# ratnesh-maurya.com – Personal Portfolio
 
-This is the repository for a personal portfolio website, built to showcase projects, skills, and professional experiences.  
+This is the repository for a personal portfolio website, built to showcase projects, skills, and professional experiences.
 
-## Technologies Used  
+## Technologies Used
 
-- **Frontend:** Next.js, React  
-- **Styling:** Tailwind CSS  
-- **Deployment:** Vercel  
+- **Frontend:** Next.js, React
+- **Styling:** Tailwind CSS
+- **Deployment:** Vercel
 
-## Features  
+## Features
 
-- **Project Showcase:** Displays key projects with descriptions and technologies used.  
-- **Responsive Design:** Optimized for all screen sizes.  
-- **Performance Optimized:** Fast load times with Next.js static generation.  
+- **Project Showcase:** Displays key projects with descriptions and technologies used.
+- **Responsive Design:** Optimized for all screen sizes.
+- **Performance Optimized:** Fast load times with Next.js static generation.
 
-## Installation  
+## Installation
 
-To run this project locally:  
+To run this project locally:
 
-1. **Clone the Repository:**  
+1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/ratnesh-maurya/ratn.tech.git
-   cd ratn.tech
-   ```  
+   git clone https://github.com/ratnesh-maurya/ratnesh-maurya.com.git
+   cd ratnesh-maurya.com
+   ```
 
-2. **Install Dependencies:**  
+2. **Install Dependencies:**
 
    ```bash
    npm install
-   ```  
+   ```
 
-3. **Start the Development Server:**  
+3. **Start the Development Server:**
 
    ```bash
    npm run dev
-   ```  
+   ```
 
-   The application will be available at [http://localhost:3000](http://localhost:3000).  
+   The application will be available at [http://localhost:3000](http://localhost:3000).
