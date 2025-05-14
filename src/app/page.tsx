@@ -1,11 +1,34 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { User, Briefcase, Code2, Database, Cloud, BookOpen, Award, Terminal } from 'lucide-react';
+import Image from 'next/image';
 import Link from "next/link";
 
 const tech = {
-  "Programming Languages": "Golang, Typescript, Python, Elixir, C++",
-  Frameworks: "Go-Gin, NextJS, Tailwind, React, Flask, Phoenix",
-  Database: "Postgres, MongoDB, Redis",
-  "Platform/Cloud": " AWS, Kubernetes, Terraform, Docker",
+  "Programming Languages": [
+    { name: "Golang", icon: "go" },
+    { name: "Typescript", icon: "typescript" },
+    { name: "Python", icon: "python" },
+    { name: "Elixir", icon: "elixir" },
+    { name: "C++", icon: "cplusplus" }
+  ],
+  Frameworks: [
+    { name: "Go-Gin", icon: "gin" },
+    { name: "NextJS", icon: "nextdotjs" },
+    { name: "Tailwind", icon: "tailwindcss" },
+    { name: "React", icon: "react" },
+    { name: "Flask", icon: "flask" },
+    { name: "Phoenix", icon: "phoenixframework" }
+  ],
+  Database: [
+    { name: "Postgres", icon: "postgresql" },
+    { name: "MongoDB", icon: "mongodb" },
+    { name: "Redis", icon: "redis" }
+  ],
+  "Platform/Cloud": [
+    { name: "AWS", icon: "amazon" },
+    { name: "Kubernetes", icon: "kubernetes" },
+    { name: "Terraform", icon: "terraform" },
+    { name: "Docker", icon: "docker" }
+  ]
 }
 
 const experiences = [
@@ -93,34 +116,55 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="relative p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-              About Me
-            </h2>
+            <div className="flex items-center gap-2 mb-3">
+              <User className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                About Me
+              </h2>
+            </div>
             <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
               I am a <span className="font-semibold">Software Development Engineer</span>, currently working at {" "}
-              <a href="https://www.linkedin.com/company/initializ/about/" target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-bold">
+              <a href="https://www.linkedin.com/company/initializ/about/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">
                 Initializ
               </a>
               , where I collaborate with {" "}
-              <a href="https://www.loannetwork.app/" target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-bold">
+              <a href="https://www.loannetwork.app/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">
                 Loannetwork
               </a>
               {" "} to enhance their digital lending platform by integrating services like NSDL, Aadhaar, and PAN verification. I also built a secure Key Management System with client-side encryption and designed a Kubernetes Controller. Previously, I interned at{" "}
-              <a href="https://www.linkedin.com/company/emsec/about/" target="_blank" rel="noopener noreferrer" className="text-teal-600 dark:text-teal-400 hover:text-teal-700 dark:hover:text-teal-300 font-bold">
+              <a href="https://www.linkedin.com/company/emsec/about/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">
                 EMSEC Pvt. Ltd.
               </a>
               , developing scalable RESTful APIs and data scraping frameworks.
             </p>
             <div className="flex items-center gap-4 mt-6">
               <span className="text-gray-600 dark:text-gray-400">Find me on</span>
-              <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
+                <Image
+                  src="/twitter.png"
+                  alt="Twitter"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
               </a>
-              <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                <Linkedin className="h-5 w-5" />
+              <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
+                <Image
+                  src="/linkedin.png"
+                  alt="LinkedIn"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
               </a>
-              <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
-                <Github className="h-5 w-5" />
+              <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
+                <Image
+                  src="/github.png"
+                  alt="GitHub"
+                  width={20}
+                  height={20}
+                  className="h-5 w-5"
+                />
               </a>
             </div>
           </div>
@@ -132,16 +176,19 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="relative p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-              Experience
-            </h2>
+            <div className="flex items-center gap-2 mb-3">
+              <Briefcase className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                Experience
+              </h2>
+            </div>
             <div className="space-y-4">
               {experiences.map((exp, index) => (
                 <div key={index} className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                  <div className="text-teal-600 dark:text-teal-400 font-medium">{exp.period}</div>
+                  <div className="text-orange-600 dark:text-teal-400 font-medium">{exp.period}</div>
                   <div className="flex flex-col sm:flex-row items-start gap-2">
                     <div className="font-medium text-gray-800 dark:text-white">{exp.role}</div>
-                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-teal-600 dark:hover:text-teal-400">
+                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400">
                       {exp.company}
                     </a>
                   </div>
@@ -157,14 +204,43 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="relative p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-              Technologies
-            </h2>
-            <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-3">
+              <Code2 className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                Technologies
+              </h2>
+            </div>
+            <div className="space-y-6">
               {Object.entries(tech).map(([category, items]) => (
-                <div key={category} className="flex flex-col sm:flex-row items-start gap-2">
-                  <h4 className="text-teal-600 dark:text-teal-400 font-medium min-w-[200px]">{category}:</h4>
-                  <p className="text-gray-700 dark:text-gray-300">{items}</p>
+                <div key={category} className="flex flex-col sm:flex-row items-start gap-4">
+                  <div className="flex items-center gap-2 min-w-[200px]">
+                    {category === "Programming Languages" && <Terminal className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
+                    {category === "Frameworks" && <Code2 className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
+                    {category === "Database" && <Database className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
+                    {category === "Platform/Cloud" && <Cloud className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
+                    <h4 className="text-orange-600 dark:text-teal-400 font-medium">{category}:</h4>
+                  </div>
+                  <div className="flex flex-wrap gap-3">
+                    {items.map((item) => (
+                      <div key={item.name} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <Image
+                          src={`https://cdn.simpleicons.org/${item.icon}/FB8C00`}
+                          alt={item.name}
+                          width={20}
+                          height={20}
+                          className="h-5 w-5 dark:hidden"
+                        />
+                        <Image
+                          src={`https://cdn.simpleicons.org/${item.icon}/teal`}
+                          alt={item.name}
+                          width={20}
+                          height={20}
+                          className="h-5 w-5 hidden dark:block"
+                        />
+                        <span className="text-gray-700 dark:text-gray-300 text-sm">{item.name}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -177,14 +253,17 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="relative p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-              Recent Blogs
-            </h2>
+            <div className="flex items-center gap-2 mb-3">
+              <BookOpen className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                Recent Blogs
+              </h2>
+            </div>
             <div className="space-y-4">
               {blogs.map((blog, index) => (
                 <div key={index} className="flex flex-col sm:flex-row items-start gap-2">
-                  <span className="text-teal-600 dark:text-teal-400 font-medium min-w-[120px]">{blog.date}</span>
-                  <Link href={`/blogs/${blog.slug}`} className="text-gray-800 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                  <span className="text-orange-600 dark:text-teal-400 font-medium min-w-[120px]">{blog.date}</span>
+                  <Link href={`/blogs/${blog.slug}`} className="text-gray-800 dark:text-white hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
                     {blog.title}
                   </Link>
                 </div>
@@ -199,13 +278,16 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
           <div className="relative p-6 sm:p-8">
-            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-              Certifications
-            </h2>
+            <div className="flex items-center gap-2 mb-3">
+              <Award className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                Certifications
+              </h2>
+            </div>
             <div className="space-y-4">
               {certificates.map((cert, index) => (
                 <div key={index} className="flex flex-col sm:flex-row items-start gap-2">
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-white hover:text-teal-600 dark:hover:text-teal-400 transition-colors">
+                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-white hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
                     {cert.title}
                   </a>
                   <span className="text-gray-600 dark:text-gray-400">by {cert.issuer}</span>

@@ -25,11 +25,11 @@ export const metadata: Metadata = {
     title: "Ratnesh Maurya - Software Engineer",
     description:
       "Ratnesh Maurya is  Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
-    url: "https://ratn.tech",
+    url: "https://ratnesh-maurya.com",
     siteName: "Ratnesh Maurya Portfolio",
     images: [
       {
-        url: "https://ratn.tech/ratn.jpg",
+        url: "https://ratnesh-maurya.com/ratn.jpg",
         width: 1200,
         height: 630,
         alt: "Ratnesh Maurya Portfolio Image",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Ratnesh Maurya is a Software Engineer with experience in backend development, cloud solutions, and web technologies.",
     creator: "@RatneshMaurya",
-    images: ["https://ratn.tech/ratn.jpg"],
+    images: ["https://ratnesh-maurya.com/ratn.jpg"],
   },
   robots: {
     index: true,
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
-  metadataBase: new URL("https://ratn.tech"),
+  metadataBase: new URL("https://ratnesh-maurya.com"),
   alternates: {
     canonical: "/",
     languages: {

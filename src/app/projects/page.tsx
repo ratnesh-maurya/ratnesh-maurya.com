@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Github, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export interface Project {
@@ -16,6 +16,19 @@ export interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: 'npm-compare',
+    title: 'NPM Package Comparator',
+    description: 'Compare NPM Packages Side by Side',
+    longDescription:
+      'A powerful tool for comparing npm packages side by side. Analyze versions, dependencies, downloads, and more to make informed decisions about package selection.',
+    tags: ['TypeScript', 'React', 'Next.js', 'Tailwind-css', 'NPM API'],
+    links: {
+      github: 'https://github.com/ratnesh-maurya/npm-compare',
+      live: 'https://npm-compare.ratnesh-maurya.com/',
+    },
+    image: '/npm-compare.png',
+  },
   {
     id: 'rehabify',
     title: 'Rehabify',
@@ -73,10 +86,10 @@ function ProjectsPage() {
     <div className="min-h-screen">
       {/* Enhanced Decorative background elements */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:bg-teal-600 dark:opacity-5"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:animation-delay-2000 dark:bg-teal-400 dark:opacity-5"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:animation-delay-4000 dark:bg-teal-500 dark:opacity-5"></div>
-        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:animation-delay-3000 dark:bg-teal-400 dark:opacity-5"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>
+        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000 dark:bg-teal-400 dark:opacity-5"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000 dark:bg-teal-500 dark:opacity-5"></div>
+        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-3000 dark:bg-teal-400 dark:opacity-5"></div>
       </div>
 
       <div className="max-w-5xl mx-auto px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16 sm:p-6 sm:mx-auto">
@@ -87,7 +100,7 @@ function ProjectsPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-orange-500/10 blur-3xl dark:from-teal-500/10 dark:to-teal-500/10"></div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
             </div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm dark:animate-pulse-slow">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow">
               Projects
             </h1>
             <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
@@ -147,6 +160,7 @@ function ProjectsPage() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-orange-600 dark:text-teal-400 font-medium group/button bg-orange-50/50 dark:bg-teal-900/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-orange-100/50 dark:hover:bg-teal-800/20 backdrop-blur-sm border border-orange-100/30 dark:border-teal-500/20"
                       >
+                        <Github className="h-5 w-5" />
                         GitHub
                         <ArrowRight className="h-5 w-5 transition-transform group-hover/button:translate-x-1" />
                       </Link>
@@ -158,6 +172,7 @@ function ProjectsPage() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 text-orange-600 dark:text-teal-400 font-medium group/button bg-orange-50/50 dark:bg-teal-900/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-orange-100/50 dark:hover:bg-teal-800/20 backdrop-blur-sm border border-orange-100/30 dark:border-teal-500/20"
                       >
+                        <ExternalLink className="h-5 w-5" />
                         Live Demo
                         <ArrowRight className="h-5 w-5 transition-transform group-hover/button:translate-x-1" />
                       </Link>

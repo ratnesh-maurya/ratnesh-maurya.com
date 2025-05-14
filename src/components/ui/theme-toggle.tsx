@@ -4,6 +4,7 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 import "@theme-toggles/react/css/InnerMoon.css";
 import { InnerMoon } from "@theme-toggles/react";
+import Image from 'next/image';
 
 export function ModeToggle() {
     const { theme, setTheme } = useTheme();
@@ -26,7 +27,7 @@ export function ModeToggle() {
         setToggle(toggled);
         setTheme(newTheme);
 
-  
+
         setTimeout(() => {
             setShowGif(false);
         }, 1400);
@@ -51,14 +52,15 @@ export function ModeToggle() {
                         position: "fixed",
                         top: gifPosition.top,
                         left: gifPosition.left,
-                        zIndex: 1000, 
+                        zIndex: 1000,
                     }}
                 >
-                    <img
-                        src="/meme.gif" // Replace with the path to your GIF
-                        alt="Theme Transition"
-                        height={200}
-                        width={200}
+                    <Image
+                        src="/sun.svg"
+                        alt="Light mode"
+                        width={20}
+                        height={20}
+                        className="h-5 w-5"
                     />
                 </div>
             )}
