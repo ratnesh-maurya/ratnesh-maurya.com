@@ -1,4 +1,4 @@
-import { User, Briefcase, Code2, Database, Cloud, BookOpen, Award, Terminal } from 'lucide-react';
+import { User, Briefcase, Code2, Database, Cloud, BookOpen, Award, Terminal, Twitter, Linkedin, Github } from 'lucide-react';
 import Image from 'next/image';
 import Link from "next/link";
 
@@ -140,31 +140,13 @@ export default function Home() {
             <div className="flex items-center gap-4 mt-6">
               <span className="text-gray-600 dark:text-gray-400">Find me on</span>
               <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                <Image
-                  src="/twitter.png"
-                  alt="Twitter"
-                  width={20}
-                  height={20}
-                  className="h-5 w-5"
-                />
+                <Twitter className="h-5 w-5" />
               </a>
               <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                <Image
-                  src="/linkedin.png"
-                  alt="LinkedIn"
-                  width={20}
-                  height={20}
-                  className="h-5 w-5"
-                />
+                <Linkedin className="h-5 w-5" />
               </a>
               <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                <Image
-                  src="/github.png"
-                  alt="GitHub"
-                  width={20}
-                  height={20}
-                  className="h-5 w-5"
-                />
+                <Github className="h-5 w-5" />
               </a>
             </div>
           </div>
