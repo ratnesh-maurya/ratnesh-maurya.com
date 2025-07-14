@@ -1,6 +1,9 @@
+"use client"
+
 import { User, Briefcase, Code2, Database, Cloud, BookOpen, Award, Terminal, Twitter, Linkedin, Github } from 'lucide-react';
 import Image from 'next/image';
 import Link from "next/link";
+import { useState, useEffect } from 'react';
 
 const tech = {
   "Programming Languages": [
@@ -82,7 +85,47 @@ const certificates = [
   },
 ];
 
+const featuredWork = [
+  {
+    name: "LN App",
+    description: "India’s most intelligent loan distribution platform for DSAs and borrowers.",
+    link: "https://play.google.com/store/apps/details?id=com.loannetwork.app&hl=en_IN",
+    logo: "https://www.google.com/s2/favicons?domain=loannetwork.app&sz=64"
+  },
+  {
+    name: "initializ.ai",
+    description: "A platform to build, deploy, and manage AI agents.",
+    link: "https://console.initializ.ai/secret/",
+    logo: "https://www.google.com/s2/favicons?domain=initializ.ai&sz=64"
+  }
+];
+
+
 export default function Home() {
+  const [name, setName] = useState("रत्नेश मौर्य");
+  const [animationClass, setAnimationClass] = useState('fade-in');
+
+  useEffect(() => {
+    const nameInterval = setInterval(() => {
+      setAnimationClass('fade-out');
+
+      setTimeout(() => {
+        setName((prevName) =>
+          prevName === "रत्नेश मौर्य" ? "Ratnesh Maurya" : "रत्नेश मौर्य"
+        );
+        setAnimationClass('fade-in');
+      }, 1000); // Wait for fade-out to complete
+    }, 4000); // 3 seconds display + 1 second fade animation
+
+    return () => clearInterval(nameInterval);
+  }, []);
+
+  const fontClass = name === "रत्नेश मौर्य" ? "font-poppins" : "font-sans";
+
+  const displayName = name === "रत्नेश मौर्य"
+    ? <span lang="hi">{name}</span>
+    : name;
+
   return (
     <div className="min-h-screen">
       {/* Enhanced Decorative background elements */}
@@ -101,8 +144,8 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-orange-500/10 blur-3xl dark:from-teal-500/10 dark:to-teal-500/10"></div>
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
             </div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow">
-              Ratnesh Maurya
+            <h1 className={`text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow ${animationClass} ${fontClass}`}>
+              <span className="mt-8 inline-block">{displayName}</span>
             </h1>
             <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
               Software Development Engineer, passionate about backend development and cloud-native technologies.
@@ -148,6 +191,34 @@ export default function Home() {
               <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
                 <Github className="h-5 w-5" />
               </a>
+            </div>
+          </div>
+        </div>
+
+        {/* My Work Section */}
+        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mb-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+          <div className="relative p-6 sm:p-8">
+            <div className="flex items-center gap-2 mb-3">
+              <Award className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                See Production  apps which I have worked on
+              </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {featuredWork.map((project, index) => (
+                <a href={project.link} key={index} target="_blank" rel="noopener noreferrer" className="block p-4 rounded-lg bg-gray-100/50 dark:bg-gray-900/50 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-all duration-300">
+                  <div className="flex items-center gap-4">
+                    <Image src={project.logo} alt={`${project.name} logo`} width={48} height={48} className="rounded-md" />
+                    <div>
+                      <h3 className="font-bold text-gray-800 dark:text-white">{project.name}</h3>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">{project.description}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
         </div>

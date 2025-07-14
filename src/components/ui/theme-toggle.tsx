@@ -56,11 +56,10 @@ export function ModeToggle() {
                     }}
                 >
                     <Image
-                        src="/sun.svg"
+                        src="/meme.gif"
                         alt="Light mode"
-                        width={20}
-                        height={20}
-                        className="h-5 w-5"
+                        width={200}
+                        height={200}
                     />
                 </div>
             )}

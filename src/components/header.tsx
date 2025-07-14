@@ -36,7 +36,7 @@ export default function Header() {
                         <div className="text-sm font-medium text-gray-700">Asia/India</div>
 
                         <nav className="flex items-center gap-2">
-                            <div className="flex items-center bg-gray-100 dark:bg-slate-200/10 backdrop-blur-md rounded-full border border-gray-300 dark:border-teal-400/30 px-4 py-2 gap-4 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/5">
+                            <div className="flex items-center bg-white/30 dark:bg-slate-200/10 backdrop-blur-lg rounded-full border border-white/40 dark:border-teal-400/30 px-4 py-2 gap-4 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/5">
                                 <Link
                                     href="/"
                                     className={`flex items-center gap-2 transition-all duration-200 rounded-full px-3 py-1.5 ${isActive("/")
@@ -100,7 +100,7 @@ export default function Header() {
             <header className="fixed w-full z-50 md:hidden px-4 bottom-8 z-40">
                 <nav className="flex items-center justify-center">
 
-                    <div className="flex items-center  dark:bg-teal-400/10 backdrop-blur-md rounded-full border border-gray-300 dark:border-teal-400/30 px-6 py-3 gap-8 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/10">
+                    <div className="flex items-center bg-white/30 dark:bg-teal-400/10 backdrop-blur-lg rounded-full border border-white/40 dark:border-teal-400/30 px-6 py-3 gap-8 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/10">
                         <Link
                             href="/"
                             className={`transition-all duration-200 p-2 rounded-full ${isActive("/")
