@@ -122,9 +122,6 @@ export default function Home() {
 
   const fontClass = name === "रत्नेश मौर्य" ? "font-poppins" : "font-sans";
 
-  const displayName = name === "रत्नेश मौर्य"
-    ? <span lang="hi">{name}</span>
-    : name;
 
   return (
     <div className="min-h-screen">
