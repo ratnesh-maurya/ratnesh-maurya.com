@@ -128,6 +128,46 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Ratnesh Maurya",
+            "alternateName": "रत्नेश मौर्य",
+            "url": "https://ratnesh-maurya.com/",
+            "image": "https://ratnesh-maurya.com/ratn.jpg",
+            "sameAs": [
+              "https://www.linkedin.com/in/ratnesh-maurya",
+              "https://github.com/ratnesh-maurya",
+              "https://x.com/ratnesh_maurya_"
+            ],
+            "jobTitle": "Software Development Engineer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "initializ.ai"
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "url": "https://ratnesh-maurya.com/",
+            "name": "Ratnesh Maurya | Software Development Engineer",
+            "alternateName": "रत्नेश मौर्य",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://ratnesh-maurya.com/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })
+        }}
+      />
       {/* Enhanced Decorative background elements */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>
@@ -145,7 +185,9 @@ export default function Home() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
             </div>
             <h1 className={`text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow ${animationClass} ${fontClass}`}>
-              <span className="mt-8 inline-block">{displayName}</span>
+              <span className="mt-8 inline-block">
+                <span lang="hi">रत्नेश मौर्य</span> / Ratnesh Maurya
+              </span>
             </h1>
             <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
               Software Development Engineer, passionate about backend development and cloud-native technologies.
@@ -211,7 +253,7 @@ export default function Home() {
               {featuredWork.map((project, index) => (
                 <a href={project.link} key={index} target="_blank" rel="noopener noreferrer" className="block p-4 rounded-lg bg-gray-100/50 dark:bg-gray-900/50 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-all duration-300">
                   <div className="flex items-center gap-4">
-                    <Image src={project.logo} alt={`${project.name} logo`} width={48} height={48} className="rounded-md" />
+                    <Image src={project.logo} alt={`Logo of ${project.name} - project by Ratnesh Maurya`} width={48} height={48} className="rounded-md" />
                     <div>
                       <h3 className="font-bold text-gray-800 dark:text-white">{project.name}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400">{project.description}</p>
@@ -346,6 +388,35 @@ export default function Home() {
                   <span className="text-gray-600 dark:text-gray-400">by {cert.issuer}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+        {/* Contact Section */}
+        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mt-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="relative p-6 sm:p-8">
+            <div className="flex items-center gap-2 mb-3">
+              <User className="h-6 w-6 text-orange-600 dark:text-teal-400" />
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                Contact
+              </h2>
+            </div>
+            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-2">
+              Feel free to reach out for collaboration, questions, or just to connect!
+            </p>
+            <div className="flex flex-col gap-2">
+              <a href="mailto:ratneshmaurya2311@gmail.com" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">ratneshmaurya2311@gmail.com</a>
+              <div className="flex gap-4 mt-2">
+                <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
+                  <Twitter className="h-5 w-5" />
+                </a>
+                <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
+                  <Linkedin className="h-5 w-5" />
+                </a>
+                <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
+                  <Github className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>

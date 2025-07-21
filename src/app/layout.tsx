@@ -38,6 +38,52 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
   },
+  keywords: [
+    "Ratnesh Maurya",
+    "रत्नेश मौर्य",
+    "Software Engineer",
+    "Indian Software Engineer",
+    "Full Stack Developer",
+    "Portfolio",
+    "Cloud Engineer",
+    "Open Source",
+    "Tech Blog",
+    "Engineering Blog",
+    "AI",
+    "Machine Learning",
+    "DevOps",
+    "Microservices",
+    "REST API",
+    "GraphQL",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Golang",
+    "Python",
+    "Elixir",
+    "Postgres",
+    "MongoDB",
+    "Redis",
+    "AWS",
+    "Kubernetes",
+    "Docker",
+    "Terraform",
+    "initializ.ai",
+    "Loannetwork",
+    "EMSEC",
+    "GitHub",
+    "LinkedIn",
+    "Twitter",
+    "Backend",
+    "Frontend",
+    "Web Developer",
+    "India",
+    "Software Projects",
+    "Professional Experience",
+    "Certifications",
+    "Achievements",
+    "Contact Ratnesh Maurya"
+  ],
   twitter: {
     card: "summary_large_image",
     title: "Ratnesh Maurya - Software Engineer",
@@ -89,7 +135,7 @@ export default function RootLayout({
             <SpeedInsights />
             <Analytics />
           </main>
-          <Footer />  
+          <Footer />
         </ThemeProvider>
 
         {/* ✅ Move Client Scripts to a Separate Component */}
