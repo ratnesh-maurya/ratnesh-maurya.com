@@ -7,6 +7,8 @@ import { Analytics } from "@vercel/analytics/react";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/components/theme-provider";
 import ClientLayout from "./client-layout";
+import { PersonSchema, WebSiteSchema, OrganizationSchema } from "@/components/seo/StructuredData";
+import { PerformanceOptimizer, ResourceHints, WebVitalsMonitor, CriticalCSS } from "@/components/seo/PerformanceOptimizer";
 
 import PageTransition from "@/components/PageTransition";
 import { Space_Grotesk } from "next/font/google";
@@ -18,13 +20,24 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Ratnesh Maurya - Software Engineer",
+  title: {
+    default: "Ratnesh Maurya - Software Development Engineer | Full Stack Developer",
+    template: "%s | Ratnesh Maurya"
+  },
   description:
-    "Ratnesh Maurya is  a Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
+    "Ratnesh Maurya is a Software Development Engineer with expertise in Golang, TypeScript, React, Next.js, AWS, Kubernetes, Docker, and modern web technologies. Explore my portfolio, projects, and technical blog.",
+  authors: [{ name: "Ratnesh Maurya", url: "https://ratnesh-maurya.com" }],
+  creator: "Ratnesh Maurya",
+  publisher: "Ratnesh Maurya",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "Ratnesh Maurya - Software Engineer",
+    title: "Ratnesh Maurya - Software Development Engineer | Full Stack Developer",
     description:
-      "Ratnesh Maurya is  Software Engineer with expertise in Golang, TypeScript, AWS, Kubernetes, Docker, and more.",
+      "Ratnesh Maurya is a Software Development Engineer with expertise in Golang, TypeScript, React, Next.js, AWS, Kubernetes, Docker, and modern web technologies.",
     url: "https://ratnesh-maurya.com",
     siteName: "Ratnesh Maurya Portfolio",
     images: [
@@ -32,7 +45,7 @@ export const metadata: Metadata = {
         url: "https://ratnesh-maurya.com/ratn.jpg",
         width: 1200,
         height: 630,
-        alt: "Ratnesh Maurya Portfolio Image",
+        alt: "Ratnesh Maurya - Software Development Engineer Portfolio",
       },
     ],
     locale: "en_US",
@@ -86,28 +99,40 @@ export const metadata: Metadata = {
   ],
   twitter: {
     card: "summary_large_image",
-    title: "Ratnesh Maurya - Software Engineer",
+    title: "Ratnesh Maurya - Software Development Engineer",
     description:
-      "Ratnesh Maurya is a Software Engineer with experience in backend development, cloud solutions, and web technologies.",
-    creator: "@RatneshMaurya",
+      "Software Development Engineer specializing in Golang, TypeScript, React, AWS, and cloud-native technologies. Explore my portfolio and technical insights.",
+    creator: "@ratnesh_maurya_",
+    site: "@ratnesh_maurya_",
     images: ["https://ratnesh-maurya.com/ratn.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    nocache: true,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "your-google-verification-code", // Replace with actual verification code
+    yandex: "your-yandex-verification-code", // Replace with actual verification code
+    yahoo: "your-yahoo-verification-code", // Replace with actual verification code
   },
   metadataBase: new URL("https://ratnesh-maurya.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://ratnesh-maurya.com",
     languages: {
-      "en-US": "/en-US",
-      "de-DE": "/de-DE",
+      "en-US": "https://ratnesh-maurya.com",
+      "x-default": "https://ratnesh-maurya.com",
     },
   },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -115,9 +140,23 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Resource Hints for Performance */}
+        <ResourceHints />
+        {/* Critical CSS */}
+        <CriticalCSS />
+      </head>
       <body
         className={`mx-auto font-sans bg-[url('/wee.jpg')] dark:bg-gray-950 dark:bg-[url('/bg.gif')] bg-fixed bg-cover bg-center ${GeistSans.variable} ${spaceGrotesk.variable}`}
       >
+        {/* Enhanced Structured Data */}
+        <PersonSchema />
+        <WebSiteSchema />
+        <OrganizationSchema />
+
+        {/* Performance Optimization Components */}
+        <PerformanceOptimizer />
+        <WebVitalsMonitor />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

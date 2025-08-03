@@ -125,46 +125,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <script 
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Ratnesh Maurya",
-            "alternateName": "रत्नेश मौर्य",
-            "url": "https://ratnesh-maurya.com/",
-            "image": "https://ratnesh-maurya.com/ratn.jpg",
-            "sameAs": [
-              "https://www.linkedin.com/in/ratnesh-maurya",
-              "https://github.com/ratnesh-maurya",
-              "https://x.com/ratnesh_maurya_"
-            ],
-            "jobTitle": "Software Development Engineer",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "initializ.ai"
-            }
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://ratnesh-maurya.com/",
-            "name": "Ratnesh Maurya | Software Development Engineer",
-            "alternateName": "रत्नेश मौर्य",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://ratnesh-maurya.com/?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })
-        }}
-      />
+
       {/* Enhanced Decorative background elements */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>

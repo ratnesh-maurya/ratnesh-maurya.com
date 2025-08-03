@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight, Github, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { Metadata } from 'next';
+import { SoftwareApplicationSchema, BreadcrumbSchema } from '@/components/seo/StructuredData';
 
 export interface Project {
   id: string;
@@ -81,9 +83,63 @@ const projects: Project[] = [
   },
 ];
 
+export const metadata: Metadata = {
+  title: 'Projects - Ratnesh Maurya',
+  description: 'Explore the software projects and applications built by Ratnesh Maurya, including web applications, CLI tools, and open-source contributions.',
+  keywords: 'Projects, Ratnesh Maurya, Software Projects, Web Applications, CLI Tools, Open Source, GitHub, Portfolio Projects, TypeScript, Golang, React, Next.js',
+  openGraph: {
+    title: 'Projects - Ratnesh Maurya',
+    description: 'Explore the software projects and applications built by Ratnesh Maurya',
+    type: 'website',
+    url: 'https://ratnesh-maurya.com/projects',
+    images: [
+      {
+        url: 'https://ratnesh-maurya.com/projects.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Projects - Ratnesh Maurya',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@ratnesh_maurya_',
+    title: 'Projects - Ratnesh Maurya',
+    description: 'Explore the software projects and applications built by Ratnesh Maurya',
+    creator: '@ratnesh_maurya_',
+    images: ['https://ratnesh-maurya.com/projects.jpg'],
+  },
+  alternates: {
+    canonical: 'https://ratnesh-maurya.com/projects',
+  },
+};
+
 function ProjectsPage() {
   return (
     <div className="min-h-screen">
+      {/* Breadcrumb Schema */}
+      <BreadcrumbSchema
+        items={[
+          { name: "Home", url: "https://ratnesh-maurya.com" },
+          { name: "Projects", url: "https://ratnesh-maurya.com/projects" }
+        ]}
+      />
+
+      {/* Software Application Schemas for each project */}
+      {projects.map((project) => (
+        <SoftwareApplicationSchema
+          key={project.id}
+          name={project.title}
+          description={project.longDescription}
+          url={project.links.live || project.links.github || ''}
+          applicationCategory="WebApplication"
+          operatingSystem="Any"
+          programmingLanguage={project.tags}
+          author="Ratnesh Maurya"
+          dateCreated="2024-01-01" // You might want to add actual dates to your project data
+          codeRepository={project.links.github || ''}
+        />
+      ))}
       {/* Enhanced Decorative background elements */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>

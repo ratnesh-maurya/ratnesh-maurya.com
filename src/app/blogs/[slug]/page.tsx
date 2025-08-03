@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Metadata } from "next";
 import ShareButtons from '@/components/ShareButtons';
+import { ArticleSchema, BreadcrumbSchema } from '@/components/seo/StructuredData';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
     const filePath = path.join(blogContentPath, `${params.slug}.md`);
@@ -20,17 +21,31 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         title: `${data.title} - Ratnesh Maurya`,
         description: data.description,
         keywords: data.keywords,
+        authors: [{ name: data.author || 'Ratnesh Maurya', url: 'https://ratnesh-maurya.com' }],
+        creator: data.author || 'Ratnesh Maurya',
+        publisher: 'Ratnesh Maurya',
+        category: data.category,
+        alternates: {
+            canonical: `https://ratnesh-maurya.com/blogs/${params.slug}`,
+        },
         openGraph: {
             title: `${data.title} - Ratnesh Maurya`,
             description: data.description,
             type: 'article',
             url: `https://ratnesh-maurya.com/blogs/${params.slug}`,
-            images: {
-                url: `${data.image}`,
-                width: 1200,
-                height: 630,
-                alt: `${data.title} - Ratnesh Maurya`,
-            },
+            images: [
+                {
+                    url: data.image,
+                    width: 1200,
+                    height: 630,
+                    alt: `${data.title} - Ratnesh Maurya`,
+                }
+            ],
+            publishedTime: data.date,
+            modifiedTime: data.modifiedDate || data.date,
+            authors: [data.author || 'Ratnesh Maurya'],
+            section: data.category,
+            tags: data.keywords?.split(', ') || [],
         },
         twitter: {
             card: 'summary_large_image',
@@ -38,11 +53,19 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             title: `${data.title} - Ratnesh Maurya`,
             description: data.description,
             creator: '@ratnesh_maurya_',
-            images: {
-                url: `${data.image}`,
-                width: 1200,
-                height: 630,
-                alt: `${data.title} - Ratnesh Maurya`,
+            images: [data.image],
+        },
+        robots: {
+            index: true,
+            follow: true,
+            nocache: true,
+            googleBot: {
+                index: true,
+                follow: true,
+                noimageindex: false,
+                'max-video-preview': -1,
+                'max-image-preview': 'large',
+                'max-snippet': -1,
             },
         },
     };
@@ -63,6 +86,29 @@ export default async function Page({ params }: { params: { slug: string } }) {
 
     return (
         <div className="max-w-5xl mx-auto px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16 sm:p-6 sm:mx-auto">
+            {/* Enhanced Structured Data for Article */}
+            <ArticleSchema
+                title={data.title}
+                description={data.description}
+                author={data.author}
+                datePublished={data.date}
+                dateModified={data.modifiedDate || data.date}
+                image={data.image}
+                url={`https://ratnesh-maurya.com/blogs/${slug}`}
+                keywords={data.keywords}
+                category={data.category}
+                readTime={data.readTime}
+            />
+
+            {/* Breadcrumb Schema */}
+            <BreadcrumbSchema
+                items={[
+                    { name: "Home", url: "https://ratnesh-maurya.com" },
+                    { name: "Blogs", url: "https://ratnesh-maurya.com/blogs" },
+                    { name: data.title, url: `https://ratnesh-maurya.com/blogs/${slug}` }
+                ]}
+            />
+
             {/* Decorative background elements */}
             <div className="fixed inset-0 -z-10 overflow-hidden">
                 <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>
