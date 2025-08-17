@@ -151,11 +151,11 @@ export default function Footer() {
                 <div className="mt-8 pt-8 border-t border-gray-200/50 dark:border-gray-700/50">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                         <div className="p-4 rounded-lg bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
-                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">50+</div>
+                            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">7+</div>
                             <div className="text-xs text-gray-600 dark:text-gray-400">Projects Built</div>
                         </div>
                         <div className="p-4 rounded-lg bg-gradient-to-br from-green-50 to-teal-50 dark:from-green-900/20 dark:to-teal-900/20">
-                            <div className="text-2xl font-bold text-green-600 dark:text-green-400">5+</div>
+                            <div className="text-2xl font-bold text-green-600 dark:text-green-400">1.5+</div>
                             <div className="text-xs text-gray-600 dark:text-gray-400">Years Experience</div>
                         </div>
                         <div className="p-4 rounded-lg bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20">
