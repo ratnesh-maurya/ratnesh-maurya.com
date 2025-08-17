@@ -27,121 +27,89 @@ export default function Header() {
 
     const isActive = (path: string) => pathname === path
 
+    const navItems = [
+        { path: "/", label: "Home", icon: Home },
+        { path: "/projects", label: "Projects", icon: Presentation },
+        { path: "/blogs", label: "Blogs", icon: BookMarked },
+        { path: "/gallery", label: "Gallery", icon: Images },
+    ]
+
     return (
         <>
-
-            <header className="sticky top-0 z-50 font-sans hidden md:block ">
-                <div className="mx-auto px-4 py-2 sm:px-6">
+            {/* Desktop Header */}
+            <header className="sticky top-0 z-50 font-sans hidden md:block backdrop-blur-xl">
+                <div className="mx-auto px-6 py-4">
                     <div className="flex items-center justify-between h-16">
-                        <div className="text-sm font-medium text-gray-700">Asia/India</div>
+                        {/* Logo/Brand */}
+                        <Link href="/" className="flex items-center group">
+                            <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent">
+                                RM
+                            </div>
+                        </Link>
 
-                        <nav className="flex items-center gap-2">
-                            <div className="flex items-center bg-white/30 dark:bg-slate-200/10 backdrop-blur-lg rounded-full border border-white/40 dark:border-teal-400/30 px-4 py-2 gap-4 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/5">
-                                <Link
-                                    href="/"
-                                    className={`flex items-center gap-2 transition-all duration-200 rounded-full px-3 py-1.5 ${isActive("/")
-                                        ? "bg-emerald-100 dark:bg-teal-400/20 text-emerald-700 dark:text-teal-300"
-                                        : "hover:bg-emerald-50 dark:hover:bg-teal-400/10 hover:text-emerald-700 dark:hover:text-teal-300"
-                                        }`}
-                                >
-                                    <Home size={18} />
-                                    <span>Home</span>
-                                </Link>
-                                <Link
-                                    href="/projects"
-                                    className={`flex items-center gap-2 transition-all duration-200 rounded-full px-3 py-1.5 ${isActive("/projects")
-                                        ? "bg-emerald-100 dark:bg-teal-400/20 text-emerald-700 dark:text-teal-300"
-                                        : "hover:bg-emerald-50 dark:hover:bg-teal-400/10 hover:text-emerald-700 dark:hover:text-teal-300"
-                                        }`}
-                                >
-                                    <Presentation size={18} />
-                                    <span>Projects</span>
-                                </Link>
-                                <Link
-                                    href="/blogs"
-                                    className={`flex items-center gap-2 transition-all duration-200 rounded-full px-3 py-1.5 ${isActive("/blogs")
-                                        ? "bg-emerald-100 dark:bg-teal-400/20 text-emerald-700 dark:text-teal-300"
-                                        : "hover:bg-emerald-50 dark:hover:bg-teal-400/10 hover:text-emerald-700 dark:hover:text-teal-300"
-                                        }`}
-                                >
-                                    <BookMarked size={18} />
-                                    <span>Blogs</span>
-                                </Link>
-                                <Link
-                                    href="/gallery"
-                                    className={`flex items-center gap-2 transition-all duration-200 rounded-full px-3 py-1.5 ${isActive("/gallery")
-                                        ? "bg-emerald-100 dark:bg-teal-400/20 text-emerald-700 dark:text-teal-300"
-                                        : "hover:bg-emerald-50 dark:hover:bg-teal-400/10 hover:text-emerald-700 dark:hover:text-teal-300"
-                                        }`}
-                                >
-                                    <Images size={18} />
-                                    <span>Gallery</span>
-                                </Link>
+                        {/* Navigation */}
+                        <nav className="flex items-center">
+                            <div className="flex items-center bg-white/80 dark:bg-black/40 backdrop-blur-xl rounded-full border border-gray-200/50 dark:border-gray-700/50 px-2 py-2 gap-1 shadow-lg shadow-gray-200/20 dark:shadow-black/20">
+                                {navItems.map((item) => {
+                                    const Icon = item.icon
+                                    const active = isActive(item.path)
+
+                                    return (
+                                        <Link
+                                            key={item.path}
+                                            href={item.path}
+                                            className={`flex items-center gap-2 transition-all duration-300 rounded-full px-4 py-2.5 text-sm font-medium ${active
+                                                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
+                                                : "text-gray-700 dark:text-gray-300 hover:bg-gray-100/70 dark:hover:bg-gray-800/70 hover:text-blue-600 dark:hover:text-blue-400"
+                                                }`}
+                                        >
+                                            <Icon size={16} />
+                                            <span className="hidden lg:inline">{item.label}</span>
+                                        </Link>
+                                    )
+                                })}
                             </div>
                         </nav>
+
+                        {/* Right side */}
                         <div className="flex items-center gap-4">
-                            <div className="text-sm tabular-nums font-mono animate-pulse text-emerald-700 dark:text-teal-300">
-                                {currentTime}
+                            <div className="hidden xl:flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <span className="tabular-nums font-mono">{currentTime}</span>
                             </div>
                             <ModeToggle />
-
                         </div>
                     </div>
                 </div>
             </header>
 
-
-            <div className="md:hidden text-right px-4 py-2">
-
+            {/* Mobile Theme Toggle */}
+            <div className="md:hidden fixed top-4 right-4 z-50">
                 <ModeToggle />
             </div>
 
-            {/* Mobile Header */}
-            <header className="fixed w-full z-50 md:hidden px-4 bottom-8 z-40">
-                <nav className="flex items-center justify-center">
+            {/* Mobile Bottom Navigation */}
+            <nav className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
+                <div className="flex items-center bg-white/90 dark:bg-black/80 backdrop-blur-xl rounded-full border border-gray-200/50 dark:border-gray-700/50 px-3 py-3 gap-2 shadow-2xl shadow-gray-900/20">
+                    {navItems.map((item) => {
+                        const Icon = item.icon
+                        const active = isActive(item.path)
 
-                    <div className="flex items-center bg-white/30 dark:bg-teal-400/10 backdrop-blur-lg rounded-full border border-white/40 dark:border-teal-400/30 px-6 py-3 gap-8 shadow-lg shadow-gray-200/50 dark:shadow-teal-400/10">
-                        <Link
-                            href="/"
-                            className={`transition-all duration-200 p-2 rounded-full ${isActive("/")
-                                ? " text-teal-700 dark:text-teal-300"
-                                : "hover:bg-teal-50 hover:text-teal-700 dark:hover:text-teal-300"
-                                }`}
-                        >
-                            <Home size={20} />
-                        </Link>
-                        <Link
-                            href="/projects"
-                            className={`transition-all duration-200 p-2 rounded-full ${isActive("/projects")
-                                ? "text-teal-700 dark:text-teal-300"
-                                : "hover:bg-teal-50 hover:text-teal-700 dark:hover:text-teal-300"
-                                }`}
-                        >
-                            <Presentation size={20} />
-                        </Link>
-                        <Link
-                            href="/blogs"
-                            className={`transition-all duration-200 p-2 rounded-full ${isActive("/blogs")
-                                ? " text-teal-700 dark:text-teal-300"
-                                : "hover:bg-teal-50 hover:text-teal-700 dark:hover:text-teal-300"
-                                }`}
-                        >
-                            <BookMarked size={20} />
-                        </Link>
-                        <Link
-                            href="/gallery"
-                            className={`transition-all duration-200 p-2 rounded-full ${isActive("/gallery")
-                                ? " text-teal-700 dark:text-teal-300"
-                                : "hover:bg-teal-50 hover:text-teal-700 dark:hover:text-teal-300"
-                                }`}
-                        >
-                            <Images size={20} />
-
-                        </Link>
-                    </div>
-                </nav>
-            </header>
+                        return (
+                            <Link
+                                key={item.path}
+                                href={item.path}
+                                className={`transition-all duration-300 p-3 rounded-full ${active
+                                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25 scale-110"
+                                    : "text-gray-600 dark:text-gray-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/70 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105"
+                                    }`}
+                            >
+                                <Icon size={20} />
+                            </Link>
+                        )
+                    })}
+                </div>
+            </nav>
         </>
     )
 }
-

@@ -1,95 +1,21 @@
 import React from 'react';
-import { ArrowRight, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, Github, ExternalLink, Star, Calendar } from 'lucide-react';
 import Link from 'next/link';
 import { Metadata } from 'next';
-import { SoftwareApplicationSchema, BreadcrumbSchema } from '@/components/seo/StructuredData';
+import { SoftwareApplicationSchema, BreadcrumbSchema, PortfolioSchema, WebApplicationSchema } from '@/components/seo/StructuredData';
+import { projects } from '@/data/projects';
 
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  longDescription: string;
-  tags: string[];
-  links: {
-    github?: string;
-    live?: string;
-  };
-  image: string;
-}
-
-const projects: Project[] = [
-  {
-    id: 'npm-compare',
-    title: 'NPM Package Comparator',
-    description: 'Compare NPM Packages Side by Side',
-    longDescription:
-      'A powerful tool for comparing npm packages side by side. Analyze versions, dependencies, downloads, and more to make informed decisions about package selection.',
-    tags: ['TypeScript', 'React', 'Next.js', 'Tailwind-css', 'NPM API'],
-    links: {
-      github: 'https://github.com/ratnesh-maurya/npm-compare',
-      live: 'https://npm-compare.ratnesh-maurya.com/',
-    },
-    image: '/npm-compare.png',
-  },
-  {
-    id: 'rehabify',
-    title: 'Rehabify',
-    description: 'Addiction Recovery Platform',
-    longDescription:
-      'A comprehensive platform aimed at improving addiction recovery services with features for tracking progress and connecting with support groups.',
-    tags: ['TypeScript', 'React', 'Node.js', 'Tailwind-css', 'Go'],
-    links: {
-      github: 'https://github.com/Ratnesh-Team/Rehabify',
-      live: 'https://rehabify.ratnesh-maurya.com/',
-    },
-    image: '/rehabify.png',
-  },
-  {
-    id: 'secret-operator',
-    title: 'Secret Operator',
-    description: 'Secure Key Management',
-    longDescription:
-      'A Kubernetes operator for managing secrets and sensitive information with enhanced security protocols.',
-    tags: ['Go', 'Kubernetes', 'Security'],
-    links: {
-      github: 'https://github.com/initializ/secrets-operator',
-    },
-    image: '/operator.png',
-  },
-  {
-    id: 'unzip-n-open',
-    title: 'Unzip N Open',
-    description: 'CLI File Management Tool',
-    longDescription:
-      'A command-line interface tool that simplifies file management for developers with intuitive commands and efficient operations.',
-    tags: ['Go', 'CLI'],
-    links: {
-      github: 'https://github.com/ratnesh-maurya/Unzip_N_Open',
-    },
-    image: '/cli.png',
-  },
-  {
-    id: 'currency-converter',
-    title: 'Currency Converter',
-    description: 'Real-time Exchange Rates',
-    longDescription:
-      'A currency converter application that provides real-time exchange rates and supports multiple currencies for accurate conversions.',
-    tags: ['TypeScript', 'React', 'Tailwind-css'],
-    links: {
-      github: 'https://github.com/ratnesh-maurya/currency-converter',
-      live: 'https://currency.ratnesh-maurya.com/',
-    },
-    image: '/currency-converter.png',
-  },
-];
+import { Spotlight } from '@/components/ui/spotlight';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { GridPattern } from '@/components/ui/grid-pattern';
 
 export const metadata: Metadata = {
-  title: 'Projects - Ratnesh Maurya',
-  description: 'Explore the software projects and applications built by Ratnesh Maurya, including web applications, CLI tools, and open-source contributions.',
-  keywords: 'Projects, Ratnesh Maurya, Software Projects, Web Applications, CLI Tools, Open Source, GitHub, Portfolio Projects, TypeScript, Golang, React, Next.js',
+  title: 'Projects - Ratnesh Maurya | Software Engineer & Full Stack Developer',
+  description: 'Explore innovative software projects by Ratnesh Maurya including MDConverter, JSONic, and more. Featuring modern web applications, CLI tools, and open-source contributions built with TypeScript, React, Go, and cutting-edge technologies.',
+  keywords: 'Ratnesh Maurya Projects, MDConverter, JSONic, Software Projects, Full Stack Developer, TypeScript, React, Next.js, Go, Kubernetes, Web Applications, CLI Tools, Open Source, GitHub Portfolio, Software Engineer Portfolio',
   openGraph: {
-    title: 'Projects - Ratnesh Maurya',
-    description: 'Explore the software projects and applications built by Ratnesh Maurya',
+    title: 'Projects - Ratnesh Maurya | Innovative Software Solutions',
+    description: 'Discover cutting-edge software projects including MDConverter for instant markdown conversion and JSONic for JSON manipulation. Built with modern technologies.',
     type: 'website',
     url: 'https://ratnesh-maurya.com/projects',
     images: [
@@ -97,15 +23,15 @@ export const metadata: Metadata = {
         url: 'https://ratnesh-maurya.com/projects.jpg',
         width: 1200,
         height: 630,
-        alt: 'Projects - Ratnesh Maurya',
+        alt: 'Ratnesh Maurya Software Projects Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     site: '@ratnesh_maurya_',
-    title: 'Projects - Ratnesh Maurya',
-    description: 'Explore the software projects and applications built by Ratnesh Maurya',
+    title: 'Projects - Ratnesh Maurya | Software Engineer Portfolio',
+    description: 'Explore innovative software projects including MDConverter, JSONic, and more by Ratnesh Maurya',
     creator: '@ratnesh_maurya_',
     images: ['https://ratnesh-maurya.com/projects.jpg'],
   },
@@ -116,131 +42,246 @@ export const metadata: Metadata = {
 
 function ProjectsPage() {
   return (
-    <div className="min-h-screen">
-      {/* Breadcrumb Schema */}
-      <BreadcrumbSchema
-        items={[
-          { name: "Home", url: "https://ratnesh-maurya.com" },
-          { name: "Projects", url: "https://ratnesh-maurya.com/projects" }
-        ]}
-      />
-
-      {/* Software Application Schemas for each project */}
-      {projects.map((project) => (
-        <SoftwareApplicationSchema
-          key={project.id}
-          name={project.title}
-          description={project.longDescription}
-          url={project.links.live || project.links.github || ''}
-          applicationCategory="WebApplication"
-          operatingSystem="Any"
-          programmingLanguage={project.tags}
-          author="Ratnesh Maurya"
-          dateCreated="2024-01-01" // You might want to add actual dates to your project data
-          codeRepository={project.links.github || ''}
+    <AuroraBackground>
+      <div className="relative z-10 w-full">
+        {/* Enhanced SEO Schema */}
+        <BreadcrumbSchema
+          items={[
+            { name: "Home", url: "https://ratnesh-maurya.com" },
+            { name: "Projects", url: "https://ratnesh-maurya.com/projects" }
+          ]}
         />
-      ))}
-      {/* Enhanced Decorative background elements */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000 dark:bg-teal-400 dark:opacity-5"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000 dark:bg-teal-500 dark:opacity-5"></div>
-        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-3000 dark:bg-teal-400 dark:opacity-5"></div>
-      </div>
 
-      <div className="max-w-5xl mx-auto px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16 sm:p-6 sm:mx-auto">
-        {/* Enhanced Header Section */}
-        <div className="sticky top-0 z-10 py-8">
-          <div className="text-center relative">
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-orange-500/10 blur-3xl dark:from-teal-500/10 dark:to-teal-500/10"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
-            </div>
-            <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow">
+        {/* Portfolio Collection Schema */}
+        <PortfolioSchema />
+
+        {/* Enhanced Software Application Schemas */}
+        {projects.map((project) => (
+          <SoftwareApplicationSchema
+            key={project.id}
+            name={project.title}
+            description={project.longDescription}
+            url={project.links.live || project.links.github || ''}
+            applicationCategory="WebApplication"
+            operatingSystem="Any"
+            programmingLanguage={project.tags}
+            author="Ratnesh Maurya"
+            dateCreated="2024-01-01"
+            codeRepository={project.links.github || ''}
+            keywords={[project.title, ...project.tags, 'Ratnesh Maurya', 'Software Project']}
+            version="1.0.0"
+            dateModified="2024-12-01"
+          />
+        ))}
+
+        {/* Specific Web Application Schemas for featured projects */}
+        <WebApplicationSchema
+          name="MDConverter"
+          description="Lightning-fast markdown conversion tool with smart detection"
+          url="https://mdconverter.ratnesh-maurya.com/"
+          features={[
+            "Instant text to markdown conversion",
+            "Smart detection of headings and lists",
+            "One-click copy functionality",
+            "Real-time preview",
+            "Keyboard shortcuts support"
+          ]}
+          technologies={["TypeScript", "React", "Next.js", "Tailwind CSS"]}
+        />
+
+        <WebApplicationSchema
+          name="JSONic"
+          description="Advanced JSON editor and formatter for developers"
+          url="https://jsonic.ratnesh-maurya.com/"
+          features={[
+            "JSON validation and formatting",
+            "Data visualization",
+            "Tree view navigation",
+            "Export functionality",
+            "Syntax highlighting"
+          ]}
+          technologies={["TypeScript", "React", "Next.js", "JSON"]}
+        />
+
+        {/* Grid Pattern Background */}
+        <GridPattern className="absolute inset-0 opacity-20" />
+
+        {/* Spotlight Effects */}
+        <Spotlight className="top-20 left-0 md:left-60 md:-top-20" fill="blue" />
+
+        {/* Hero Section */}
+        <section className="relative py-32 px-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent mb-8 leading-tight">
               Projects
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
-              Showcasing my journey through code, innovation, and problem-solving in software development.
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+              A showcase of innovative software solutions, from web applications to developer tools,
+              built with modern technologies and best practices.
             </p>
+
+            {/* Stats */}
+            <div className="flex items-center justify-center gap-8 text-sm text-gray-500 dark:text-gray-400">
+              <div className="flex items-center gap-2">
+                <Star className="h-4 w-4 text-blue-500" />
+                <span>{projects.length} Featured Projects</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Calendar className="h-4 w-4 text-purple-500" />
+                <span>Updated 2024</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <span>All Live & Active</span>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Projects Section */}
-        <section className="py-8">
-          <div className="grid gap-8 max-w-4xl mx-auto sm:grid-cols-1">
-            {projects.map((project, index) => (
-              <article
-                key={project.id}
-                className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10"
-                style={{
-                  animation: `fadeIn 0.5s ease-out ${index * 0.1}s backwards`
-                }}
-              >
-                {/* Enhanced Hover effect background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        {/* Projects Grid */}
+        <section className="py-16 px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+              {projects.map((project) => (
+                <div
+                  key={project.id}
+                  className="group relative bg-white/60 dark:bg-black/40 backdrop-blur-xl rounded-2xl border border-gray-200/30 dark:border-gray-700/30 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-500 hover:-translate-y-2"
+                >
+                  {/* Project Header */}
+                  <div className="p-6 pb-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
+                        Featured Project
+                      </span>
+                    </div>
 
-                <div className="relative p-6 sm:p-8">
-                  {/* Project Title & Description with enhanced hover effect */}
-                  <div className="mb-6">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-orange-600 dark:text-teal-400 font-medium mb-4">
+
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
                       {project.description}
                     </p>
-                    <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
+                  </div>
+
+                  {/* Project Preview */}
+                  {project.links.live && (
+                    <div className="px-6 mb-4">
+                      <div className="relative w-full h-32 rounded-xl overflow-hidden bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border border-blue-200/30 dark:border-blue-700/30">
+                        <div className="p-3 h-full flex flex-col">
+                          {/* Mock Browser Bar */}
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="flex gap-1">
+                              <div className="w-2 h-2 bg-red-400 rounded-full"></div>
+                              <div className="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                            </div>
+                            <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded text-xs px-2 py-1 text-gray-600 dark:text-gray-400 truncate">
+                              {project.links.live}
+                            </div>
+                          </div>
+
+                          {/* Mock Content */}
+                          <div className="flex-1 bg-white dark:bg-gray-800 rounded-lg p-2 space-y-1">
+                            <div className="h-3 bg-gradient-to-r from-blue-200 to-purple-200 dark:from-blue-800 dark:to-purple-800 rounded w-3/4"></div>
+                            <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded w-full"></div>
+                            <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                          </div>
+                        </div>
+
+                        {/* Live Indicator */}
+                        <div className="absolute top-2 right-2 flex items-center gap-1 bg-white/90 dark:bg-black/90 rounded-full px-2 py-1 backdrop-blur-sm">
+                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                          <span className="text-xs font-medium text-gray-700 dark:text-gray-300">Live</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Project Details */}
+                  <div className="px-6 pb-4">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
                       {project.longDescription}
                     </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.slice(0, 4).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 text-xs bg-blue-100/60 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-full border border-blue-200/30 dark:border-blue-700/30"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags.length > 4 && (
+                        <span className="px-2 py-1 text-xs bg-gray-100/60 dark:bg-gray-800/20 text-gray-600 dark:text-gray-400 rounded-full">
+                          +{project.tags.length - 4}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Enhanced Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-sm rounded-full bg-orange-100/50 dark:bg-teal-700/20 text-orange-600 dark:text-teal-300 font-medium border border-orange-200/50 dark:border-teal-500/20 backdrop-blur-sm"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                  {/* Action Buttons */}
+                  <div className="px-6 pb-6">
+                    <div className="flex gap-3">
+                      {project.links.live && (
+                        <Link
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 group"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                          Live Demo
+                        </Link>
+                      )}
+
+                      {project.links.github && (
+                        <Link
+                          href={project.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="px-4 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-semibold rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-2"
+                        >
+                          <Github className="h-4 w-4" />
+                          Code
+                        </Link>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Enhanced Links */}
-                  <div className="flex flex-wrap gap-4">
-                    {project.links.github && (
-                      <Link
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-orange-600 dark:text-teal-400 font-medium group/button bg-orange-50/50 dark:bg-teal-900/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-orange-100/50 dark:hover:bg-teal-800/20 backdrop-blur-sm border border-orange-100/30 dark:border-teal-500/20"
-                      >
-                        <Github className="h-5 w-5" />
-                        GitHub
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover/button:translate-x-1" />
-                      </Link>
-                    )}
-                    {project.links.live && (
-                      <Link
-                        href={project.links.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-orange-600 dark:text-teal-400 font-medium group/button bg-orange-50/50 dark:bg-teal-900/20 px-4 py-2 rounded-full transition-all duration-300 hover:bg-orange-100/50 dark:hover:bg-teal-800/20 backdrop-blur-sm border border-orange-100/30 dark:border-teal-500/20"
-                      >
-                        <ExternalLink className="h-5 w-5" />
-                        Live Demo
-                        <ArrowRight className="h-5 w-5 transition-transform group-hover/button:translate-x-1" />
-                      </Link>
-                    )}
-                  </div>
+                  {/* Hover Effect Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
-              </article>
-            ))}
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Call to Action Section */}
+        <section className="py-20 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/20 dark:border-gray-700/20">
+              <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                Let&apos;s Build Something Amazing Together
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                Interested in collaborating? I&apos;m always open to discussing new projects and opportunities.
+              </p>
+              <Link
+                href="mailto:ratneshmaurya2311@gmail.com"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 text-lg group"
+              >
+                Get In Touch
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
           </div>
         </section>
       </div>
-    </div>
+    </AuroraBackground>
   );
 }
 

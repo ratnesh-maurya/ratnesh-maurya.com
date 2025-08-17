@@ -1,10 +1,12 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-
 import { Metadata } from 'next';
 import Link from 'next/link';
-
+import { CalendarDays, Clock, BookOpen, ArrowRight } from 'lucide-react';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { GridPattern } from '@/components/ui/grid-pattern';
+import { Spotlight } from '@/components/ui/spotlight';
 
 interface BlogPost {
     title: string;
@@ -12,7 +14,8 @@ interface BlogPost {
     date: string;
     readTime: string;
     slug: string;
-    view?: number;
+    category?: string;
+    views?: number;
 }
 
 const getBlogPosts = (): BlogPost[] => {
@@ -30,117 +33,215 @@ const getBlogPosts = (): BlogPost[] => {
             date: data.date,
             readTime: data.readTime || '5 min read',
             slug: data.slug,
-            views: Math.floor(Math.random() * 500), // Simulated view count (Replace with actual logic)
+            category: data.category || 'Technology',
+            views: Math.floor(Math.random() * 500) + 100,
         };
     });
 
     return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
-
 export async function generateMetadata(): Promise<Metadata> {
     return {
-        title: 'Blogs - Ratnesh Maurya',
-        description: 'Explore the blogs written by Ratnesh Maurya - Software Engineer .',
-        keywords: 'Blogs, Ratnesh Maurya, Web Development, JavaScript, React, Next.js, Tailwind CSS , Golang, Python, TypeScript, Technolgy Blogs, Software Engineering',
+        title: 'Technical Blog - Ratnesh Maurya | Software Engineering Insights',
+        description: 'Explore in-depth technical articles on software engineering, cloud computing, web development, and modern technologies by Ratnesh Maurya.',
+        keywords: 'Technical Blog, Ratnesh Maurya, Software Engineering, Web Development, JavaScript, React, Next.js, Tailwind CSS, Golang, Python, TypeScript, Cloud Computing, AWS, DevOps, Programming Tutorials',
         openGraph: {
-            title: 'Blogs - Ratnesh Maurya',
-            description: 'Blogs written by Ratnesh Maurya',
+            title: 'Technical Blog - Ratnesh Maurya | Software Engineering Insights',
+            description: 'In-depth technical articles on software engineering and modern web development',
             type: 'website',
             url: 'https://ratnesh-maurya.com/blogs',
             images: {
                 url: 'https://ratnesh-maurya.com/blogs.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'Blogs - Ratnesh Maurya',
+                alt: 'Ratnesh Maurya Technical Blog',
             },
         },
         twitter: {
             card: 'summary_large_image',
             site: '@ratnesh_maurya_',
-            title: 'Blogs - Ratnesh Maurya',
-            description: 'Blogs written by Ratnesh Maurya',
+            title: 'Technical Blog - Ratnesh Maurya',
+            description: 'In-depth technical articles on software engineering and modern web development',
             creator: '@ratnesh_maurya_',
-            images: {
-                url: 'https://ratnesh-maurya.com/blogs.jpg',
-                width: 1200,
-                height: 630,
-                alt: 'Blogs - Ratnesh Maurya',
-            },
+            images: ['https://ratnesh-maurya.com/blogs.jpg'],
+        },
+        alternates: {
+            canonical: 'https://ratnesh-maurya.com/blogs',
         },
     };
-
 }
 
 export default function BlogsPage() {
     const posts = getBlogPosts();
+    const featuredPost = posts[0];
+
 
     return (
-        <div className="min-h-screen">
-            {/* Enhanced Decorative background elements */}
-            <div className="fixed inset-0 -z-10 overflow-hidden">
-                <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:bg-teal-600 dark:opacity-5"></div>
-                <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:animation-delay-2000 dark:bg-teal-400 dark:opacity-5"></div>
-                <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:animation-delay-4000 dark:bg-teal-500 dark:opacity-5"></div>
-                <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 dark:animate-blob dark:animation-delay-3000 dark:bg-teal-400 dark:opacity-5"></div>
-            </div>
+        <AuroraBackground>
+            <div className="relative z-10 w-full">
+                {/* Grid Pattern Background */}
+                <GridPattern className="absolute inset-0 opacity-20" />
 
-            <div className="max-w-5xl mx-auto px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16 sm:p-6 sm:mx-auto">
-                {/* Enhanced Header Section */}
-                <div className="sticky top-0 z-10 py-8">
-                    <div className="text-center relative">
-                        <div className="absolute inset-0 -z-10">
-                            <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-orange-500/10 blur-3xl dark:from-teal-500/10 dark:to-teal-500/10"></div>
-                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
-                        </div>
-                        <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm dark:animate-pulse-slow">
-                            Blogs
+                {/* Spotlight Effects */}
+                <Spotlight className="top-20 left-0 md:left-60 md:-top-20" fill="blue" />
+
+                {/* Hero Section */}
+                <section className="relative py-32 px-4">
+                    <div className="max-w-4xl mx-auto text-center">
+                        <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent mb-8 leading-tight">
+                            Technical Blog
                         </h1>
-                        <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
-                            Sharing my thoughts, experiences, and knowledge through writing.
+                        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+                            Exploring software engineering, cloud technologies, and modern development practices.
+                            Sharing insights from my journey building scalable systems.
                         </p>
+
+                        <div className="flex items-center justify-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+                            <div className="flex items-center gap-2">
+                                <BookOpen className="h-4 w-4" />
+                                <span>{posts.length} Articles</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                                <CalendarDays className="h-4 w-4" />
+                                <span>Updated Weekly</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
 
-                {/* Enhanced Blogs Section */}
-                <section className="py-8">
-                    <div className="grid gap-8 max-w-4xl mx-auto sm:grid-cols-1">
-                        {posts.map((blog, index) => (
-                            <Link
-                                href={`/blogs/${blog.slug}`}
-                                key={blog.slug}
-                                className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10"
-                                style={{
-                                    animation: `fadeIn 0.5s ease-out ${index * 0.1}s backwards`
-                                }}
-                            >
-                                {/* Enhanced Hover effect background */}
-                                <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+                {/* Featured Article */}
+                {featuredPost && (
+                    <section className="py-12 px-4">
+                        <div className="max-w-6xl mx-auto">
+                            <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+                                Featured Article
+                            </h2>
 
-                                <div className="relative p-6 sm:p-8">
-                                    <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                                        {blog.title}
-                                    </h2>
-                                    <p className="text-gray-600 dark:text-gray-300 mb-4">{blog.excerpt}</p>
-                                    <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                                        <span>{blog.date}</span>
-                                        <span>•</span>
-                                        <span>{blog.readTime}</span>
-                                        {blog.view && (
-                                            <>
-                                                <span>•</span>
-                                                <span>{blog.view} views</span>
-                                            </>
-                                        )}
+                            <Link href={`/blogs/${featuredPost.slug}`}
+                                className="block bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-black/30 transition-all duration-500 group">
+                                <div className="grid md:grid-cols-2 gap-8 items-center">
+                                    <div>
+                                        <div className="flex items-center gap-2 mb-4">
+                                            <span className="px-3 py-1 text-sm bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                                                {featuredPost.category}
+                                            </span>
+                                            <span className="text-sm text-gray-500 dark:text-gray-400">Featured</span>
+                                        </div>
+
+                                        <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                                            {featuredPost.title}
+                                        </h3>
+
+                                        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                                            {featuredPost.excerpt}
+                                        </p>
+
+                                        <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400 mb-6">
+                                            <div className="flex items-center gap-2">
+                                                <CalendarDays className="h-4 w-4" />
+                                                <span>{featuredPost.date}</span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                <Clock className="h-4 w-4" />
+                                                <span>{featuredPost.readTime}</span>
+                                            </div>
+                                        </div>
+
+                                        <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 font-semibold group/btn">
+                                            Read Full Article
+                                            <ArrowRight className="h-5 w-5 transition-transform group-hover/btn:translate-x-1" />
+                                        </div>
+                                    </div>
+
+                                    <div className="relative">
+                                        <div className="aspect-video bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900 dark:to-blue-900 rounded-2xl flex items-center justify-center">
+                                            <BookOpen className="h-16 w-16 text-purple-600 dark:text-purple-400" />
+                                        </div>
+                                        <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-blue-600/20 rounded-2xl"></div>
                                     </div>
                                 </div>
                             </Link>
-                        ))}
+                        </div>
+                    </section>
+                )}
+
+                {/* All Articles */}
+                <section className="py-20 px-4">
+                    <div className="max-w-6xl mx-auto">
+                        <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+                            All Articles
+                        </h2>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {posts.map((post, index) => (
+                                <Link key={post.slug} href={`/blogs/${post.slug}`}
+                                    className="block bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-black/30 transition-all duration-300 group"
+                                    style={{
+                                        animationDelay: `${index * 100}ms`
+                                    }}>
+
+                                    <div className="flex items-center gap-2 mb-3">
+                                        <span className="px-2 py-1 text-xs bg-gray-100/80 dark:bg-gray-800/80 text-gray-600 dark:text-gray-400 rounded-full">
+                                            {post.category}
+                                        </span>
+                                    </div>
+
+                                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                                        {post.title}
+                                    </h3>
+
+                                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3 text-sm leading-relaxed">
+                                        {post.excerpt}
+                                    </p>
+
+                                    <div className="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
+                                        <div className="flex items-center gap-2">
+                                            <CalendarDays className="h-3 w-3" />
+                                            <span>{post.date}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Clock className="h-3 w-3" />
+                                            <span>{post.readTime}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-4 pt-4 border-t border-gray-200/50 dark:border-gray-700/50">
+                                        <div className="flex items-center justify-between">
+                                            <span className="text-xs text-gray-500 dark:text-gray-400">
+                                                {post.views} views
+                                            </span>
+                                            <div className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 text-sm font-medium group/btn">
+                                                Read
+                                                <ArrowRight className="h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Newsletter Section */}
+                <section className="py-20 px-4">
+                    <div className="max-w-2xl mx-auto text-center">
+                        <div className="bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/20 dark:border-gray-700/20">
+                            <h2 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                                Stay Updated
+                            </h2>
+                            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                                Get notified when I publish new articles about software engineering and technology.
+                            </p>
+                            <Link href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 text-lg group">
+                                Follow on Twitter
+                                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                        </div>
                     </div>
                 </section>
             </div>
-        </div>
+        </AuroraBackground>
     );
 }

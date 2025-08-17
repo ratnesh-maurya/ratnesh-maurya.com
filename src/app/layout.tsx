@@ -147,7 +147,7 @@ export default function RootLayout({
         <CriticalCSS />
       </head>
       <body
-        className={`mx-auto font-sans bg-[url('/wee.jpg')] dark:bg-gray-950 dark:bg-[url('/bg.gif')] bg-fixed bg-cover bg-center ${GeistSans.variable} ${spaceGrotesk.variable}`}
+        className={`mx-auto font-sans bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-gray-900 dark:to-slate-950 min-h-screen ${GeistSans.variable} ${spaceGrotesk.variable}`}
       >
         {/* Enhanced Structured Data */}
         <PersonSchema />
