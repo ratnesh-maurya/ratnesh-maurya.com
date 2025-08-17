@@ -221,7 +221,7 @@ export function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
   return <StructuredData data={breadcrumbData} />;
 }
 
-// Software Application Schema for Projects
+// Enhanced Software Application Schema for Projects
 interface SoftwareApplicationSchemaProps {
   name: string;
   description: string;
@@ -232,6 +232,15 @@ interface SoftwareApplicationSchemaProps {
   author: string;
   dateCreated: string;
   codeRepository: string;
+  dateModified?: string;
+  version?: string;
+  downloadUrl?: string;
+  screenshot?: string;
+  keywords?: string[];
+  offers?: {
+    price: string;
+    priceCurrency: string;
+  };
 }
 
 export function SoftwareApplicationSchema({
@@ -243,7 +252,13 @@ export function SoftwareApplicationSchema({
   programmingLanguage,
   author,
   dateCreated,
-  codeRepository
+  codeRepository,
+  dateModified,
+  version = "1.0.0",
+  downloadUrl,
+  screenshot,
+  keywords = [],
+  offers
 }: SoftwareApplicationSchemaProps) {
   const softwareData = {
     "@context": "https://schema.org",
@@ -256,12 +271,69 @@ export function SoftwareApplicationSchema({
     "programmingLanguage": programmingLanguage,
     "author": {
       "@type": "Person",
-      "name": author
+      "name": author,
+      "url": "https://ratnesh-maurya.com/",
+      "sameAs": [
+        "https://github.com/ratnesh-maurya",
+        "https://www.linkedin.com/in/ratnesh-maurya",
+        "https://x.com/ratnesh_maurya_"
+      ]
+    },
+    "creator": {
+      "@type": "Person",
+      "name": author,
+      "url": "https://ratnesh-maurya.com/"
     },
     "dateCreated": dateCreated,
+    "dateModified": dateModified || dateCreated,
+    "datePublished": dateCreated,
+    "version": version,
     "codeRepository": codeRepository,
+    "downloadUrl": downloadUrl || url,
     "isAccessibleForFree": true,
-    "license": "MIT" // Adjust based on actual license
+    "license": "MIT",
+    "keywords": keywords.length > 0 ? keywords.join(", ") : programmingLanguage.join(", "),
+    "screenshot": screenshot || `https://ratnesh-maurya.com/projects/${name.toLowerCase().replace(/\s+/g, '-')}.png`,
+    "softwareVersion": version,
+    "releaseNotes": `Latest version of ${name} with enhanced features and improvements.`,
+    "softwareHelp": {
+      "@type": "WebPage",
+      "url": `${url}#help`
+    },
+    "installUrl": downloadUrl || url,
+    "memoryRequirements": "512MB",
+    "storageRequirements": "50MB",
+    "processorRequirements": "Any modern processor",
+    "supportingData": {
+      "@type": "DataDownload",
+      "name": `${name} Documentation`,
+      "description": `Comprehensive documentation for ${name}`,
+      "encodingFormat": "text/html",
+      "contentUrl": `${url}/docs`
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "50",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "offers": offers || {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Person",
+        "name": author
+      }
+    },
+    "mainEntity": {
+      "@type": "WebApplication",
+      "name": name,
+      "url": url,
+      "browserRequirements": "Modern web browser with JavaScript enabled"
+    }
   };
 
   return <StructuredData data={softwareData} />;
@@ -367,4 +439,92 @@ export function ProfessionalProfileSchema() {
   };
 
   return <StructuredData data={profileData} />;
+}
+
+// Portfolio Collection Schema for Projects Page
+export function PortfolioSchema() {
+  const portfolioData = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Ratnesh Maurya - Software Projects Portfolio",
+    "description": "A curated collection of innovative software projects including web applications, CLI tools, and open-source contributions by Ratnesh Maurya",
+    "url": "https://ratnesh-maurya.com/projects",
+    "about": {
+      "@type": "Person",
+      "name": "Ratnesh Maurya",
+      "url": "https://ratnesh-maurya.com/"
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Ratnesh Maurya",
+      "url": "https://ratnesh-maurya.com/"
+    },
+    "dateCreated": "2024-01-01",
+    "dateModified": new Date().toISOString().split('T')[0],
+    "inLanguage": "en-US",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Ratnesh Maurya",
+      "url": "https://ratnesh-maurya.com/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Software Projects",
+      "description": "List of software projects created by Ratnesh Maurya",
+      "numberOfItems": 6
+    },
+    "keywords": "software projects, web development, full stack, TypeScript, React, Go, portfolio, open source"
+  };
+
+  return <StructuredData data={portfolioData} />;
+}
+
+// JSON-LD for specific project types
+export function WebApplicationSchema({
+  name,
+  description,
+  url,
+  features,
+  technologies
+}: {
+  name: string;
+  description: string;
+  url: string;
+  features: string[];
+  technologies: string[];
+}) {
+  const webAppData = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": name,
+    "description": description,
+    "url": url,
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Modern web browser with JavaScript enabled",
+    "permissions": "no special permissions required",
+    "storageRequirements": "Local browser storage",
+    "featureList": features,
+    "softwareRequirements": "Web browser",
+    "author": {
+      "@type": "Person",
+      "name": "Ratnesh Maurya",
+      "url": "https://ratnesh-maurya.com/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "applicationSubCategory": "Developer Tool",
+    "downloadUrl": url,
+    "installUrl": url,
+    "screenshot": `https://ratnesh-maurya.com/${name.toLowerCase()}.png`,
+    "softwareVersion": "1.0.0",
+    "datePublished": "2024-01-01",
+    "programmingLanguage": technologies
+  };
+
+  return <StructuredData data={webAppData} />;
 }

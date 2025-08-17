@@ -1,9 +1,13 @@
 "use client"
 
-import { User, Briefcase, Code2, Database, Cloud, BookOpen, Award, Terminal, Twitter, Linkedin, Github } from 'lucide-react';
+import { User, Code2, Database, Cloud, BookOpen, Terminal, Twitter, Linkedin, Github, ArrowRight, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
 import Link from "next/link";
 import { useState, useEffect } from 'react';
+import { AuroraBackground } from '@/components/ui/aurora-background';
+import { GridPattern } from '@/components/ui/grid-pattern';
+import { CardContainer, CardBody, CardItem } from '@/components/ui/aceternity-card';
+import { Spotlight } from '@/components/ui/spotlight';
 
 const tech = {
   "Programming Languages": [
@@ -67,28 +71,12 @@ const blogs = [
   }
 ];
 
-const certificates = [
-  {
-    title: "AWS Certified Solutions Architect – Associate",
-    issuer: "Amazon Web Services",
-    link: "https://www.credly.com/badges/2d49d590-5c98-4e64-915b-e9ca3e50ec62",
-  },
-  {
-    title: "Developing Secure Software",
-    issuer: "The Linux Foundation",
-    link: "https://www.credly.com/badges/af06b77a-d878-48be-85a1-ea37bb893aaf/linked_in_profile",
-  },
-  {
-    title: "GitHub Copilot",
-    issuer: "Github",
-    link: "https://www.credly.com/badges/0feb784b-3712-41ad-8666-8e3b01ed17f8/linked_in_profile",
-  },
-];
+
 
 const featuredWork = [
   {
     name: "LN App",
-    description: "India’s most intelligent loan distribution platform for DSAs and borrowers.",
+    description: "India's most intelligent loan distribution platform for DSAs and borrowers.",
     link: "https://play.google.com/store/apps/details?id=com.loannetwork.app&hl=en_IN",
     logo: "https://www.google.com/s2/favicons?domain=loannetwork.app&sz=64"
   },
@@ -100,6 +88,22 @@ const featuredWork = [
   }
 ];
 
+const featuredProjects = [
+  {
+    name: "MDConverter",
+    description: "Lightning-fast markdown conversion tool",
+    link: "https://mdconverter.ratnesh-maurya.com/",
+    github: "https://github.com/ratnesh-maurya/mdconverter",
+    tags: ["TypeScript", "React", "Next.js"]
+  },
+  {
+    name: "JSONic",
+    description: "Advanced JSON editor and formatter",
+    link: "https://jsonic.ratnesh-maurya.com/",
+    github: "https://github.com/ratnesh-maurya/jsonic",
+    tags: ["TypeScript", "React", "JSON"]
+  }
+];
 
 export default function Home() {
   const [name, setName] = useState("रत्नेश मौर्य");
@@ -114,177 +118,218 @@ export default function Home() {
           prevName === "रत्नेश मौर्य" ? "Ratnesh Maurya" : "रत्नेश मौर्य"
         );
         setAnimationClass('fade-in');
-      }, 1000); // Wait for fade-out to complete
-    }, 4000); // 3 seconds display + 1 second fade animation
+      }, 1000);
+    }, 4000);
 
     return () => clearInterval(nameInterval);
   }, []);
 
   const fontClass = name === "रत्नेश मौर्य" ? "font-poppins" : "font-sans";
 
-
   return (
-    <div className="min-h-screen">
+    <AuroraBackground>
+      <div className="relative z-10 w-full">
+        {/* Grid Pattern Background */}
+        <GridPattern className="absolute inset-0 opacity-20" />
 
-      {/* Enhanced Decorative background elements */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-200 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob dark:bg-teal-600 dark:opacity-5"></div>
-        <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000 dark:bg-teal-400 dark:opacity-5"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-96 h-96 bg-orange-100 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000 dark:bg-teal-500 dark:opacity-5"></div>
-        <div className="absolute top-1/2 right-1/3 w-72 h-72 bg-orange-200/40 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-3000 dark:bg-teal-400 dark:opacity-5"></div>
-      </div>
+        {/* Spotlight Effects */}
+        <Spotlight className="top-20 left-0 md:left-60 md:-top-20" fill="blue" />
 
-      <div className="max-w-5xl mx-auto px-2 font-sans shadow-lg bg-white/85 dark:bg-gray-950/70 shadow-black backdrop-blur-2xl rounded-xl mr-2 ml-2 p-2 mb-16 sm:p-6 sm:mx-auto">
-        {/* Enhanced Header Section */}
-        <div className="sticky top-0 z-10 py-8">
-          <div className="text-center relative">
-            <div className="absolute inset-0 -z-10">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-transparent to-orange-500/10 blur-3xl dark:from-teal-500/10 dark:to-teal-500/10"></div>
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)]"></div>
-            </div>
-            <h1 className={`text-5xl font-bold bg-gradient-to-r from-orange-400 via-orange-300 to-orange-400 dark:from-teal-300 dark:via-teal-400 dark:to-teal-300 bg-clip-text text-transparent mb-4 drop-shadow-sm animate-pulse-slow ${animationClass} ${fontClass}`}>
-              <span className="mt-8 inline-block">
-                <span lang="hi">रत्नेश मौर्य</span> / Ratnesh Maurya
-              </span>
+        {/* Hero Section */}
+        <section className="relative py-32 px-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <h1 className={`text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent mb-8 leading-tight pt-8 ${animationClass} ${fontClass}`}>
+              {name}
             </h1>
-            <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto font-medium">
-              Software Development Engineer, passionate about backend development and cloud-native technologies.
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
+              Software Development Engineer passionate about building scalable systems,
+              cloud-native architectures, and innovative developer tools.
             </p>
-          </div>
-        </div>
 
-        {/* Enhanced Introduction Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <User className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                About Me
-              </h2>
+            {/* Social Links */}
+            <div className="flex justify-center gap-6 mb-16">
+              <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300">
+                <Twitter className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+              </a>
+              <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300">
+                <Linkedin className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+              </a>
+              <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer"
+                className="p-3 rounded-full bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300">
+                <Github className="h-6 w-6 text-gray-700 dark:text-gray-300" />
+              </a>
             </div>
-            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
-              I am a <span className="font-semibold">Software Development Engineer</span>, currently working at {" "}
-              <a href="https://www.linkedin.com/company/initializ/about/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">
-                Initializ
-              </a>
-              , where I collaborate with {" "}
-              <a href="https://www.loannetwork.app/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">
-                Loannetwork
-              </a>
-              {" "} to enhance their digital lending platform by integrating services like NSDL, Aadhaar, and PAN verification. I also built a secure Key Management System with client-side encryption and designed a Kubernetes Controller. Previously, I interned at{" "}
-              <a href="https://www.linkedin.com/company/emsec/about/" target="_blank" rel="noopener noreferrer" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">
-                EMSEC Pvt. Ltd.
-              </a>
-              , developing scalable RESTful APIs and data scraping frameworks.
-            </p>
-            <div className="flex items-center gap-4 mt-6">
-              <span className="text-gray-600 dark:text-gray-400">Find me on</span>
-              <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
+
+            {/* Quick Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/projects"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 text-lg group">
+                View Projects
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+              <Link href="/blogs"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 text-gray-700 dark:text-gray-300 font-semibold rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg group">
+                Read Blog
+                <BookOpen className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* My Work Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <Award className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                See Production  apps which I have worked on
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featuredWork.map((project, index) => (
-                <a href={project.link} key={index} target="_blank" rel="noopener noreferrer" className="block p-4 rounded-lg bg-gray-100/50 dark:bg-gray-900/50 hover:bg-gray-200/50 dark:hover:bg-gray-800/50 transition-all duration-300">
-                  <div className="flex items-center gap-4">
-                    <Image src={project.logo} alt={`Logo of ${project.name} - project by Ratnesh Maurya`} width={48} height={48} className="rounded-md" />
-                    <div>
-                      <h3 className="font-bold text-gray-800 dark:text-white">{project.name}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{project.description}</p>
-                    </div>
-                  </div>
+        {/* About Section - Moved up */}
+        <section className="py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-200/20 dark:border-gray-700/20">
+              <div className="flex items-center gap-3 mb-6">
+                <User className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">About Me</h2>
+              </div>
+
+              <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                I&apos;m a <span className="font-semibold text-gray-900 dark:text-white">Software Development Engineer</span> at{" "}
+                <a href="https://www.linkedin.com/company/initializ/about/" target="_blank" rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold">
+                  Initializ
                 </a>
-              ))}
-            </div>
-          </div>
-        </div>
+                , where I build scalable systems and work on innovative projects like{" "}
+                <a href="https://www.loannetwork.app/" target="_blank" rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold">
+                  Loannetwork
+                </a>
+                . I specialize in backend development, cloud-native architectures, and creating developer tools that make a difference.
+              </p>
 
-        {/* Enhanced Experience Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <Briefcase className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                Experience
-              </h2>
-            </div>
-            <div className="space-y-4">
-              {experiences.map((exp, index) => (
-                <div key={index} className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                  <div className="text-orange-600 dark:text-teal-400 font-medium">{exp.period}</div>
-                  <div className="flex flex-col sm:flex-row items-start gap-2">
-                    <div className="font-medium text-gray-800 dark:text-white">{exp.role}</div>
-                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400">
-                      {exp.company}
-                    </a>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Experience</h3>
+                  <div className="space-y-3">
+                    {experiences.map((exp, index) => (
+                      <div key={index} className="border-l-2 border-blue-200 dark:border-blue-800 pl-4">
+                        <div className="text-blue-600 dark:text-blue-400 font-medium text-sm">{exp.period}</div>
+                        <div className="font-semibold text-gray-900 dark:text-white">{exp.role}</div>
+                        <a href={exp.link} target="_blank" rel="noopener noreferrer"
+                          className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm">
+                          {exp.company}
+                        </a>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
+
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Featured Work</h3>
+                  <div className="space-y-3">
+                    {featuredWork.map((work, index) => (
+                      <a key={index} href={work.link} target="_blank" rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300">
+                        <Image src={work.logo} alt={work.name} width={32} height={32} className="rounded-md" />
+                        <div>
+                          <div className="font-semibold text-gray-900 dark:text-white text-sm">{work.name}</div>
+                          <div className="text-gray-600 dark:text-gray-400 text-xs">{work.description}</div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Technologies Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <Code2 className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                Technologies
-              </h2>
+        {/* Featured Projects Section */}
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white">
+              Featured Projects
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+              Innovative tools and applications built with modern technologies
+            </p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {featuredProjects.map((project) => (
+                <CardContainer key={project.name} className="inter-var" containerClassName="py-0">
+                  <CardBody className="bg-gray-50/40 dark:bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-blue-500/[0.1] dark:border-white/[0.2] border-black/[0.1] w-full h-auto rounded-3xl p-8 border backdrop-blur-xl">
+                    <CardItem translateZ="50" className="text-xl font-bold text-neutral-800 dark:text-white mb-2">
+                      {project.name}
+                    </CardItem>
+                    <CardItem as="p" translateZ="60" className="text-neutral-600 dark:text-neutral-300 text-base mb-4">
+                      {project.description}
+                    </CardItem>
+
+                    <CardItem translateZ="60" className="mb-6">
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="px-3 py-1 text-sm bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </CardItem>
+
+                    <div className="flex justify-between items-center">
+                      <CardItem translateZ={20} as={Link} href={project.link} target="_blank" rel="noopener noreferrer"
+                        className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center gap-2 group">
+                        <ExternalLink className="h-4 w-4" />
+                        Live Demo
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </CardItem>
+
+                      <CardItem translateZ={20} as={Link} href={project.github} target="_blank" rel="noopener noreferrer"
+                        className="px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-2">
+                        <Github className="h-4 w-4" />
+                        Code
+                      </CardItem>
+                    </div>
+                  </CardBody>
+                </CardContainer>
+              ))}
             </div>
-            <div className="space-y-6">
+
+            <div className="text-center mt-12">
+              <Link href="/projects"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 text-gray-700 dark:text-gray-300 font-semibold rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg group">
+                View All Projects
+                <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+
+
+        {/* Technologies Section */}
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-16 text-gray-900 dark:text-white">
+              Technologies & Tools
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {Object.entries(tech).map(([category, items]) => (
-                <div key={category} className="flex flex-col sm:flex-row items-start gap-4">
-                  <div className="flex items-center gap-2 min-w-[200px]">
-                    {category === "Programming Languages" && <Terminal className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
-                    {category === "Frameworks" && <Code2 className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
-                    {category === "Database" && <Database className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
-                    {category === "Platform/Cloud" && <Cloud className="h-5 w-5 text-orange-600 dark:text-teal-400" />}
-                    <h4 className="text-orange-600 dark:text-teal-400 font-medium">{category}:</h4>
+                <div key={category} className="bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-2xl p-6 border border-gray-200/20 dark:border-gray-700/20">
+                  <div className="flex items-center gap-2 mb-4">
+                    {category === "Programming Languages" && <Terminal className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+                    {category === "Frameworks" && <Code2 className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+                    {category === "Database" && <Database className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+                    {category === "Platform/Cloud" && <Cloud className="h-5 w-5 text-blue-600 dark:text-blue-400" />}
+                    <h3 className="font-semibold text-gray-900 dark:text-white">{category}</h3>
                   </div>
-                  <div className="flex flex-wrap gap-3">
+
+                  <div className="space-y-2">
                     {items.map((item) => (
-                      <div key={item.name} className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                      <div key={item.name} className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50 transition-colors">
                         <Image
-                          src={`https://cdn.simpleicons.org/${item.icon}/FB8C00`}
+                          src={`https://cdn.simpleicons.org/${item.icon}/3B82F6`}
                           alt={item.name}
                           width={20}
                           height={20}
                           className="h-5 w-5 dark:hidden"
                         />
                         <Image
-                          src={`https://cdn.simpleicons.org/${item.icon}/teal`}
+                          src={`https://cdn.simpleicons.org/${item.icon}/60A5FA`}
                           alt={item.name}
                           width={20}
                           height={20}
@@ -298,87 +343,73 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Recent Blogs Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mb-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <BookOpen className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                Recent Blogs
-              </h2>
+        {/* Recent Blogs Section */}
+        <section className="py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-center justify-between mb-12">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-white">Recent Articles</h2>
+              <Link href="/blogs" className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold">
+                View All →
+              </Link>
             </div>
-            <div className="space-y-4">
+
+            <div className="space-y-6">
               {blogs.map((blog, index) => (
-                <div key={index} className="flex flex-col sm:flex-row items-start gap-2">
-                  <span className="text-orange-600 dark:text-teal-400 font-medium min-w-[120px]">{blog.date}</span>
-                  <Link href={`/blogs/${blog.slug}`} className="text-gray-800 dark:text-white hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                    {blog.title}
-                  </Link>
-                </div>
+                <Link key={index} href={`/blogs/${blog.slug}`}
+                  className="block p-6 bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-2xl border border-gray-200/20 dark:border-gray-700/20 hover:bg-white/70 dark:hover:bg-black/30 transition-all duration-300 group">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {blog.title}
+                      </h3>
+                    </div>
+                    <div className="text-blue-600 dark:text-blue-400 font-medium whitespace-nowrap">
+                      {blog.date}
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Enhanced Certifications Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.1)_0%,transparent_70%)] dark:bg-[radial-gradient(circle_at_center,rgba(20,184,166,0.1)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <Award className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                Certifications
-              </h2>
-            </div>
-            <div className="space-y-4">
-              {certificates.map((cert, index) => (
-                <div key={index} className="flex flex-col sm:flex-row items-start gap-2">
-                  <a href={cert.link} target="_blank" rel="noopener noreferrer" className="text-gray-800 dark:text-white hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                    {cert.title}
-                  </a>
-                  <span className="text-gray-600 dark:text-gray-400">by {cert.issuer}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        {/* Contact Section */}
-        <div className="group relative overflow-hidden rounded-2xl bg-white/70 dark:bg-gray-800/30 shadow-lg dark:shadow-gray-900/20 backdrop-blur-xl border border-orange-100/50 dark:border-teal-500/10 transition-all duration-300 hover:shadow-2xl hover:shadow-orange-500/20 dark:hover:shadow-teal-400/10 mt-8">
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-50/50 to-transparent dark:from-teal-900/20 dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="relative p-6 sm:p-8">
-            <div className="flex items-center gap-2 mb-3">
-              <User className="h-6 w-6 text-orange-600 dark:text-teal-400" />
-              <h2 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 dark:group-hover:text-teal-400 transition-colors">
-                Contact
-              </h2>
-            </div>
-            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-2">
-              Feel free to reach out for collaboration, questions, or just to connect!
-            </p>
-            <div className="flex flex-col gap-2">
-              <a href="mailto:ratneshmaurya2311@gmail.com" className="text-orange-600 dark:text-teal-400 hover:text-orange-700 dark:hover:text-teal-300 font-bold">ratneshmaurya2311@gmail.com</a>
-              <div className="flex gap-4 mt-2">
-                <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                  <Twitter className="h-5 w-5" />
-                </a>
-                <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                  <Linkedin className="h-5 w-5" />
-                </a>
-                <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-orange-600 dark:hover:text-teal-400 transition-colors">
-                  <Github className="h-5 w-5" />
-                </a>
+        {/* Stats Section */}
+        <section className="py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/20 dark:border-gray-700/20 text-center">
+                <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">7+</div>
+                <div className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Projects</div>
+                <p className="text-gray-600 dark:text-gray-400">Innovative software solutions and tools</p>
+              </div>
+              <div className="bg-white/50 dark:bg-black/20 backdrop-blur-xl rounded-3xl p-8 border border-gray-200/20 dark:border-gray-700/20 text-center">
+                <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">1.5+</div>
+                <div className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Years Experience</div>
+                <p className="text-gray-600 dark:text-gray-400">Building scalable systems and applications</p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-20 px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+              Let&apos;s Connect
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+              I&apos;m always open to discussing new opportunities, collaboration, or just having a chat about technology.
+            </p>
+            <a href="mailto:ratneshmaurya2311@gmail.com"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 text-lg group">
+              Get In Touch
+              <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+        </section>
       </div>
-    </div>
+    </AuroraBackground>
   );
 }
