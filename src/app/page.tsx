@@ -71,8 +71,6 @@ const blogs = [
   }
 ];
 
-
-
 const featuredWork = [
   {
     name: "LN App",
@@ -105,26 +103,34 @@ const featuredProjects = [
   }
 ];
 
+// Name variants in multiple Indian languages
+const nameVariants = [
+  { label: 'English', lang: 'en', text: 'Ratnesh Maurya' },
+  { label: 'हिन्दी', lang: 'hi', text: 'रत्नेश मौर्य' },
+  { label: 'বাংলা', lang: 'bn', text: 'রত্নেশ মৌর্য' },
+  { label: 'ગુજરાતી', lang: 'gu', text: 'રત્નેશ મૌર્ય' },
+  { label: 'தமிழ்', lang: 'ta', text: 'ரத்னேஷ் மௌர்யா' },
+  { label: 'తెలుగు', lang: 'te', text: 'రత్నేష్ మౌర్య' },
+  { label: 'മലയാളം', lang: 'ml', text: 'രത്നേഷ് മൗര്യ' },
+  { label: 'ಕನ್ನಡ', lang: 'kn', text: 'ರತ್ನೇಶ್ ಮೌರ್ಯ' },
+  { label: 'ଓଡ଼ିଆ', lang: 'or', text: 'ରତ୍ନେଶ ମୌର୍ୟ' },
+];
+
 export default function Home() {
-  const [name, setName] = useState("रत्नेश मौर्य");
+  const [nameIndex, setNameIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState('fade-in');
 
   useEffect(() => {
-    const nameInterval = setInterval(() => {
+    const interval = setInterval(() => {
       setAnimationClass('fade-out');
-
       setTimeout(() => {
-        setName((prevName) =>
-          prevName === "रत्नेश मौर्य" ? "Ratnesh Maurya" : "रत्नेश मौर्य"
-        );
+        setNameIndex((prev) => (prev + 1) % nameVariants.length);
         setAnimationClass('fade-in');
-      }, 1000);
-    }, 4000);
+      }, 600);
+    }, 3000);
 
-    return () => clearInterval(nameInterval);
+    return () => clearInterval(interval);
   }, []);
-
-  const fontClass = name === "रत्नेश मौर्य" ? "font-poppins" : "font-sans";
 
   return (
     <AuroraBackground>
@@ -138,9 +144,14 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-32 px-4">
           <div className="max-w-6xl mx-auto text-center">
-            <h1 className={`text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent mb-8 leading-tight pt-8 ${animationClass} ${fontClass}`}>
-              {name}
+            <h1 className={`text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent mb-2 leading-tight pt-8 ${animationClass}`}>
+              <span lang={nameVariants[nameIndex].lang}>{nameVariants[nameIndex].text}</span>
             </h1>
+            <div className="mb-6 flex justify-center">
+              <span className="px-3 py-1 text-xs rounded-full bg-white/30 dark:bg-white/10 text-gray-800 dark:text-gray-200 border border-gray-200/40 dark:border-white/10">
+                {nameVariants[nameIndex].label}
+              </span>
+            </div>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed">
               Software Development Engineer passionate about building scalable systems,
               cloud-native architectures, and innovative developer tools.
@@ -223,10 +234,10 @@ export default function Home() {
                   <div className="space-y-3">
                     {featuredWork.map((work, index) => (
                       <a key={index} href={work.link} target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg-gray-200/50 dark:hover:bg-gray-700/50 transition-all duration-300">
+                        className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 hover:bg_GRAY-200/50 dark:hover:bg-gray-700/50 transition-all duration-300">
                         <Image src={work.logo} alt={work.name} width={32} height={32} className="rounded-md" />
                         <div>
-                          <div className="font-semibold text-gray-900 dark:text-white text-sm">{work.name}</div>
+                          <div className="font-semibold text_gray-900 dark:text-white text-sm">{work.name}</div>
                           <div className="text-gray-600 dark:text-gray-400 text-xs">{work.description}</div>
                         </div>
                       </a>
@@ -240,11 +251,11 @@ export default function Home() {
 
         {/* Featured Projects Section */}
         <section className="py-20 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx_auto">
             <h2 className="text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white">
               Featured Projects
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 text-center mb-16 max-w-2xl mx_auto">
               Innovative tools and applications built with modern technologies
             </p>
 
@@ -278,7 +289,7 @@ export default function Home() {
                       </CardItem>
 
                       <CardItem translateZ={20} as={Link} href={project.github} target="_blank" rel="noopener noreferrer"
-                        className="px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-2">
+                        className="px-6 py-3 rounded-full border-2 border-gray-300 dark:border-gray-600 text_gray-700 dark:text-gray-300 text-sm font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 flex items-center gap-2">
                         <Github className="h-4 w-4" />
                         Code
                       </CardItem>
@@ -290,15 +301,13 @@ export default function Home() {
 
             <div className="text-center mt-12">
               <Link href="/projects"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 text-gray-700 dark:text-gray-300 font-semibold rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg group">
+                className="inline-flex items-center gap-2 px-8 py-4 bg-white/10 dark:bg-black/10 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 text_gray-700 dark:text-gray-300 font-semibold rounded-full hover:bg-white/20 dark:hover:bg-black/20 transition-all duration-300 text-lg group">
                 View All Projects
                 <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Link>
             </div>
           </div>
         </section>
-
-
 
         {/* Technologies Section */}
         <section className="py-20 px-4">
@@ -374,8 +383,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-      
 
         {/* Contact Section */}
         <section className="py-20 px-4">
