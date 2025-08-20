@@ -1,115 +1,74 @@
 "use client"
 
-import { useState, useEffect } from "react"
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Home, Presentation, BookMarked, Images } from "lucide-react"
-import { ModeToggle } from "./ui/theme-toggle"
-
 export default function Header() {
-    const [currentTime, setCurrentTime] = useState("")
-    const pathname = usePathname()
-
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date()
-            const hours = now.getHours().toString().padStart(2, "0")
-            const minutes = now.getMinutes().toString().padStart(2, "0")
-            const seconds = now.getSeconds().toString().padStart(2, "0")
-            setCurrentTime(`${hours}:${minutes}:${seconds}`)
-        }
-
-        updateTime()
-        const interval = setInterval(updateTime, 1000)
-
-        return () => clearInterval(interval)
-    }, [])
-
-    const isActive = (path: string) => pathname === path
-
-    const navItems = [
-        { path: "/", label: "Home", icon: Home },
-        { path: "/projects", label: "Projects", icon: Presentation },
-        { path: "/blogs", label: "Blogs", icon: BookMarked },
-        { path: "/gallery", label: "Gallery", icon: Images },
-    ]
 
     return (
-        <>
-            {/* Desktop Header */}
-            <header className="sticky top-0 z-50 font-sans hidden md:block backdrop-blur-xl">
-                <div className="mx-auto px-6 py-4">
-                    <div className="flex items-center justify-between h-16">
-                        {/* Logo/Brand */}
-                        <Link href="/" className="flex items-center group">
-                            <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-600 bg-clip-text text-transparent">
-                                RM
-                            </div>
-                        </Link>
-
-                        {/* Navigation */}
-                        <nav className="flex items-center">
-                            <div className="flex items-center bg-white/80 dark:bg-black/40 backdrop-blur-xl rounded-full border border-gray-200/50 dark:border-gray-700/50 px-2 py-2 gap-1 shadow-lg shadow-gray-200/20 dark:shadow-black/20">
-                                {navItems.map((item) => {
-                                    const Icon = item.icon
-                                    const active = isActive(item.path)
-
-                                    return (
-                                        <Link
-                                            key={item.path}
-                                            href={item.path}
-                                            className={`flex items-center gap-2 transition-all duration-300 rounded-full px-4 py-2.5 text-sm font-medium ${active
-                                                ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25"
-                                                : "text-gray-700 dark:text-gray-300 hover:bg-gray-100/70 dark:hover:bg-gray-800/70 hover:text-blue-600 dark:hover:text-blue-400"
-                                                }`}
-                                        >
-                                            <Icon size={16} />
-                                            <span className="hidden lg:inline">{item.label}</span>
-                                        </Link>
-                                    )
-                                })}
-                            </div>
-                        </nav>
-
-                        {/* Right side */}
-                        <div className="flex items-center gap-4">
-                            <div className="hidden xl:flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                                <span className="tabular-nums font-mono">{currentTime}</span>
-                            </div>
-                            <ModeToggle />
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            {/* Mobile Theme Toggle */}
-            <div className="md:hidden fixed top-4 right-4 z-50">
-                <ModeToggle />
-            </div>
-
-            {/* Mobile Bottom Navigation */}
-            <nav className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 md:hidden">
-                <div className="flex items-center bg-white/90 dark:bg-black/80 backdrop-blur-xl rounded-full border border-gray-200/50 dark:border-gray-700/50 px-3 py-3 gap-2 shadow-2xl shadow-gray-900/20">
-                    {navItems.map((item) => {
-                        const Icon = item.icon
-                        const active = isActive(item.path)
-
-                        return (
-                            <Link
-                                key={item.path}
-                                href={item.path}
-                                className={`transition-all duration-300 p-3 rounded-full ${active
-                                    ? "bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/25 scale-110"
-                                    : "text-gray-600 dark:text-gray-400 hover:bg-gray-100/70 dark:hover:bg-gray-800/70 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105"
-                                    }`}
-                            >
-                                <Icon size={20} />
-                            </Link>
-                        )
-                    })}
-                </div>
+        <header className="flex justify-between items-center -mx-3">
+            {/* Navigation */}
+            <nav className="flex items-center space-x-2">
+                <Link
+                    href="/"
+                    className="font-mono underline px-3 py-1 transition hover:opacity-80 hover:no-underline"
+                >
+                    /
+                </Link>
+                <Link
+                    href="/blogs"
+                    className="font-mono underline px-3 py-1 transition hover:opacity-80 hover:no-underline"
+                >
+                    /blog
+                </Link>
+                <Link
+                    href="/projects"
+                    className="font-mono underline px-3 py-1 transition hover:opacity-80 hover:no-underline"
+                >
+                    /projects
+                </Link>
+                <Link
+                    href="/gallery"
+                    className="font-mono underline px-3 py-1 transition hover:opacity-80 hover:no-underline"
+                >
+                    /gallery
+                </Link>
             </nav>
-        </>
+
+            {/* Right side - Social Links */}
+            <div className="flex items-center space-x-3">
+                <a
+                    aria-label="My GitHub profile"
+                    href="https://github.com/ratnesh-maurya"
+                    target="_blank"
+                    rel="noopener"
+                    className="block transition opacity-70 hover:opacity-90"
+                >
+                    <svg
+                        className="w-7 h-7 inline-block shrink-0 text-current align-middle"
+                        fill="none"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                        />
+                    </svg>
+                </a>
+                <a
+                    aria-label="My Twitter profile"
+                    href="https://x.com/ratnesh_maurya_"
+                    target="_blank"
+                    rel="noopener"
+                    className="block transition opacity-70 hover:opacity-90"
+                >
+                    <svg
+                        className="w-7 h-7 inline-block shrink-0 text-current align-middle"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+        </header>
     )
 }
