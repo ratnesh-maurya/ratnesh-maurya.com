@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     url: 'https://ratnesh-maurya.com/gallery',
     images: [
       {
-        url: 'https://ratnesh-maurya.com/gallery/1.jpg',
+        url: 'https://ratnesh-maurya.com/gallery.jpg',
         width: 1200,
         height: 630,
         alt: 'Gallery - Ratnesh Maurya',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gallery - Ratnesh Maurya',
     description: 'A visual collection of moments from tech conferences, community events, and life adventures.',
-    images: ['https://ratnesh-maurya.com/gallery/1.jpg'],
+    images: ['https://ratnesh-maurya.com/gallery.jpg'],
   },
 };
 

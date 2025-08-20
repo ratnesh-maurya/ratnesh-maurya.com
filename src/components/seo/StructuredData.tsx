@@ -152,19 +152,22 @@ export function ArticleSchema({
     "@type": "Article",
     "headline": title,
     "description": description,
-    "image": {
-      "@type": "ImageObject",
-      "url": image,
-      "width": 1200,
-      "height": 630
-    },
+    "image": [
+      {
+        "@type": "ImageObject",
+        "url": image || "https://ratnesh-maurya.com/blogs.jpg",
+        "width": 1200,
+        "height": 630,
+        "caption": title
+      }
+    ],
     "author": {
       "@type": "Person",
       "name": author,
       "url": "https://ratnesh-maurya.com/"
     },
     "publisher": {
-      "@type": "Person",
+      "@type": "Organization",
       "name": "Ratnesh Maurya",
       "url": "https://ratnesh-maurya.com/",
       "logo": {
@@ -174,8 +177,8 @@ export function ArticleSchema({
         "height": 400
       }
     },
-    "datePublished": datePublished,
-    "dateModified": dateModified || datePublished,
+    "datePublished": new Date(datePublished).toISOString(),
+    "dateModified": new Date(dateModified || datePublished).toISOString(),
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": url
@@ -183,7 +186,7 @@ export function ArticleSchema({
     "url": url,
     "keywords": keywords,
     "articleSection": category,
-    "wordCount": readTime,
+    "wordCount": typeof readTime === 'string' ? parseInt(readTime.replace(/\D/g, '')) * 200 : readTime,
     "inLanguage": "en-US",
     "isAccessibleForFree": true,
     "genre": "Technology",
@@ -284,9 +287,9 @@ export function SoftwareApplicationSchema({
       "name": author,
       "url": "https://ratnesh-maurya.com/"
     },
-    "dateCreated": dateCreated,
-    "dateModified": dateModified || dateCreated,
-    "datePublished": dateCreated,
+    "dateCreated": new Date(dateCreated).toISOString(),
+    "dateModified": new Date(dateModified || dateCreated).toISOString(),
+    "datePublished": new Date(dateCreated).toISOString(),
     "version": version,
     "codeRepository": codeRepository,
     "downloadUrl": downloadUrl || url,

@@ -44,11 +44,6 @@ const recentPosts = [
     title: "Architectural Design for a Ride App such as OLA, UBER, RAPIDO",
     date: "Jul 30, 2024",
     slug: "Architectural-Design-for-a-Ride-App-such-as-OLA-UBER-RAPIDO"
-  },
-  {
-    title: "Building Scalable Microservices with Go and Kubernetes",
-    date: "Jun 15, 2024",
-    slug: "building-scalable-microservices-go-kubernetes"
   }
 ];
 

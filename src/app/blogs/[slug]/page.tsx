@@ -93,7 +93,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                 author={data.author}
                 datePublished={data.date}
                 dateModified={data.modifiedDate || data.date}
-                image={data.image}
+                image={data.image || `https://ratnesh-maurya.com/blogs/${slug}.jpg`}
                 url={`https://ratnesh-maurya.com/blogs/${slug}`}
                 keywords={data.keywords}
                 category={data.category}
