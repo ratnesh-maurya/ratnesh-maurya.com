@@ -58,6 +58,11 @@ const galleryImages = [
   { src: '/gallery/2 (3).jpg', alt: 'Photo 13' },
   { src: '/gallery/2 (4).jpg', alt: 'Photo 14' },
   { src: '/gallery/2 (5).jpg', alt: 'Photo 15' },
+  { src: '/gallery/dump1.jpg', alt: 'Photo 16' },
+  { src: '/gallery/dump2.jpg', alt: 'Photo 17' },
+  { src: '/gallery/dump3.jpg', alt: 'Photo 18' },
+  { src: '/gallery/dump4.jpg', alt: 'Photo 19' },
+  { src: '/gallery/dump5.jpg', alt: 'Photo 20' }
 ];
 
 export default function GalleryPage() {
