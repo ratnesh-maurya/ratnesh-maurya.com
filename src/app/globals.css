@@ -2,105 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --background: 255 255 255;
-    --foreground: 17 24 39;
-    --card: 255 255 255;
-    --card-foreground: 17 24 39;
-    --popover: 255 255 255;
-    --popover-foreground: 17 24 39;
-    --primary: 37 99 235;
-    --primary-foreground: 255 255 255;
-    --secondary: 243 244 246;
-    --secondary-foreground: 17 24 39;
-    --muted: 243 244 246;
-    --muted-foreground: 107 114 128;
-    --accent: 243 244 246;
-    --accent-foreground: 17 24 39;
-    --border: 229 231 235;
-    --input: 229 231 235;
-    --ring: 37 99 235;
-    --radius: 0.5rem;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-white text-gray-900 antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    overflow-x: hidden;
-  }
-
-  html {
-    overflow-x: hidden;
-  }
-
-  /* Prevent horizontal scrolling on mobile */
-  * {
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  /* Ensure code blocks don't cause horizontal scroll */
-  pre, code {
-    word-wrap: break-word;
-    white-space: pre-wrap;
-  }
-
-  /* Mobile-specific fixes */
-  @media (max-width: 768px) {
-    pre {
-      font-size: 0.75rem;
-      line-height: 1.25;
-    }
-
-    .prose {
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
-
-    .prose h1 {
-      font-size: 1.5rem;
-      line-height: 1.25;
-    }
-
-    .prose h2 {
-      font-size: 1.25rem;
-      line-height: 1.25;
-    }
-
-    .prose h3 {
-      font-size: 1.125rem;
-      line-height: 1.25;
-    }
-  }
+* {
+  box-sizing: border-box;
 }
-@layer components {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold tracking-tight text-gray-900;
-  }
 
-  h1 {
-    @apply text-4xl sm:text-5xl md:text-6xl;
-  }
+body {
+  background-color: #fafafa;
+  color: #333;
+  font-family: var(--font-public-sans), 'Public Sans', sans-serif;
+  font-weight: 400;
+  padding-top: 2rem;
+}
 
-  h2 {
-    @apply text-3xl sm:text-4xl;
-  }
+.container {
+  margin: 0 auto;
+  max-width: 60ch;
+  padding: 1rem;
+}
 
-  h3 {
-    @apply text-2xl sm:text-3xl;
-  }
+h1 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  color: #333;
+}
 
-  p {
-    @apply leading-relaxed text-gray-600;
-  }
+p {
+  font-weight: 300;
+  line-height: 1.5rem;
+  text-wrap: balance;
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+a {
+  color: #000;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #333;
+}
+
+footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: #aaa;
+  font-weight: 400;
+}
+
+footer a:hover {
+  color: #333;
 }
