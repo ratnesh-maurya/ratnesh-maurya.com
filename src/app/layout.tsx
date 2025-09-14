@@ -4,6 +4,7 @@ import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { Baloo_Bhai_2 } from "next/font/google";
+import PhysicsBackground from "@/components/PhysicsBackground";
 
 const balooBhai = Baloo_Bhai_2({
   subsets: ["latin"],
@@ -46,6 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={balooBhai.variable}>
+        <PhysicsBackground />
         <div className="container">
           <main>
             {children}

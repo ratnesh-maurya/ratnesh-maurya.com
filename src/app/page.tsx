@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <h1>Ratnesh Maurya</h1>
       <p>
-        Hey, I'm Ratnesh Maurya 🇮🇳, a passionate Software Development Engineer at{" "}
+        Hey, I am Ratnesh Maurya 🇮🇳, a passionate Software Development Engineer at{" "}
         <a
           href="https://www.linkedin.com/company/initializ/about/"
           target="_blank"
@@ -23,20 +23,15 @@ export default function Home() {
       <p>
         I specialize in building scalable backend systems using{" "}
         <strong>Golang</strong> and <strong>Elixir</strong>, with expertise in
-        PostgreSQL, Redis, Docker, and Kubernetes. I'm passionate about creating
+        PostgreSQL, Redis, Docker, and Kubernetes. I am passionate about creating
         efficient, maintainable solutions that solve real-world problems.
       </p>
 
       <h2>🛠️ Skills & Technologies</h2>
       <div className="skills">
-        {skills.map((skill) => (
-          <span
-            key={skill}
-            className="skill-tag"
-          >
-            {skill}
-          </span>
-        ))}
+        <p className="skills-text">
+          {skills.join(', ')}
+        </p>
       </div>
 
       <h2>🚀 Featured Projects</h2>
