@@ -3,13 +3,13 @@ import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { Public_Sans } from "next/font/google";
+import { Baloo_Bhai_2 } from "next/font/google";
 
-const publicSans = Public_Sans({
+const balooBhai = Baloo_Bhai_2({
   subsets: ["latin"],
-  variable: "--font-public-sans",
+  variable: "--font-baloo-bhai",
   display: "swap",
-  weight: ["300", "400"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={publicSans.variable}>
+      <body className={balooBhai.variable}>
         <div className="container">
           <main>
             {children}
