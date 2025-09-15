@@ -217,7 +217,7 @@ const PhysicsBackground = () => {
 
         // Draw the actual tech logo if available
         if (logo.image && logo.image.complete) {
-          ctx.globalAlpha = .119999; // More visible
+          ctx.globalAlpha = .419999; // More visible
 
   
           ctx.shadowOffsetX = 0;
