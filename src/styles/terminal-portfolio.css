@@ -77,11 +77,11 @@ html {
 }
 
 /* Mobile-specific improvements */
-@media (max-width: 640px) {
-  /* Reduce padding on mobile */
+@media (max-width: 1024px) {
+  /* Mobile layout adjustments */
   .container {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 
   /* Better touch targets */
@@ -97,7 +97,7 @@ html {
 
   /* Better spacing for mobile */
   .space-y-2 > * + * {
-    margin-top: 0.75rem;
+    margin-top: 0.5rem;
   }
 
   .space-y-3 > * + * {
@@ -116,6 +116,7 @@ html {
   pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    max-width: 100vw;
   }
 
   /* Full width elements on mobile */
@@ -136,7 +137,53 @@ html {
 
   /* Better border spacing on mobile */
   .border-l-2 {
-    padding-left: 0.75rem;
+    padding-left: 0.5rem;
+  }
+
+  /* Mobile-specific terminal styling */
+  .bg-gray-800 {
+    border-radius: 0.5rem;
+  }
+
+  /* Improved mobile scrolling */
+  .overflow-x-auto {
+    scrollbar-width: thin;
+    scrollbar-color: #374151 #1f2937;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 2px;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  /* Even smaller ASCII art for very small screens */
+  pre {
+    font-size: 3px !important;
+  }
+
+  /* Tighter spacing on very small screens */
+  .space-y-4 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-6 > * + * {
+    margin-top: 1rem;
   }
 }
 
