@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../styles/terminal.css";
+import "../styles/terminal-portfolio.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
@@ -13,19 +15,26 @@ const balooBhai = Baloo_Bhai_2({
   weight: ["400", "500", "600"],
 });
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
   title: {
-    default: "Ratnesh Maurya - Software Development Engineer",
+    default: "Ratnesh Maurya - Software Development Engineer | Terminal Portfolio",
     template: "%s | Ratnesh Maurya"
   },
   description:
-    "Software Development Engineer with expertise in Go, TypeScript, React, and modern web technologies.",
+    "Interactive terminal-style portfolio of Ratnesh Maurya, Software Development Engineer with expertise in Go, Elixir, TypeScript, and modern backend technologies.",
   authors: [{ name: "Ratnesh Maurya", url: "https://ratnesh-maurya.com" }],
   creator: "Ratnesh Maurya",
+  keywords: ["Software Engineer", "Backend Developer", "Go", "Golang", "Elixir", "TypeScript", "Terminal Portfolio", "Ratnesh Maurya"],
   openGraph: {
-    title: "Ratnesh Maurya - Software Development Engineer",
+    title: "Ratnesh Maurya - Software Development Engineer | Terminal Portfolio",
     description:
-      "Software Development Engineer with expertise in Go, TypeScript, React, and modern web technologies.",
+      "Interactive terminal-style portfolio showcasing backend development expertise in Go, Elixir, and modern cloud technologies.",
     url: "https://ratnesh-maurya.com",
     siteName: "Ratnesh Maurya",
     locale: "en_US",
@@ -48,13 +57,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={balooBhai.variable}>
         <PhysicsBackground />
-        <div className="container">
-          <main>
-            {children}
-          </main>
-          <SpeedInsights />
-          <Analytics />
-        </div>
+        <main className="w-full">
+          {children}
+        </main>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

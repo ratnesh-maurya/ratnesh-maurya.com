@@ -219,7 +219,7 @@ const PhysicsBackground = () => {
         if (logo.image && logo.image.complete) {
           ctx.globalAlpha = .419999; // More visible
 
-  
+
           ctx.shadowOffsetX = 0;
           ctx.shadowOffsetY = 0;
 
@@ -262,7 +262,7 @@ const PhysicsBackground = () => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [logoFiles]);
 
   return <canvas ref={canvasRef} id="physics-canvas" />;
 };

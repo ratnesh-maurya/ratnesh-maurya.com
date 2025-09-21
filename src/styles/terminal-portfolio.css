@@ -1,0 +1,288 @@
+/* Terminal Portfolio Custom Styles */
+
+/* Custom cursor for desktop */
+@media (min-width: 768px) {
+  * {
+    cursor: none !important;
+  }
+
+  html, body {
+    cursor: none !important;
+  }
+}
+
+/* Custom scrollbar for the entire page */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom font for better terminal feel */
+.font-mono {
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro', monospace;
+}
+
+/* Better text selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  color: #ffffff;
+}
+
+/* Improved button hover effects */
+.terminal-button {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.terminal-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-button:active {
+  transform: translateY(0);
+}
+
+/* Centered 80% width layout */
+.max-w-\[80\%\] {
+  max-width: 80% !important;
+}
+
+/* Full width layout */
+.w-full {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Override container max-width */
+.container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  /* Reduce padding on mobile */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Better touch targets */
+  button {
+    min-height: 44px;
+  }
+
+  /* Improved text readability */
+  .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  /* Better spacing for mobile */
+  .space-y-2 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-3 > * + * {
+    margin-top: 0.75rem;
+  }
+
+  .space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+
+  .space-y-6 > * + * {
+    margin-top: 1.25rem;
+  }
+
+  /* Improved ASCII art display */
+  pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Full width elements on mobile */
+  .w-full {
+    width: 100% !important;
+  }
+
+  /* Better link wrapping */
+  .break-all {
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+
+  /* Improved flex wrapping */
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  /* Better border spacing on mobile */
+  .border-l-2 {
+    padding-left: 0.75rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  /* Even smaller ASCII art */
+  .ascii-art {
+    font-size: 6px;
+    line-height: 1.1;
+  }
+  
+  /* Compact skill bars */
+  .skill-bar {
+    font-size: 8px;
+  }
+  
+  /* Better project card layout */
+  .project-card {
+    padding: 0.75rem;
+  }
+  
+  /* Improved contact links */
+  .contact-link {
+    word-break: break-all;
+  }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 500px) and (orientation: landscape) {
+  /* Reduce vertical spacing */
+  .mb-8 {
+    margin-bottom: 1rem;
+  }
+  
+  .mb-6 {
+    margin-bottom: 0.75rem;
+  }
+  
+  /* Compact ASCII art */
+  .ascii-art {
+    font-size: 8px;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Sharper text rendering */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Loading animation for typing effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typing-cursor {
+  animation: blink 1s infinite;
+}
+
+/* Improved link hover effects */
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Better code block styling */
+pre, code {
+  font-variant-ligatures: none;
+  text-rendering: optimizeSpeed;
+}
+
+/* Improved terminal window styling */
+.terminal-window {
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Better responsive grid */
+@media (min-width: 640px) {
+  .responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}
+
+/* Improved skill progress bars */
+.skill-progress {
+  font-family: monospace;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+
+/* Better mobile navigation */
+@media (max-width: 768px) {
+  .mobile-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+  }
+}
+
+/* Smooth transitions */
+* {
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .bg-gray-800,
+  .bg-gray-900 {
+    background: white !important;
+    border: 1px solid #ccc !important;
+  }
+}
