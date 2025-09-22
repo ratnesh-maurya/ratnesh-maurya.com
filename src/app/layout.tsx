@@ -23,18 +23,18 @@ export const viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Ratnesh Maurya - Software Development Engineer | Terminal Portfolio",
+    default: "Ratnesh Maurya - Software Development Engineer | Modern Portfolio",
     template: "%s | Ratnesh Maurya"
   },
   description:
-    "Interactive terminal-style portfolio of Ratnesh Maurya, Software Development Engineer with expertise in Go, Elixir, TypeScript, and modern backend technologies.",
+    "Modern portfolio of Ratnesh Maurya, Software Development Engineer with expertise in Go, Elixir, TypeScript, and modern backend technologies.",
   authors: [{ name: "Ratnesh Maurya", url: "https://ratnesh-maurya.com" }],
   creator: "Ratnesh Maurya",
-  keywords: ["Software Engineer", "Backend Developer", "Go", "Golang", "Elixir", "TypeScript", "Terminal Portfolio", "Ratnesh Maurya"],
+  keywords: ["Software Engineer", "Backend Developer", "Go", "Golang", "Elixir", "TypeScript", "Modern Portfolio", "Ratnesh Maurya"],
   openGraph: {
-    title: "Ratnesh Maurya - Software Development Engineer | Terminal Portfolio",
+    title: "Ratnesh Maurya - Software Development Engineer | Modern Portfolio",
     description:
-      "Interactive terminal-style portfolio showcasing backend development expertise in Go, Elixir, and modern cloud technologies.",
+      "Modern portfolio showcasing backend development expertise in Go, Elixir, and modern cloud technologies.",
     url: "https://ratnesh-maurya.com",
     siteName: "Ratnesh Maurya",
     locale: "en_US",

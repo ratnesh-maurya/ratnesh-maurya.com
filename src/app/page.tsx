@@ -1,5 +1,5 @@
-import TerminalPortfolio from "@/components/TerminalPortfolio";
+import ModernPortfolio from "@/components/ModernPortfolio";
 
 export default function Home() {
-  return <TerminalPortfolio />;
+  return <ModernPortfolio />;
 }

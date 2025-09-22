@@ -1,15 +1,6 @@
 /* Terminal Portfolio Custom Styles */
 
-/* Custom cursor for desktop */
-@media (min-width: 768px) {
-  * {
-    cursor: none !important;
-  }
-
-  html, body {
-    cursor: none !important;
-  }
-}
+/* Cursor is now visible - removed custom cursor hiding */
 
 /* Custom scrollbar for the entire page */
 ::-webkit-scrollbar {
