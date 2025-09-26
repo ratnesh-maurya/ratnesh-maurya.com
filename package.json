@@ -17,6 +17,7 @@
     "isomorphic-lolcat": "^0.3.1",
     "jquery": "^3.7.1",
     "lucide-react": "^0.468.0",
+    "motion": "^12.23.22",
     "next": "14.2.14",
     "next-pwa": "^5.6.0",
     "react": "^18",
