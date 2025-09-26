@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import "../styles/terminal.css";
-import "../styles/terminal-portfolio.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { Baloo_Bhai_2 } from "next/font/google";
-import PhysicsBackground from "@/components/PhysicsBackground";
+import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
 
-const balooBhai = Baloo_Bhai_2({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-baloo-bhai",
+  variable: "--font-inter",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  variable: "--font-poppins",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
   weight: ["400", "500", "600"],
 });
@@ -55,8 +66,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={balooBhai.variable}>
-        <PhysicsBackground />
+      <body className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} font-inter`}>
         <main className="w-full">
           {children}
         </main>

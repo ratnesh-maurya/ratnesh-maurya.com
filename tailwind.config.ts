@@ -9,6 +9,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Navy theme colors inspired by Brittany Chiang
+        navy: {
+          900: '#0f172a',
+          800: '#1e293b',
+          700: '#334155',
+          600: '#475569',
+        },
+        slate: {
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+        },
+        teal: {
+          300: '#5eead4',
+          400: '#2dd4bf',
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -51,12 +69,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        poppins: ["var(--font-poppins)"],
-        assistant: ["var(--font-assistant)"],
-        merriweather: ["var(--font-merriweather)"],
-        inter: ["var(--font-inter)"],
-        space: ["var(--font-geist-sans)"],
-        sans: ["var(--font-space-grotesk)"],
+        inter: ["var(--font-inter)", "system-ui", "sans-serif"],
+        poppins: ["var(--font-poppins)", "system-ui", "sans-serif"],
+        mono: ["var(--font-jetbrains-mono)", "monospace"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

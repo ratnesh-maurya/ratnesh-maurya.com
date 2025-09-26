@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ChevronDown, ExternalLink, Github, Linkedin, Twitter, MapPin, Menu, X } from 'lucide-react';
+import { ChevronDown, ExternalLink, Github, Linkedin, Twitter, MapPin, Menu, X, Mail, Phone, ArrowRight, Sparkles, Code, Database, Cloud } from 'lucide-react';
 
 const ModernPortfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -10,7 +10,7 @@ const ModernPortfolio = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
 
       // Update active section based on scroll position
       const sections = ['about', 'skills', 'projects', 'experience', 'contact'];
@@ -37,7 +37,7 @@ const ModernPortfolio = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
-      setIsMobileMenuOpen(false); // Close mobile menu when navigating
+      setIsMobileMenuOpen(false);
     }
   };
 
@@ -114,45 +114,83 @@ const ModernPortfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#222831] text-white">
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-[#222831]/95 backdrop-blur-sm border-b border-gray-700/30' : 'bg-transparent'
+    <div className="min-h-screen">
+      {/* Floating Navigation Dots - 2025 Style */}
+      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-50 hidden xl:block">
+        <div className="glass-card p-4 space-y-6">
+          {[
+            { id: 'about', label: 'Introduction', icon: '●' },
+            { id: 'skills', label: 'Skills', icon: '◆' },
+            { id: 'projects', label: 'Projects', icon: '▲' },
+            { id: 'experience', label: 'Experience', icon: '■' },
+            { id: 'contact', label: 'Contact', icon: '★' }
+          ].map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className={`group relative flex items-center justify-center w-3 h-3 transition-all duration-300 ${activeSection === item.id
+                ? 'text-cyan-400 scale-150'
+                : 'text-gray-500 hover:text-cyan-300 hover:scale-125'
+                }`}
+              title={item.label}
+            >
+              <span className="text-xs">{item.icon}</span>
+              <div className="absolute left-8 px-3 py-1 bg-black/80 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                {item.label}
+              </div>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Modern Glassmorphism Navigation */}
+      <nav className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ${isScrolled ? 'scale-100 opacity-100' : 'scale-95 opacity-90'
         }`}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="glass-card px-8 py-4">
           <div className="flex items-center justify-between">
-            <div className="text-xl font-bold text-green-400">rk@ratnesh-maurya.com</div>
+            <div className="text-xl font-bold font-poppins bg-gradient-to-r from-cyan-400 to-teal-400 bg-clip-text text-transparent">
+              RM
+            </div>
+
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 ml-12">
               {['about', 'skills', 'projects', 'experience', 'contact'].map((section) => (
                 <button
                   key={section}
                   onClick={() => scrollToSection(section)}
-                  className={`capitalize transition-colors duration-200 hover:text-green-400 ${activeSection === section ? 'text-green-400' : 'text-gray-300'
+                  className={`relative capitalize text-sm font-medium transition-all duration-300 ${activeSection === section
+                    ? 'text-cyan-400'
+                    : 'text-gray-300 hover:text-white'
                     }`}
                 >
                   {section}
+                  {activeSection === section && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full" />
+                  )}
                 </button>
               ))}
             </div>
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-gray-300 hover:text-green-400 transition-colors duration-200"
+              className="md:hidden text-gray-300 hover:text-cyan-400 transition-colors duration-200 ml-8"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
 
           {/* Mobile Navigation Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 py-4 border-t border-gray-700/30">
+            <div className="md:hidden mt-6 pt-6 border-t border-white/10">
               <div className="flex flex-col space-y-4">
                 {['about', 'skills', 'projects', 'experience', 'contact'].map((section) => (
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className={`capitalize text-left transition-colors duration-200 hover:text-green-400 ${activeSection === section ? 'text-green-400' : 'text-gray-300'
+                    className={`capitalize text-left text-sm font-medium transition-colors duration-200 ${activeSection === section
+                      ? 'text-cyan-400'
+                      : 'text-gray-300 hover:text-white'
                       }`}
                   >
                     {section}
@@ -164,130 +202,318 @@ const ModernPortfolio = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="about" className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-block p-4 bg-gray-800/30 rounded-lg border border-gray-700/30 mb-8">
-              <pre className="text-green-400 text-xs md:text-sm font-mono">
-                {`██████╗  █████╗ ████████╗███╗   ██╗███████╗███████╗██╗  ██╗
-██╔══██╗██╔══██╗╚══██╔══╝████╗  ██║██╔════╝██╔════╝██║  ██║
-██████╔╝███████║   ██║   ██╔██╗ ██║█████╗  ███████╗███████║
-██╔══██╗██╔══██║   ██║   ██║╚██╗██║██╔══╝  ╚════██║██╔══██║
-██║  ██║██║  ██║   ██║   ██║ ╚████║███████╗███████║██║  ██║
-╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═══╝╚══════╝╚══════╝╚═╝  ╚═╝`}
-              </pre>
+      {/* 2025 Hero Section - Bold & Dynamic */}
+      <section id="about" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-cyan-500/5 to-teal-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center">
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-3 glass-card px-6 py-3 mb-8">
+              <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-gray-300">Available for opportunities</span>
+              <Sparkles className="w-4 h-4 text-cyan-400" />
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              <span className="text-white">Ratnesh</span>{' '}
-              <span className="text-green-400">Maurya</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Software Development Engineer
-            </p>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-12">
-              Hey, I&apos;m Ratnesh Maurya 🇮🇳, a passionate Software Development Engineer at{' '}
-              <a href="https://www.linkedin.com/company/initializ/about/" target="_blank" rel="noopener"
-                className="text-blue-400 hover:text-blue-300 underline">
-                Initializ
-              </a>{' '}
-              with 1.5 years of experience in backend development and cloud-native technologies.
-            </p>
-            <button
-              onClick={() => scrollToSection('projects')}
-              className="inline-flex items-center px-8 py-3 bg-green-400 text-gray-900 rounded-lg font-semibold hover:bg-green-300 transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-green-400/25"
-            >
-              View My Work
-              <ChevronDown className="ml-2 w-4 h-4" />
-            </button>
+
+            {/* Main Heading - Neo-Brutalist Style */}
+            <div className="mb-8">
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-none mb-4">
+                RATNESH
+              </h1>
+              <div className="flex items-center justify-center gap-4 mb-6">
+                <div className="h-1 w-20 bg-gradient-to-r from-cyan-400 to-teal-400"></div>
+                <h2 className="text-2xl md:text-4xl font-light text-gray-300 tracking-widest">
+                  MAURYA
+                </h2>
+                <div className="h-1 w-20 bg-gradient-to-r from-teal-400 to-cyan-400"></div>
+              </div>
+            </div>
+
+            {/* Role & Description */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <p className="text-xl md:text-2xl text-cyan-400 font-semibold mb-6 tracking-wide">
+                SOFTWARE DEVELOPMENT ENGINEER
+              </p>
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed mb-4">
+                Architecting scalable backend systems with{' '}
+                <span className="text-cyan-400 font-semibold">Go</span> &{' '}
+                <span className="text-teal-400 font-semibold">Elixir</span>
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                1.5 years of experience building high-traffic platforms, secure encryption modules,
+                and cloud-native solutions at{' '}
+                <a href="https://www.linkedin.com/company/initializ/about/" target="_blank" rel="noopener"
+                  className="text-cyan-400 hover:text-cyan-300 font-medium underline decoration-2 underline-offset-4 transition-colors">
+                  Initializ
+                </a>
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+              <button
+                onClick={() => scrollToSection('projects')}
+                className="btn-primary group"
+              >
+                <span>Explore My Work</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+
+              <a
+                href="mailto:ratnesh.maurya@example.com"
+                className="btn-secondary group"
+              >
+                <Mail className="w-5 h-5" />
+                <span>Let's Connect</span>
+              </a>
+            </div>
+
+            {/* Tech Stack Icons */}
+            <div className="flex justify-center items-center gap-8 mb-12">
+              <div className="glass-card p-4 group hover:scale-110 transition-transform">
+                <Code className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300" />
+              </div>
+              <div className="glass-card p-4 group hover:scale-110 transition-transform">
+                <Database className="w-8 h-8 text-teal-400 group-hover:text-teal-300" />
+              </div>
+              <div className="glass-card p-4 group hover:scale-110 transition-transform">
+                <Cloud className="w-8 h-8 text-cyan-400 group-hover:text-cyan-300" />
+              </div>
+            </div>
+
+            {/* Social Links - Floating Style */}
+            <div className="flex justify-center gap-4">
+              {[
+                { icon: Linkedin, href: "https://www.linkedin.com/in/ratnesh-maurya", color: "hover:text-blue-400" },
+                { icon: Github, href: "https://github.com/ratnesh-maurya", color: "hover:text-gray-300" },
+                { icon: Twitter, href: "https://x.com/ratnesh_maurya_", color: "hover:text-sky-400" },
+                { icon: Mail, href: "mailto:ratnesh.maurya@example.com", color: "hover:text-green-400" }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener"
+                  className={`glass-card p-3 text-gray-400 ${social.color} transition-all duration-300 hover:scale-110 hover:-translate-y-1`}
+                >
+                  <social.icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-gray-400" />
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-6 bg-gray-800/20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-green-400">$</span> ls -la skills/
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="text-xl font-bold text-yellow-400 mb-4">📋 Programming Languages</h3>
-              <div className="space-y-2">
+      {/* 2025 Skills Section - Asymmetrical Grid */}
+      <section id="skills" className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              TECHNICAL
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                ARSENAL
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Cutting-edge technologies and frameworks I use to build exceptional software
+            </p>
+          </div>
+
+          {/* Modern Skills Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* Programming Languages */}
+            <div className="glass-card lg:col-span-2 group hover:scale-105 transition-all duration-500">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="neo-card p-3">
+                  <Code className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">Programming Languages</h3>
+                  <p className="text-sm text-gray-400">Backend development & system architecture</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
                 {skills.languages.map((skill, index) => (
-                  <div key={index} className="text-gray-300 hover:text-white transition-colors duration-200">🔹 {skill}</div>
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 rounded-full text-sm font-medium text-cyan-300 hover:from-cyan-500/30 hover:to-blue-500/30 hover:border-cyan-400/50 transition-all duration-300 cursor-default"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
-            <div className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="text-xl font-bold text-yellow-400 mb-4">🗄️ Databases & Storage</h3>
-              <div className="space-y-2">
+
+            {/* Databases */}
+            <div className="glass-card lg:row-span-2 group hover:scale-105 transition-all duration-500">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="neo-card p-3">
+                  <Database className="w-6 h-6 text-teal-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">Databases</h3>
+                  <p className="text-sm text-gray-400">Storage & data management</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
                 {skills.databases.map((skill, index) => (
-                  <div key={index} className="text-gray-300 hover:text-white transition-colors duration-200">🔸 {skill}</div>
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-gradient-to-r from-teal-500/20 to-green-500/20 border border-teal-500/30 rounded-full text-sm font-medium text-teal-300 hover:from-teal-500/30 hover:to-green-500/30 hover:border-teal-400/50 transition-all duration-300 cursor-default"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
-            <div className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105">
-              <h3 className="text-xl font-bold text-yellow-400 mb-4">🔧 DevOps & Tools</h3>
-              <div className="space-y-2">
+
+            {/* DevOps & Cloud */}
+            <div className="glass-card lg:col-span-2 group hover:scale-105 transition-all duration-500">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="neo-card p-3">
+                  <Cloud className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">DevOps & Cloud</h3>
+                  <p className="text-sm text-gray-400">Infrastructure & deployment</p>
+                </div>
+              </div>
+              <div className="flex flex-wrap gap-3">
                 {skills.devops.map((skill, index) => (
-                  <div key={index} className="text-gray-300 hover:text-white transition-colors duration-200">🔧 {skill}</div>
+                  <span
+                    key={index}
+                    className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full text-sm font-medium text-purple-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:border-purple-400/50 transition-all duration-300 cursor-default"
+                  >
+                    {skill}
+                  </span>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Tech Stack Highlight */}
+          <div className="text-center">
+            <div className="glass-card inline-block px-8 py-6">
+              <p className="text-gray-300 mb-4 text-sm uppercase tracking-wider">Primary Stack</p>
+              <div className="flex items-center justify-center gap-6 flex-wrap">
+                <span className="text-2xl font-bold text-cyan-400">Go</span>
+                <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
+                <span className="text-2xl font-bold text-teal-400">Elixir</span>
+                <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
+                <span className="text-2xl font-bold text-blue-400">PostgreSQL</span>
+                <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
+                <span className="text-2xl font-bold text-orange-400">AWS</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-green-400">$</span> ls -la projects/
-          </h2>
+      {/* 2025 Projects Section - Interactive Cards */}
+      <section id="projects" className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              FEATURED
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                PROJECTS
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Innovative solutions that demonstrate my technical expertise and creative problem-solving
+            </p>
+          </div>
+
+          {/* Projects Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => {
-              const colorClasses = {
-                blue: { bg: 'bg-blue-400/20', text: 'text-blue-400' },
-                purple: { bg: 'bg-purple-400/20', text: 'text-purple-400' },
-                green: { bg: 'bg-green-400/20', text: 'text-green-400' }
+              const gradients = {
+                blue: 'from-blue-500/20 to-cyan-500/20',
+                purple: 'from-purple-500/20 to-pink-500/20',
+                green: 'from-green-500/20 to-teal-500/20'
               };
-              const colors = colorClasses[project.color as keyof typeof colorClasses];
+              const borderColors = {
+                blue: 'border-blue-500/30 hover:border-cyan-400/50',
+                purple: 'border-purple-500/30 hover:border-pink-400/50',
+                green: 'border-green-500/30 hover:border-teal-400/50'
+              };
+              const textColors = {
+                blue: 'text-cyan-400',
+                purple: 'text-purple-400',
+                green: 'text-teal-400'
+              };
+
+              const gradient = gradients[project.color as keyof typeof gradients];
+              const borderColor = borderColors[project.color as keyof typeof borderColors];
+              const textColor = textColors[project.color as keyof typeof textColors];
 
               return (
-                <div key={index} className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 group hover:transform hover:scale-105 hover:shadow-xl">
-                  <div className={`w-12 h-12 rounded-lg ${colors.bg} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <span className="text-2xl">📦</span>
+                <div
+                  key={index}
+                  className={`glass-card group hover:scale-105 transition-all duration-500 relative overflow-hidden ${index === 0 ? 'lg:col-span-2' : ''
+                    }`}
+                >
+                  {/* Project Icon */}
+                  <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradient} border ${borderColor.split(' ')[0]} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-3xl">📦</span>
                   </div>
-                  <h3 className={`text-xl font-bold ${colors.text} mb-3`}>{project.title}</h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+
+                  {/* Project Content */}
+                  <h3 className={`text-2xl font-bold ${textColor} mb-4 group-hover:text-white transition-colors`}>
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 mb-6 leading-relaxed text-lg">
+                    {project.description}
+                  </p>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-2 mb-8">
                     {project.tech.map((tech, techIndex) => (
-                      <span key={techIndex} className="px-2 py-1 bg-gray-700/50 rounded text-xs text-gray-300">
+                      <span
+                        key={techIndex}
+                        className={`px-3 py-1 bg-gradient-to-r ${gradient} border ${borderColor.split(' ')[0]} rounded-full text-sm font-medium ${textColor} hover:bg-opacity-30 transition-all duration-300`}
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <div className="flex space-x-4">
+
+                  {/* Project Links */}
+                  <div className="flex gap-4 pt-6 border-t border-white/10">
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener"
-                      className="flex items-center text-green-400 hover:text-green-300 text-sm"
+                      className={`flex items-center gap-2 ${textColor} hover:text-white text-sm font-medium transition-colors group/link`}
                     >
-                      <ExternalLink className="w-4 h-4 mr-1" />
+                      <ExternalLink className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                       Live Demo
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener"
-                      className="flex items-center text-blue-400 hover:text-blue-300 text-sm"
+                      className="flex items-center gap-2 text-gray-400 hover:text-white text-sm font-medium transition-colors group/link"
                     >
-                      <Github className="w-4 h-4 mr-1" />
-                      GitHub
+                      <Github className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
+                      Source
                     </a>
                   </div>
+
+                  {/* Hover Effect Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none`}></div>
                 </div>
               );
             })}
@@ -295,112 +521,168 @@ const ModernPortfolio = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-6 bg-gray-800/20">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-green-400">$</span> cat experience/work_history.md
-          </h2>
-          <div className="space-y-8">
-            {experience.map((exp, index) => (
-              <div key={index} className="bg-gray-800/40 rounded-lg p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:shadow-lg">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-bold text-blue-400 mb-1">{exp.title}</h3>
-                    <p className="text-green-400 font-semibold">{exp.company}</p>
-                  </div>
-                  <div className="text-right mt-2 md:mt-0">
-                    <p className="text-gray-300 font-medium">{exp.period}</p>
-                    <p className="text-gray-400 text-sm">{exp.location}</p>
-                  </div>
-                </div>
+      {/* 2025 Experience Section - Modern Timeline */}
+      <section id="experience" className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              PROFESSIONAL
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                JOURNEY
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Building scalable solutions and leading technical innovation
+            </p>
+          </div>
 
-                <div className="mb-4">
-                  <h4 className="text-yellow-400 font-bold mb-2">🎯 Key Achievements:</h4>
-                  <ul className="space-y-1">
-                    {exp.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex} className="text-gray-300 text-sm">• {achievement}</li>
-                    ))}
-                  </ul>
-                </div>
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 via-teal-400 to-transparent hidden md:block"></div>
 
-                <div>
-                  <h4 className="text-yellow-400 font-bold mb-2">💻 Tech Stack:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.tech.map((tech, techIndex) => (
-                      <span key={techIndex} className="px-2 py-1 bg-gray-700/50 rounded text-xs text-gray-300">
-                        {tech}
-                      </span>
-                    ))}
+            <div className="space-y-16">
+              {experience.map((exp, index) => (
+                <div key={index} className="relative group">
+                  {/* Timeline Dot */}
+                  <div className="absolute left-6 w-5 h-5 bg-gradient-to-r from-cyan-400 to-teal-400 rounded-full border-4 border-gray-900 hidden md:block group-hover:scale-125 transition-transform duration-300"></div>
+
+                  {/* Experience Card */}
+                  <div className="md:ml-20 glass-card group-hover:scale-105 transition-all duration-500">
+                    {/* Header */}
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
+                      <div className="flex-1">
+                        <h3 className="text-3xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">
+                          {exp.company}
+                        </h3>
+                        <p className="text-xl text-cyan-400 font-semibold mb-2">{exp.title}</p>
+                        <p className="text-gray-400 flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          {exp.location}
+                        </p>
+                      </div>
+                      <div className="mt-4 lg:mt-0">
+                        <div className="glass-card px-4 py-2 inline-block">
+                          <span className="text-sm font-medium text-cyan-300">{exp.period}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Achievements */}
+                    <div className="mb-8">
+                      <h4 className="text-lg font-semibold text-white mb-4">Key Achievements</h4>
+                      <ul className="space-y-4">
+                        {exp.achievements.map((achievement, achIndex) => (
+                          <li key={achIndex} className="text-gray-300 leading-relaxed flex items-start group/item">
+                            <div className="w-2 h-2 bg-cyan-400 rounded-full mr-4 mt-2 group-hover/item:bg-teal-400 transition-colors"></div>
+                            <span className="flex-1">{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Technologies */}
+                    <div className="border-t border-white/10 pt-6">
+                      <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+                        Tech Stack
+                      </h4>
+                      <div className="flex flex-wrap gap-3">
+                        {exp.tech.map((tech, techIndex) => (
+                          <span
+                            key={techIndex}
+                            className="px-3 py-1.5 bg-gradient-to-r from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 text-cyan-300 rounded-full text-sm font-medium hover:from-cyan-500/30 hover:to-teal-500/30 hover:border-cyan-400/50 transition-all duration-300"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            <span className="text-green-400">$</span> cat contact/info.txt
-          </h2>
-          <div className="max-w-2xl mx-auto">
-            <div className="bg-gray-800/40 rounded-lg p-8 border border-gray-700/30 text-center">
-              <h3 className="text-2xl font-bold text-blue-400 mb-8">📞 Get In Touch</h3>
+      {/* 2025 Contact Section - Interactive & Modern */}
+      <section id="contact" className="py-32 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-teal-500/5 rounded-full blur-3xl"></div>
+        </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-8">
-                <a
-                  href="https://www.linkedin.com/in/ratnesh-maurya"
-                  target="_blank"
-                  rel="noopener"
-                  className="flex items-center justify-center space-x-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all duration-200 hover:scale-105"
-                >
-                  <Linkedin className="w-5 h-5 text-blue-400" />
-                  <span className="text-gray-300">LinkedIn</span>
-                </a>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">
+              LET'S
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+                CONNECT
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Ready to build something amazing together? Let's start the conversation.
+            </p>
+          </div>
 
-                <a
-                  href="https://github.com/ratnesh-maurya"
-                  target="_blank"
-                  rel="noopener"
-                  className="flex items-center justify-center space-x-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all duration-200 hover:scale-105"
-                >
-                  <Github className="w-5 h-5 text-gray-300" />
-                  <span className="text-gray-300">GitHub</span>
-                </a>
-
-                <a
-                  href="https://x.com/ratnesh_maurya_"
-                  target="_blank"
-                  rel="noopener"
-                  className="flex items-center justify-center space-x-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all duration-200 hover:scale-105"
-                >
-                  <Twitter className="w-5 h-5 text-blue-400" />
-                  <span className="text-gray-300">Twitter</span>
-                </a>
-
-                <a
-                  href="https://ratnesh-maurya.com"
-                  target="_blank"
-                  rel="noopener"
-                  className="flex items-center justify-center space-x-3 p-4 bg-gray-700/30 rounded-lg hover:bg-gray-700/50 transition-all duration-200 hover:scale-105"
-                >
-                  <ExternalLink className="w-5 h-5 text-green-400" />
-                  <span className="text-gray-300">Website</span>
-                </a>
+          <div className="max-w-4xl mx-auto">
+            {/* Main Contact Card */}
+            <div className="glass-card text-center mb-12">
+              {/* Contact Icon */}
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 border border-cyan-500/30 rounded-2xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-300">
+                <Mail className="w-10 h-10 text-cyan-400" />
               </div>
 
-              <div className="flex items-center justify-center space-x-2 mb-6">
-                <MapPin className="w-4 h-4 text-yellow-400" />
-                <span className="text-gray-300">India 🇮🇳</span>
+              <h3 className="text-3xl font-bold text-white mb-4">Ready to Collaborate?</h3>
+              <p className="text-gray-300 text-lg mb-8">Let's discuss your next project or opportunity</p>
+
+              {/* Contact Methods Grid */}
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+                {[
+                  { icon: Linkedin, href: "https://www.linkedin.com/in/ratnesh-maurya", label: "LinkedIn", color: "from-blue-500/20 to-blue-600/20 border-blue-500/30 hover:border-blue-400/50 text-blue-400" },
+                  { icon: Github, href: "https://github.com/ratnesh-maurya", label: "GitHub", color: "from-gray-500/20 to-gray-600/20 border-gray-500/30 hover:border-gray-400/50 text-gray-300" },
+                  { icon: Twitter, href: "https://x.com/ratnesh_maurya_", label: "Twitter", color: "from-sky-500/20 to-sky-600/20 border-sky-500/30 hover:border-sky-400/50 text-sky-400" },
+                  { icon: Mail, href: "mailto:ratnesh.maurya@example.com", label: "Email", color: "from-green-500/20 to-green-600/20 border-green-500/30 hover:border-green-400/50 text-green-400" }
+                ].map((contact, index) => (
+                  <a
+                    key={index}
+                    href={contact.href}
+                    target="_blank"
+                    rel="noopener"
+                    className={`glass-card p-6 group hover:scale-105 transition-all duration-300 bg-gradient-to-br ${contact.color}`}
+                  >
+                    <contact.icon className="w-6 h-6 mx-auto mb-3 group-hover:scale-110 transition-transform" />
+                    <span className="font-medium text-sm">{contact.label}</span>
+                  </a>
+                ))}
               </div>
 
-              <div className="bg-gray-700/30 rounded-lg p-4 border-l-4 border-green-400">
-                <h4 className="text-green-400 font-bold mb-2">💼 Available for:</h4>
-                <p className="text-gray-300 text-sm">Full-time opportunities, freelance projects, and interesting collaborations</p>
-                <p className="text-gray-400 text-xs mt-2">🕒 Response time: Within 24 hours</p>
+              {/* Location & Availability */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-8">
+                <div className="flex items-center gap-3 text-gray-300">
+                  <MapPin className="w-5 h-5 text-cyan-400" />
+                  <span className="font-medium">Based in India 🇮🇳</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-green-400 font-medium">Available for opportunities</span>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="glass-card bg-gradient-to-r from-cyan-500/10 to-teal-500/10 border-cyan-500/20 p-8">
+                <h4 className="text-white font-bold text-xl mb-3">
+                  Open to New Opportunities
+                </h4>
+                <p className="text-gray-300 mb-4">
+                  Full-time roles • Freelance projects • Technical consultations • Open source collaborations
+                </p>
+                <p className="text-cyan-400 text-sm font-medium">
+                  ⚡ Response time: Usually within 24 hours
+                </p>
               </div>
             </div>
           </div>
@@ -408,36 +690,73 @@ const ModernPortfolio = () => {
       </section>
 
       {/* Blog Section */}
-      <section className="py-20 px-6 bg-gray-800/20">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            <span className="text-green-400">$</span> cat blogs/posts.md
-          </h2>
-          <div className="bg-gray-800/40 rounded-lg p-8 border border-gray-700/30 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-blue-400 mb-4">📝 My Blog</h3>
-            <p className="text-gray-300 mb-6">
+      <section className="section section-alt">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="mb-4">My Blog</h2>
+            <p className="text-gray-600 mb-8">
               I write about software development, backend engineering, and my experiences with modern technologies like Go, Elixir, and cloud architecture.
             </p>
-            <a
-              href="https://blog.ratnesh-maurya.com/"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center px-6 py-3 bg-blue-400 text-gray-900 rounded-lg font-semibold hover:bg-blue-300 transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-400/25"
-            >
-              <ExternalLink className="w-4 h-4 mr-2" />
-              Visit My Blog
-            </a>
+
+            <div className="card max-w-2xl mx-auto">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
+                <span className="text-white text-2xl">📝</span>
+              </div>
+
+              <h3 className="text-xl font-bold text-gray-900 mb-4">Technical Insights & Stories</h3>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Sharing knowledge, experiences, and insights from my journey in software development.
+                From backend architecture to cloud-native solutions.
+              </p>
+
+              <a
+                href="https://blog.ratnesh-maurya.com/"
+                target="_blank"
+                rel="noopener"
+                className="btn-primary"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Visit My Blog
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-6 border-t border-gray-700/30">
-        <div className="max-w-6xl mx-auto text-center">
-          <p className="text-green-400 text-sm mb-2">
-            rk@ratnesh-maurya.com:~$ echo &quot;Built with ❤️ using Next.js & Tailwind CSS&quot;
-          </p>
-          <p className="text-gray-400 text-xs">© 2025 Ratnesh Maurya. All rights reserved.</p>
+      <footer className="py-12 px-6 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center">
+            <div className="mb-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-2">Ratnesh Maurya</h3>
+              <p className="text-gray-600">Software Development Engineer</p>
+            </div>
+
+            <div className="flex justify-center space-x-6 mb-8">
+              <a href="https://www.linkedin.com/in/ratnesh-maurya" target="_blank" rel="noopener"
+                className="text-gray-500 hover:text-blue-600 transition-colors">
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a href="https://github.com/ratnesh-maurya" target="_blank" rel="noopener"
+                className="text-gray-500 hover:text-gray-900 transition-colors">
+                <Github className="w-5 h-5" />
+              </a>
+              <a href="https://x.com/ratnesh_maurya_" target="_blank" rel="noopener"
+                className="text-gray-500 hover:text-sky-600 transition-colors">
+                <Twitter className="w-5 h-5" />
+              </a>
+              <a href="mailto:ratnesh.maurya@example.com"
+                className="text-gray-500 hover:text-green-600 transition-colors">
+                <Mail className="w-5 h-5" />
+              </a>
+            </div>
+
+            <div className="pt-6 border-t border-gray-200">
+              <p className="text-gray-500 text-sm">
+                © 2025 Ratnesh Maurya. Built with ❤️ using Next.js & Tailwind CSS
+              </p>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
