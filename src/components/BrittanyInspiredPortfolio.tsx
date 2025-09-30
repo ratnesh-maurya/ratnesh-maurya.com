@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight } from 'lucide-react';
+import { Mail, ArrowUpRight } from 'lucide-react';
+import { SiX, SiCodeforces, SiGithub, SiLinkedin , SiLeetcode} from 'react-icons/si';
 import { BackgroundBeamsWithCollision } from './ui/background-beams-with-collision';
 
 const BrittanyInspiredPortfolio = () => {
@@ -104,10 +105,10 @@ const BrittanyInspiredPortfolio = () => {
                   <a href="/">Ratnesh Maurya</a>
                 </h1>
                 <h2 className="mt-3 text-lg font-medium tracking-tight sm:text-xl" style={{ color: '#ccd6f6' }}>
-                  Software Development Engineer
+                  Backend Engineer
                 </h2>
                 <p className="mt-4 max-w-xs leading-normal" style={{ color: '#8892b0' }}>
-                  I build scalable backend systems and cloud-native applications with Go and Elixir.
+                  I build scalable backend systems and cloud-native applications with  <span className="font-medium" style={{ color: '#ccd6f6' }}>Go </span>and  <span className="font-medium" style={{ color: '#ccd6f6' }}>Elixir</span>.
                 </p>
 
                 {/* Navigation */}
@@ -160,54 +161,77 @@ const BrittanyInspiredPortfolio = () => {
                 </nav>
               </div>
 
+              {/* Profile Picture */}
+          
+
               {/* Social Links */}
               <ul className="ml-1 mt-8 flex items-center" aria-label="Social media">
                 <li className="mr-5 text-xs">
                   <a
-                    className="block hover:text-[#ccd6f6] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    href="https://github.com/ratnesh-maurya"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <span className="sr-only">GitHub</span>
-                    <Github className="h-6 w-6" />
-                  </a>
-                </li>
-                <li className="mr-5 text-xs">
-                  <a
-                    className="block hover:text-[#ccd6f6] transition-colors"
-                    style={{ color: '#8892b0' }}
+                    className="block text-sky-300  hover:text-green-400"
                     href="https://www.linkedin.com/in/ratnesh-maurya"
                     target="_blank"
                     rel="noreferrer"
                   >
                     <span className="sr-only">LinkedIn</span>
-                    <Linkedin className="h-6 w-6" />
+                    <SiLinkedin className="h-6 w-6" />
                   </a>
                 </li>
                 <li className="mr-5 text-xs">
                   <a
-                    className="block hover:text-[#ccd6f6] transition-colors"
-                    style={{ color: '#8892b0' }}
+                    className="block  text-sky-300  hover:text-orange-400"
                     href="https://x.com/ratnesh_maurya_"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    <span className="sr-only">Twitter</span>
-                    <Twitter className="h-6 w-6" />
+                    <span className="sr-only">X (Twitter)</span>
+                    <SiX className="h-6 w-6" />
                   </a>
                 </li>
                 <li className="mr-5 text-xs">
                   <a
-                    className="block hover:text-[#ccd6f6] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    href="mailto:ratnesh.maurya@example.com"
+                    className="block  text-sky-300  hover:text-pink-400"
+                    href="mailto:ratneshmaurya2311@gmail.com"
                   >
                     <span className="sr-only">Email</span>
                     <Mail className="h-6 w-6" />
                   </a>
                 </li>
+                <li className="mr-5 text-xs">
+                  <a
+                    className="block text-sky-300  hover:text-pink-400  "
+                    // style={{ color: '#8892b0' }}
+                    href="https://github.com/ratnesh-maurya"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="sr-only">GitHub</span>
+                    <SiGithub className="h-6 w-6" />
+                  </a>
+                </li>
+                <li className="mr-5 text-xs">
+                  <a 
+                    className="block  text-sky-300  hover:text-yellow-400"
+                    href="https://codeforces.com/profile/ratnesh_"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="sr-only">Codeforces</span>
+                    <SiCodeforces className="h-6 w-6" />
+                  </a>
+                </li>
+                <li className="mr-5 text-xs">
+                  <a
+                    className="block  text-sky-300  hover:text-rose-800"
+                    href="https://leetcode.com/u/ratnesh_maurya/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="sr-only">Codeforces</span>
+                    <SiLeetcode className="h-6 w-6" />
+                  </a>
+                </li>
+
               </ul>
             </header>
 
