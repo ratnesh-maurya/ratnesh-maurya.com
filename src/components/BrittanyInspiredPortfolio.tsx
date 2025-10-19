@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Mail, ArrowUpRight } from 'lucide-react';
 import { SiX, SiCodeforces, SiGithub, SiLinkedin, SiLeetcode } from 'react-icons/si';
 import { BackgroundBeamsWithCollision } from './ui/background-beams-with-collision';
+import Image from 'next/image';
 
 const BrittanyInspiredPortfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -345,7 +346,7 @@ const BrittanyInspiredPortfolio = () => {
                             Architected and developed high-traffic <a href="https://loannetwork.app/" target="_blank" rel="noreferrer" className="font-medium underline hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors" style={{ color: '#ccd6f6' }}>  lending platform </a> serving thousands of concurrent users.
                             Developed a <span className="font-medium" style={{ color: '#ccd6f6' }}> RAG Based </span> AI Assistant for the <a href="https://console.initializ.ai/" target="_blank" rel="noreferrer" className="font-medium  hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors" style={{ color: '#ccd6f6' }}> Initializ </a> platform to answer user queries and provide insights.
                             Built secure client-side encryption modules and custom Kubernetes controllers for automated
-                            infrastructure management. 
+                            infrastructure management.
                           </p>
                           <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
                             {['Go', 'Elixir', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes', 'AWS', 'Kafka'].map((tech) => (
@@ -393,33 +394,49 @@ const BrittanyInspiredPortfolio = () => {
                 </div>
                 <div>
                   <ul className="group/list">
-                    {/* High-Traffic Lending Platform */}
+
+
+                    {/* JSONic */}
                     <li className="mb-12">
-                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 sm:items-center">
                         <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <div className="z-10 mb-4 sm:col-span-2 sm:mb-0">
+                          <a href="https://jsonic.ratnesh-maurya.com" target="_blank" rel="noreferrer" className="block">
+                            <div className="rounded border-2 transition group-hover:border-slate-200/30 overflow-hidden hover:opacity-90" style={{ borderColor: 'rgba(148, 163, 184, 0.1)', width: '120px', }}>
+                              <Image
+                                alt="JSONic preview"
+                                width={120}
+                                height={80}
+                                className="w-full h-full object-cover"
+                                style={{ color: 'transparent' }}
+                                src="/jsonic.png"
+                              />
+                            </div>
+                          </a>
+                        </div>
                         <div className="z-10 sm:order-2 sm:col-span-6">
                           <h3>
                             <a
                               className="inline-flex items-baseline font-medium leading-tight hover:text-[#64ffda] focus-visible:text-[#64ffda] group/link text-base"
                               style={{ color: '#ccd6f6' }}
-                              href="#"
+                              href="https://jsonic.ratnesh-maurya.com"
                               target="_blank"
                               rel="noreferrer"
                             >
                               <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                               <span>
-                                High-Traffic Lending Platform
+                                JSONic
                                 <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
                               </span>
                             </a>
                           </h3>
                           <p className="mt-2 text-sm leading-normal" style={{ color: '#8892b0' }}>
-                            Architected and developed a scalable lending platform handling thousands of concurrent users
-                            with Go and PostgreSQL. Implemented advanced caching strategies and database optimizations
-                            for high-performance operations.
+                            A lightweight and powerful utility for working with JSON data. Features include JSON parsing,
+                            formatting, validation, and manipulation tools that enhance developer productivity. Perfect for
+                            debugging, testing APIs, and managing complex JSON structures with ease.
                           </p>
                           <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                            {['Go', 'PostgreSQL', 'Redis', 'Docker', 'AWS'].map((tech) => (
+                            {['Next.js', 'TypeScript', 'React', 'JSON Parser', 'Tailwind CSS'].map((tech) => (
                               <li key={tech} className="mr-1.5 mt-2">
                                 <div className="flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5" style={{ backgroundColor: 'rgba(100, 255, 218, 0.1)', color: '#64ffda' }}>
                                   {tech}
@@ -431,32 +448,47 @@ const BrittanyInspiredPortfolio = () => {
                       </div>
                     </li>
 
-                    {/* Client-Side Encryption Module */}
+                    {/* mdconverter */}
                     <li className="mb-12">
-                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 sm:items-center">
                         <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <div className="z-10 mb-4 sm:col-span-2 sm:mb-0">
+                          <a href="https://mdconverter.ratnesh-maurya.com" target="_blank" rel="noreferrer" className="block">
+                            <div className="rounded border-2 transition group-hover:border-slate-200/30 overflow-hidden hover:opacity-90" style={{ borderColor: 'rgba(148, 163, 184, 0.1)', width: '120px', }}>
+                              <Image
+                                alt="mdconverter preview"
+                                width={120}
+                                height={80}
+                                className="w-full h-full object-cover"
+                                style={{ color: 'transparent' }}
+                                src="/mdconverter.png"
+                              />
+                            </div>
+                          </a>
+                        </div>
                         <div className="z-10 sm:order-2 sm:col-span-6">
                           <h3>
                             <a
                               className="inline-flex items-baseline font-medium leading-tight hover:text-[#64ffda] focus-visible:text-[#64ffda] group/link text-base"
                               style={{ color: '#ccd6f6' }}
-                              href="#"
+                              href="https://mdconverter.ratnesh-maurya.com"
                               target="_blank"
                               rel="noreferrer"
                             >
                               <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                               <span>
-                                Client-Side Encryption Module
+                                mdconverter
                                 <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
                               </span>
                             </a>
                           </h3>
                           <p className="mt-2 text-sm leading-normal" style={{ color: '#8892b0' }}>
-                            Built secure encryption modules for sensitive data protection with advanced cryptographic algorithms.
-                            Implemented end-to-end encryption for financial data with zero-knowledge architecture.
+                            Instantly transform any text into beautiful Markdown with real-time conversion. A developer-friendly
+                            tool that simplifies the process of creating well-structured Markdown documents. Just paste your text
+                            and watch the magic happen with live preview and formatting options.
                           </p>
                           <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                            {['Go', 'Cryptography', 'Security', 'API Design'].map((tech) => (
+                            {['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Markdown'].map((tech) => (
                               <li key={tech} className="mr-1.5 mt-2">
                                 <div className="flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5" style={{ backgroundColor: 'rgba(100, 255, 218, 0.1)', color: '#64ffda' }}>
                                   {tech}
@@ -468,32 +500,101 @@ const BrittanyInspiredPortfolio = () => {
                       </div>
                     </li>
 
-                    {/* Kubernetes Controller */}
+
+
+                    {/* npm-compare */}
                     <li className="mb-12">
-                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50">
+                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 sm:items-center">
                         <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <div className="z-10 mb-4 sm:col-span-2 sm:mb-0">
+                          <a href="https://npm-compare.ratnesh-maurya.com/" target="_blank" rel="noreferrer" className="block">
+                            <div className="rounded border-2 transition group-hover:border-slate-200/30 overflow-hidden hover:opacity-90" style={{ borderColor: 'rgba(148, 163, 184, 0.1)', width: '120px', }}>
+                              <Image
+                                alt="npm-compare preview"
+                                width={120}
+                                height={80}
+                                className="w-full h-full object-cover"
+                                style={{ color: 'transparent' }}
+                                src="/npm-compare.png"
+                              />
+                            </div>
+                          </a>
+                        </div>
                         <div className="z-10 sm:order-2 sm:col-span-6">
                           <h3>
                             <a
                               className="inline-flex items-baseline font-medium leading-tight hover:text-[#64ffda] focus-visible:text-[#64ffda] group/link text-base"
                               style={{ color: '#ccd6f6' }}
-                              href="#"
+                              href="https://npm-compare.ratnesh-maurya.com/"
                               target="_blank"
                               rel="noreferrer"
                             >
                               <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
                               <span>
-                                Custom Kubernetes Controller
+                                npm-compare
                                 <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
                               </span>
                             </a>
                           </h3>
                           <p className="mt-2 text-sm leading-normal" style={{ color: '#8892b0' }}>
-                            Developed custom Kubernetes controllers for automated infrastructure management and scaling.
-                            Implemented intelligent resource allocation and self-healing capabilities for cloud-native applications.
+                            A powerful web application designed to help developers compare and analyze npm packages side-by-side.
+                            Features include intelligent package recommendations, detailed comparison tables, and insights to help
+                            make informed decisions when selecting dependencies for projects.
                           </p>
                           <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
-                            {['Go', 'Kubernetes', 'Docker', 'Cloud Native', 'Terraform'].map((tech) => (
+                            {['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'npm API'].map((tech) => (
+                              <li key={tech} className="mr-1.5 mt-2">
+                                <div className="flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5" style={{ backgroundColor: 'rgba(100, 255, 218, 0.1)', color: '#64ffda' }}>
+                                  {tech}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+
+                    {/* Rehabify */}
+                    <li className="mb-12">
+                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 sm:items-center">
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-md transition motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:bg-slate-800/50 lg:group-hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:group-hover:drop-shadow-lg"></div>
+                        <div className="z-10 mb-4 sm:col-span-2 sm:mb-0">
+                          <a href="https://rehabify.ratnesh-maurya.com/" target="_blank" rel="noreferrer" className="block">
+                            <div className="rounded border-2 transition group-hover:border-slate-200/30 overflow-hidden hover:opacity-90" style={{ borderColor: 'rgba(148, 163, 184, 0.1)', width: '120px', }}>
+                              <Image
+                                alt="Rehabify preview"
+                                width={120}
+                                height={80}
+                                className="w-full h-full object-cover"
+                                style={{ color: 'transparent' }}
+                                src="/rehabify.png"
+                              />
+                            </div>
+                          </a>
+                        </div>
+                        <div className="z-10 sm:order-2 sm:col-span-6">
+                          <h3>
+                            <a
+                              className="inline-flex items-baseline font-medium leading-tight hover:text-[#64ffda] focus-visible:text-[#64ffda] group/link text-base"
+                              style={{ color: '#ccd6f6' }}
+                              href="https://rehabify.ratnesh-maurya.com/"
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                Rehabify
+                                <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
+                              </span>
+                            </a>
+                          </h3>
+                          <p className="mt-2 text-sm leading-normal" style={{ color: '#8892b0' }}>
+                            A comprehensive management platform for Nasha Mukti Kendras (de-addiction centers). Streamlines
+                            operations with patient record management, treatment tracking, and administrative tools. Built to
+                            support rehabilitation centers in providing better care and enhancing operational efficiency.
+                          </p>
+                          <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                            {['Next.js', 'TypeScript', 'React', 'PostgreSQL', 'Golang', 'Docker'].map((tech) => (
                               <li key={tech} className="mr-1.5 mt-2">
                                 <div className="flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5" style={{ backgroundColor: 'rgba(100, 255, 218, 0.1)', color: '#64ffda' }}>
                                   {tech}
@@ -643,7 +744,7 @@ const BrittanyInspiredPortfolio = () => {
                     >
                       <span>
                         <span className="border-b border-transparent pb-px transition group-hover:border-[#64ffda] motion-reduce:transition-none">
-                          View All
+                          View All {' '}
                         </span>
                         <span className="whitespace-nowrap">
                           <span className="border-b border-transparent pb-px transition group-hover:border-[#64ffda] motion-reduce:transition-none">
@@ -658,70 +759,19 @@ const BrittanyInspiredPortfolio = () => {
               </section>
 
               {/* Footer */}
-              <footer className="max-w-md pb-16 text-sm sm:pb-0" style={{ color: '#8892b0' }}>
-                <p>
-                  Loosely designed in{' '}
-                  <a
-                    href="https://www.figma.com/"
-                    className="font-medium hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Figma
-                  </a>{' '}
-                  and coded in{' '}
-                  <a
-                    href="https://code.visualstudio.com/"
-                    className="font-medium hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Visual Studio Code
-                  </a>{' '}
-                  by yours truly. Built with{' '}
-                  <a
-                    href="https://nextjs.org/"
-                    className="font-medium hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Next.js
-                  </a>{' '}
-                  and{' '}
-                  <a
-                    href="https://tailwindcss.com/"
-                    className="font-medium hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Tailwind CSS
-                  </a>
-                  , deployed with{' '}
-                  <a
-                    href="https://vercel.com/"
-                    className="font-medium hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Vercel
-                  </a>
-                  . All text is set in the{' '}
-                  <a
-                    href="https://rsms.me/inter/"
-                    className="font-medium hover:text-[#64ffda] focus-visible:text-[#64ffda] transition-colors"
-                    style={{ color: '#8892b0' }}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Inter
-                  </a>{' '}
-                  typeface.
-                </p>
+              <footer className="pb-16 text-sm sm:pb-0">
+                <div style={{ color: '#8892b0' }}>
+                  <h3 className="text-lg font-semibold mb-2" style={{ color: '#ccd6f6' }}>
+                    🌱 Roots to Code
+                  </h3>
+                  <p className="text-xs mb-3 opacity-75">
+                    (A tribute to my father and grandfather — the hands that taught me creation.)
+                  </p>
+                  <blockquote className="text-sm leading-relaxed border-l-2 pl-4 my-4" style={{ borderColor: '#64ffda' }}>
+                    <span className='text-yellow-200'>&ldquo;मैं कोड नहीं लिखता, मैं वही करता हूँ जो पिता करते थे — बस ज़मीन बदली है, जज़्बा नहीं।&rdquo;</span> <br />
+                    I don&apos;t just write code; I do what my father did — only the soil has changed, not the spirit.
+                  </blockquote>
+                </div>
               </footer>
             </main>
           </div>
