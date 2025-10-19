@@ -3,7 +3,7 @@ import "./globals.css";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
+import { Inter, Poppins, JetBrains_Mono, Baloo_Bhai_2 } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +24,13 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   display: "swap",
   weight: ["400", "500", "600"],
+});
+
+const balooBhai2 = Baloo_Bhai_2({
+  subsets: ["latin"],
+  variable: "--font-baloo-bhai-2",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const viewport = {
@@ -66,7 +73,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} font-inter`}>
+      <body className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} ${balooBhai2.variable} font-baloo-bhai-2`}>
         <main className="w-full">
           {children}
         </main>

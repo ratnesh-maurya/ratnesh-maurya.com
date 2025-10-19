@@ -72,7 +72,8 @@ const config: Config = {
         inter: ["var(--font-inter)", "system-ui", "sans-serif"],
         poppins: ["var(--font-poppins)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "monospace"],
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        "baloo-bhai-2": ["var(--font-baloo-bhai-2)", "system-ui", "sans-serif"],
+        sans: ["var(--font-baloo-bhai-2)", "system-ui", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
