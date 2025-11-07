@@ -1,10 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Mail, ArrowUpRight } from 'lucide-react';
+import { Mail, ArrowUpRight, Camera } from 'lucide-react';
 import { SiX, SiCodeforces, SiGithub, SiLinkedin, SiLeetcode } from 'react-icons/si';
 import { BackgroundBeamsWithCollision } from './ui/background-beams-with-collision';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const BrittanyInspiredPortfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -94,27 +95,43 @@ const BrittanyInspiredPortfolio = () => {
             <div className="px-6 pb-4">
               <div className="flex flex-col space-y-4">
                 {[
-                  { id: 'about', label: 'About' },
-                  { id: 'experience', label: 'Experience' },
-                  { id: 'projects', label: 'Projects' },
-                  { id: 'writing', label: 'Writing' }
-                ].map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    className={`text-sm font-bold uppercase tracking-widest transition-colors ${activeSection === item.id
-                      ? 'text-[#ccd6f6]'
-                      : 'text-[#8892b0] hover:text-[#64ffda]'
-                      }`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(item.id);
-                      setIsMobileMenuOpen(false);
-                    }}
-                  >
-                    {item.label}
-                  </a>
-                ))}
+                  { id: 'about', label: 'About', type: 'section' },
+                  { id: 'experience', label: 'Experience', type: 'section' },
+                  { id: 'projects', label: 'Projects', type: 'section' },
+                  { id: 'writing', label: 'Writing', type: 'section' },
+                  { id: 'photos', label: 'Photos', type: 'page', href: '/photos' }
+                ].map((item) => {
+                  if (item.type === 'page') {
+                    return (
+                      <Link
+                        key={item.id}
+                        href={item.href || '#'}
+                        className="text-sm font-bold uppercase tracking-widest transition-colors text-[#8892b0] hover:text-[#64ffda] flex items-center gap-2"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <Camera className="w-4 h-4" />
+                        {item.label}
+                      </Link>
+                    );
+                  }
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      className={`text-sm font-bold uppercase tracking-widest transition-colors ${activeSection === item.id
+                        ? 'text-[#ccd6f6]'
+                        : 'text-[#8892b0] hover:text-[#64ffda]'
+                        }`}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        scrollToSection(item.id);
+                        setIsMobileMenuOpen(false);
+                      }}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           )}
@@ -142,49 +159,80 @@ const BrittanyInspiredPortfolio = () => {
                 <nav className="nav hidden lg:block" aria-label="In-page jump links">
                   <ul className="mt-16 w-max">
                     {[
-                      { id: 'about', label: 'About' },
-                      { id: 'experience', label: 'Experience' },
-                      { id: 'projects', label: 'Projects' },
-                      { id: 'writing', label: 'Writing' }
-                    ].map((item) => (
-                      <li key={item.id}>
-                        <a
-                          className={`group flex items-center py-3 ${activeSection === item.id ? 'active' : ''
-                            }`}
-                          href={`#${item.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection(item.id);
-                          }}
-                        >
-                          <span className={`nav-indicator mr-4 h-px transition-all duration-300 ${activeSection === item.id
-                            ? 'w-16'
-                            : 'w-8 group-hover:w-16'
-                            }`} style={{
-                              backgroundColor: activeSection === item.id ? '#ccd6f6' : '#8892b0',
-                              boxShadow: activeSection === item.id ? '0 0 8px rgba(204, 214, 246, 0.3)' : 'none'
+                      { id: 'about', label: 'About', type: 'section' },
+                      { id: 'experience', label: 'Experience', type: 'section' },
+                      { id: 'projects', label: 'Projects', type: 'section' },
+                      { id: 'writing', label: 'Writing', type: 'section' },
+                      { id: 'photos', label: 'Photos', type: 'page', href: '/photos' }
+                    ].map((item) => {
+                      if (item.type === 'page') {
+                        return (
+                          <li key={item.id}>
+                            <Link
+                              href={item.href || '#'}
+                              className="group flex items-center py-3"
+                            >
+                              <span className="nav-indicator mr-4 h-px w-8 group-hover:w-16 transition-all duration-300"
+                                style={{ backgroundColor: '#8892b0' }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#64ffda';
+                                  e.currentTarget.style.boxShadow = '0 0 8px rgba(100, 255, 218, 0.3)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.backgroundColor = '#8892b0';
+                                  e.currentTarget.style.boxShadow = 'none';
+                                }}
+                              ></span>
+                              <span className="nav-text text-xs font-bold uppercase tracking-widest transition-colors duration-300 group-hover:text-[#64ffda] flex items-center gap-2"
+                                style={{ color: '#8892b0' }}
+                              >
+                                <Camera className="w-3 h-3" />
+                                {item.label}
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      }
+                      return (
+                        <li key={item.id}>
+                          <a
+                            className={`group flex items-center py-3 ${activeSection === item.id ? 'active' : ''
+                              }`}
+                            href={`#${item.id}`}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              scrollToSection(item.id);
                             }}
-                            onMouseEnter={(e) => {
-                              if (activeSection !== item.id) {
-                                e.currentTarget.style.backgroundColor = '#64ffda';
-                                e.currentTarget.style.boxShadow = '0 0 8px rgba(100, 255, 218, 0.3)';
-                              }
-                            }}
-                            onMouseLeave={(e) => {
-                              if (activeSection !== item.id) {
-                                e.currentTarget.style.backgroundColor = '#8892b0';
-                                e.currentTarget.style.boxShadow = 'none';
-                              }
-                            }}></span>
-                          <span className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${activeSection === item.id
-                            ? ''
-                            : 'group-hover:text-[#64ffda]'
-                            }`} style={{ color: activeSection === item.id ? '#ccd6f6' : '#8892b0' }}>
-                            {item.label}
-                          </span>
-                        </a>
-                      </li>
-                    ))}
+                          >
+                            <span className={`nav-indicator mr-4 h-px transition-all duration-300 ${activeSection === item.id
+                              ? 'w-16'
+                              : 'w-8 group-hover:w-16'
+                              }`} style={{
+                                backgroundColor: activeSection === item.id ? '#ccd6f6' : '#8892b0',
+                                boxShadow: activeSection === item.id ? '0 0 8px rgba(204, 214, 246, 0.3)' : 'none'
+                              }}
+                              onMouseEnter={(e) => {
+                                if (activeSection !== item.id) {
+                                  e.currentTarget.style.backgroundColor = '#64ffda';
+                                  e.currentTarget.style.boxShadow = '0 0 8px rgba(100, 255, 218, 0.3)';
+                                }
+                              }}
+                              onMouseLeave={(e) => {
+                                if (activeSection !== item.id) {
+                                  e.currentTarget.style.backgroundColor = '#8892b0';
+                                  e.currentTarget.style.boxShadow = 'none';
+                                }
+                              }}></span>
+                            <span className={`nav-text text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${activeSection === item.id
+                              ? ''
+                              : 'group-hover:text-[#64ffda]'
+                              }`} style={{ color: activeSection === item.id ? '#ccd6f6' : '#8892b0' }}>
+                              {item.label}
+                            </span>
+                          </a>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </nav>
               </div>
