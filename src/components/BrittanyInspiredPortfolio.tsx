@@ -52,6 +52,35 @@ const BrittanyInspiredPortfolio = () => {
     }
   };
 
+  // Calculate years and months of experience dynamically
+  const calculateYearsOfExperience = (): { years: number; months: number } => {
+    const joinDate = new Date('2024-08-01');
+    const currentDate = new Date();
+
+    let years = currentDate.getFullYear() - joinDate.getFullYear();
+    let months = currentDate.getMonth() - joinDate.getMonth();
+
+    // Adjust if current month is before join month
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    // Adjust if current day is before join day in the same month
+    if (currentDate.getDate() < joinDate.getDate()) {
+      months--;
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+    }
+
+    return { years, months };
+  };
+
+  const { years, months } = calculateYearsOfExperience();
+  const experienceText = `${years} year${years !== 1 ? 's' : ''} ${months} month${months !== 1 ? 's' : ''}`;
+
   return (
     <>
       <div className="fixed inset-0 z-0 ">
@@ -334,7 +363,7 @@ const BrittanyInspiredPortfolio = () => {
                     >
                       Initializ
                     </a>{' '}
-                    with <span className="font-medium" style={{ color: '#ccd6f6' }}>  1.5 </span>years of experience building scalable backend systems and cloud-native applications.
+                    with <span className="font-medium" style={{ color: '#ccd6f6' }}> {experienceText} </span>of experience building scalable backend systems and cloud-native applications.
                     I specialize in crafting robust, high-performance solutions that handle <span className="font-medium" style={{ color: '#ccd6f6' }}> thousands </span>  of concurrent users.
                   </p>
                   <p className="mb-4" style={{ color: '#8892b0' }}>
