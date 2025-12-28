@@ -77,18 +77,18 @@ export default function PhotosPage() {
     }, [selectedPhoto, currentIndex]);
 
     return (
-        <div className="min-h-screen bg-[#0a192f] text-[#8892b0]">
-            {/* Header */}
-            <header className="sticky top-0 z-50 bg-[#0a192f]/90 backdrop-blur-sm border-b border-[#1e293b]">
+        <div className="min-h-screen bg-gradient-to-br from-[#0a0a0f] via-[#0f0f1a] to-[#151520] text-[#8892b0]">
+            {/* Modern Header with Glassmorphism */}
+            <header className="sticky top-0 z-50 backdrop-blur-xl bg-[rgba(255,255,255,0.05)] border-b border-[rgba(255,255,255,0.1)]">
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                     <Link
                         href="/"
-                        className="flex items-center gap-2 text-[#ccd6f6] hover:text-[#64ffda] transition-colors"
+                        className="flex items-center gap-2 text-white hover:text-[#6366f1] transition-all duration-300 hover:translate-x-[-4px]"
                     >
                         <ArrowLeft className="w-5 h-5" />
                         <span className="text-lg font-medium">Back to Portfolio</span>
                     </Link>
-                    <h1 className="text-2xl font-bold text-[#ccd6f6]">Photos</h1>
+                    <h1 className="text-2xl font-bold bg-gradient-to-r from-white to-[#b4bcd0] bg-clip-text text-transparent">Photos</h1>
                     <div className="w-32"></div> {/* Spacer for centering */}
                 </div>
             </header>
@@ -107,32 +107,32 @@ export default function PhotosPage() {
                         return (
                             <div
                                 key={photo}
-                                className="group relative w-full cursor-pointer rounded-lg overflow-hidden hover:ring-2 hover:ring-[#64ffda] transition-all duration-300 bg-[#1e293b]"
+                                className="group relative w-full cursor-pointer rounded-xl overflow-hidden backdrop-blur-xl bg-[rgba(255,255,255,0.05)] border border-[rgba(255,255,255,0.1)] hover:border-[rgba(99,102,241,0.5)] hover:shadow-[0_0_30px_rgba(99,102,241,0.3)] transition-all duration-300"
                                 onClick={() => openLightbox(photo, index)}
                             >
                                 <img
                                     src={imageSrc}
                                     alt={`Photo ${index + 1}`}
-                                    className="w-full h-auto object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.02] block"
+                                    className="w-full h-auto object-contain rounded-xl transition-transform duration-300 group-hover:scale-[1.02] block"
                                     loading="lazy"
                                 />
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none rounded-lg" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(99,102,241,0.1)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl" />
                             </div>
                         );
                     })}
                 </div>
             </main>
 
-            {/* Lightbox Modal */}
+            {/* Modern Lightbox Modal with Glassmorphism */}
             {selectedPhoto && (
                 <div
-                    className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+                    className="fixed inset-0 z-50 bg-black/95 backdrop-blur-sm flex items-center justify-center p-4"
                     onClick={closeLightbox}
                 >
                     {/* Close Button */}
                     <button
                         onClick={closeLightbox}
-                        className="absolute top-4 right-4 text-white hover:text-[#64ffda] transition-colors z-10 p-2"
+                        className="absolute top-4 right-4 text-white hover:text-[#6366f1] transition-all duration-300 z-10 p-2 backdrop-blur-xl bg-[rgba(255,255,255,0.1)] rounded-full hover:bg-[rgba(255,255,255,0.2)] hover:scale-110"
                         aria-label="Close"
                     >
                         <X className="w-8 h-8" />
@@ -144,7 +144,7 @@ export default function PhotosPage() {
                             e.stopPropagation();
                             navigatePhoto('prev');
                         }}
-                        className="absolute left-4 text-white hover:text-[#64ffda] transition-colors z-10 p-2 bg-black/50 rounded-full"
+                        className="absolute left-4 text-white hover:text-[#6366f1] transition-all duration-300 z-10 p-2 backdrop-blur-xl bg-[rgba(255,255,255,0.1)] rounded-full hover:bg-[rgba(255,255,255,0.2)] hover:scale-110"
                         aria-label="Previous photo"
                     >
                         <ChevronLeft className="w-8 h-8" />
@@ -156,7 +156,7 @@ export default function PhotosPage() {
                             e.stopPropagation();
                             navigatePhoto('next');
                         }}
-                        className="absolute right-4 text-white hover:text-[#64ffda] transition-colors z-10 p-2 bg-black/50 rounded-full"
+                        className="absolute right-4 text-white hover:text-[#6366f1] transition-all duration-300 z-10 p-2 backdrop-blur-xl bg-[rgba(255,255,255,0.1)] rounded-full hover:bg-[rgba(255,255,255,0.2)] hover:scale-110"
                         aria-label="Next photo"
                     >
                         <ChevronRight className="w-8 h-8" />
@@ -177,8 +177,8 @@ export default function PhotosPage() {
                         />
                     </div>
 
-                    {/* Photo Counter */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white bg-black/50 px-4 py-2 rounded-full">
+                    {/* Modern Photo Counter */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white backdrop-blur-xl bg-[rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.2)] px-4 py-2 rounded-full">
                         {currentIndex + 1} / {photos.length}
                     </div>
                 </div>
