@@ -456,6 +456,56 @@ const BrittanyInspiredPortfolio = () => {
                 <div>
                   <ul className="group/list">
 
+                    {/* Personal Tracker */}
+                    <li className="mb-12">
+                      <div className="group relative grid pb-1 transition-all sm:grid-cols-8 sm:gap-8 md:gap-4 lg:hover:!opacity-100 lg:group-hover/list:opacity-50 sm:items-center">
+                        <div className="absolute -inset-x-4 -inset-y-4 z-0 hidden rounded-xl transition-all duration-300 motion-reduce:transition-none lg:-inset-x-6 lg:block lg:group-hover:backdrop-blur-xl lg:group-hover:bg-[rgba(255,255,255,0.05)] lg:group-hover:border lg:group-hover:border-[rgba(99,102,241,0.3)] lg:group-hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]"></div>
+                        <div className="z-10 mb-4 sm:col-span-2 sm:mb-0">
+                          <a href="https://tracker.ratnesh-maurya.com/" target="_blank" rel="noreferrer" className="block">
+                            <div className="rounded-xl border-2 transition-all duration-300 group-hover:border-[rgba(99,102,241,0.5)] overflow-hidden hover:opacity-90 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] backdrop-blur-sm bg-[rgba(255,255,255,0.05)]" style={{ borderColor: 'rgba(255, 255, 255, 0.1)', width: '120px' }}>
+                              <Image
+                                alt="Personal Tracker preview"
+                                width={120}
+                                height={80}
+                                className="w-full h-full object-cover"
+                                style={{ color: 'transparent' }}
+                                src="/tracker.png"
+                              />
+                            </div>
+                          </a>
+                        </div>
+                        <div className="z-10 sm:order-2 sm:col-span-6">
+                          <h3>
+                            <a
+                              className="inline-flex items-baseline font-medium leading-tight hover:text-[#6366f1] focus-visible:text-[#6366f1] group/link text-base text-white transition-colors"
+                              href="https://tracker.ratnesh-maurya.com/"
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              <span className="absolute -inset-x-4 -inset-y-2.5 hidden rounded md:-inset-x-6 md:-inset-y-4 lg:block"></span>
+                              <span>
+                                Personal Tracker
+                                <ArrowUpRight className="inline-block h-4 w-4 shrink-0 transition-transform group-hover/link:-translate-y-1 group-hover/link:translate-x-1 group-focus-visible/link:-translate-y-1 group-focus-visible/link:translate-x-1 motion-reduce:transition-none ml-1 translate-y-px" />
+                              </span>
+                            </a>
+                          </h3>
+                          <p className="mt-2 text-sm leading-normal text-[#8892b0]">
+                            A comprehensive personal tracker to help you build better habits, track your progress, and achieve your goals.
+                            Features include interactive analytics dashboards, habit tracking, expense monitoring, sleep tracking, and
+                            study hour logging with beautiful visualizations powered by MUI X Charts.
+                          </p>
+                          <ul className="mt-2 flex flex-wrap" aria-label="Technologies used">
+                            {['Next.js', 'TypeScript', 'React', 'MUI X Charts', 'PWA', 'Tailwind CSS'].map((tech) => (
+                              <li key={tech} className="mr-1.5 mt-2">
+                                <div className="flex items-center rounded-full px-3 py-1 text-xs font-medium leading-5 backdrop-blur-sm bg-[rgba(99,102,241,0.15)] border border-[rgba(99,102,241,0.3)] text-[#a5b4fc] hover:bg-[rgba(99,102,241,0.25)] hover:border-[rgba(99,102,241,0.5)] transition-all duration-300">
+                                  {tech}
+                                </div>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
 
                     {/* JSONic */}
                     <li className="mb-12">
@@ -662,6 +712,8 @@ const BrittanyInspiredPortfolio = () => {
                         </div>
                       </div>
                     </li>
+
+
                   </ul>
 
                   <div className="mt-12">
