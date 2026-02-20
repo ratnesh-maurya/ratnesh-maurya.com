@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+export const runtime = 'edge';
 
 export const alt = 'Ratnesh Maurya — Backend Engineer | Go & Elixir';
 export const size = { width: 1200, height: 630 };
