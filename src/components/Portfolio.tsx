@@ -305,12 +305,9 @@ function HeroSection({ expText }: { expText: string }) {
         {/* Name */}
         <motion.h1
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.65, ease } } }}
-          className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.05] mb-4 flex items-center justify-center gap-3 flex-wrap"
+          className="text-5xl sm:text-7xl font-bold tracking-tight leading-[1.05] mb-4"
         >
           <span className="gradient-text">Ratnesh Maurya</span>
-          <span className="text-4xl sm:text-6xl select-none" role="img" aria-label="Indian flag">
-            🇮🇳
-          </span>
         </motion.h1>
 
         {/* Role */}
